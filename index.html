@@ -755,6 +755,69 @@
       will-change: transform
     }
 
+    /* ============ Pop-out Hero Avatar ============ */
+    .popout-avatar-box {
+      position: relative;
+      width: 290px;
+      height: 350px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+    @media (min-width: 640px) {
+      .popout-avatar-box {
+        width: 350px;
+        height: 420px;
+      }
+    }
+    .popout-circle-bg {
+      position: absolute;
+      bottom: 0;
+      width: 270px;
+      height: 270px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 50% 50%, var(--card2) 0%, var(--bg2) 100%);
+      border: 2px solid rgba(var(--ac-rgb), 0.45);
+      box-shadow: 0 10px 40px -10px rgba(0,0,0,0.5), inset 0 0 25px rgba(var(--ac-rgb), 0.2);
+      transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    @media (min-width: 640px) {
+      .popout-circle-bg {
+        width: 330px;
+        height: 330px;
+      }
+    }
+    .popout-avatar-box:hover .popout-circle-bg {
+      border-color: var(--ac);
+      box-shadow: 0 0 55px rgba(var(--ac-rgb), 0.7), 0 0 95px rgba(var(--ac2-rgb), 0.4), inset 0 0 35px rgba(var(--ac-rgb), 0.35);
+      transform: scale(1.02);
+    }
+    .popout-img-wrapper {
+      position: relative;
+      z-index: 2;
+      width: 270px;
+      transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    @media (min-width: 640px) {
+      .popout-img-wrapper {
+        width: 330px;
+      }
+    }
+    .popout-avatar-img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 0 0 165px 165px;
+      filter: drop-shadow(0 12px 25px rgba(0, 0, 0, 0.5));
+      transition: filter 0.5s ease, transform 0.5s ease;
+    }
+    .popout-avatar-box:hover .popout-img-wrapper {
+      transform: translateY(-8px) scale(1.03);
+    }
+    .popout-avatar-box:hover .popout-avatar-img {
+      filter: drop-shadow(0 20px 40px rgba(var(--ac-rgb), 0.6));
+    }
+
     .social-rail a {
       display: grid;
       place-items: center;
@@ -1320,46 +1383,27 @@
             <div id="socials-row" class="social-row mt-10 flex gap-2.5 xl:hidden" data-reveal data-delay="400"></div>
           </div>
 
-          <!-- Right: tilt code card -->
-          <div id="tilt-scene" class="relative mx-auto w-full max-w-md [perspective:1200px]" data-reveal="zoom"
-            data-delay="200">
-            <div id="tilt-card"
-              class="tilt-card overflow-hidden rounded-2xl border border-line bg-panel shadow-2xl backdrop-blur-xl">
-              <div class="flex items-center gap-2 border-b border-line px-4 py-3">
-                <span class="h-2.5 w-2.5 rounded-full bg-rose-400/70"></span>
-                <span class="h-2.5 w-2.5 rounded-full bg-amber-400/70"></span>
-                <span class="h-2.5 w-2.5 rounded-full bg-emerald-400/70"></span>
-                <span class="ml-2 font-mono text-xs text-mute">ali.config.ts</span>
-                <span
-                  class="ml-auto rounded-md border border-line px-1.5 py-0.5 font-mono text-[9px] uppercase tracking-wider text-mute">saved</span>
+          <!-- Right: Pop-out Avatar -->
+          <div class="relative mx-auto flex items-center justify-center pt-8 sm:pt-12" data-reveal="zoom" data-delay="200">
+            <div class="popout-avatar-box group cursor-pointer">
+              <!-- Circle Base with Neon Glow -->
+              <div class="popout-circle-bg"></div>
+              
+              <!-- Pop-out Image (Head extends out of frame) -->
+              <div class="popout-img-wrapper">
+                <img src="IMG_20260730_061443.png" alt="Ali Hassan" class="popout-avatar-img" width="680" height="820" loading="eager">
               </div>
-              <pre class="overflow-x-auto p-5 font-mono text-[12.5px] leading-6"><code><span class="tok-c">// who am i, semantically</span>
-<span class="tok-k">const</span> engineer <span class="tok-k">=</span> {
-  name:  <span class="tok-s">'Ali Hassan'</span>,
-  base:  <span class="tok-s">'Berlin, DE'</span>,
-  stack: [<span class="tok-s">'ts'</span>, <span class="tok-s">'react'</span>, <span class="tok-s">'node'</span>],
-  dsa:   <span class="tok-n">500</span>,   <span class="tok-c">// problems & counting</span>
-  focus: <span class="tok-s">'clean architecture + 60fps UI'</span>,
-  coffee:<span class="tok-k">Infinity</span>,
-  hireable: <span class="tok-b">true</span>,
-} <span class="tok-k">satisfies</span> <span class="tok-t">Engineer</span>;</code></pre>
-              <div
-                class="flex items-center justify-between border-t border-line px-4 py-2.5 font-mono text-[10.5px] text-mute">
-                <span class="inline-flex items-center gap-1.5"><i data-lucide="check" class="h-3.5 w-3.5"
-                    style="color:var(--ok)"></i>build passing · 128 tests</span>
-                <span>tsc — 0 errors</span>
+
+              <!-- Floating Chips -->
+              <div class="chip-wrap -left-3 top-10 sm:-left-8 z-10" data-depth="34">
+                <div class="chip float-idle"><span class="pulse-dot"></span>Available for work</div>
               </div>
-            </div>
-            <div class="chip-wrap -left-3 top-8 sm:-left-8" data-depth="34">
-              <div class="chip float-idle"><i data-lucide="code-2" class="h-4 w-4 text-ac"></i>500+ DSA problems</div>
-            </div>
-            <div class="chip-wrap -right-2 bottom-20 sm:-right-6" data-depth="50">
-              <div class="chip float-idle" style="animation-delay:-2.2s"><span class="pulse-dot"></span>Open to
-                opportunities</div>
-            </div>
-            <div class="chip-wrap left-6 -bottom-5" data-depth="22">
-              <div class="chip float-idle" style="animation-delay:-4.1s"><i data-lucide="git-branch"
-                  class="h-4 w-4 text-ac2"></i>218-day commit streak</div>
+              <div class="chip-wrap -right-2 bottom-16 sm:-right-6 z-10" data-depth="50">
+                <div class="chip float-idle" style="animation-delay:-2.2s"><i data-lucide="code-2" class="h-4 w-4 text-ac"></i>Software Engineer</div>
+              </div>
+              <div class="chip-wrap left-4 -bottom-6 z-10" data-depth="22">
+                <div class="chip float-idle" style="animation-delay:-4.1s"><i data-lucide="sparkles" class="h-4 w-4 text-ac2"></i>Creative Developer</div>
+              </div>
             </div>
           </div>
         </div>
@@ -2122,16 +2166,36 @@
     /* ---------------- Typing effect ---------------- */
     function initTyping() {
       const el = $('#typed');
-      const roles = ['Software Engineer', 'Full-Stack Developer', 'Creative Web Developer'];
+      const roles = [
+        'Software Engineer',
+        'Web Developer',
+        'UI/UX Designer',
+        'Programmer',
+        'Video Editor',
+        'Photo Editor',
+        'Automater',
+        'Sketcher',
+        'Painter'
+      ];
       if (RM) { el.textContent = roles[0]; return; }
       let r = 0, c = 0, del = false;
       (function tick() {
         const word = roles[r];
         el.textContent = word.slice(0, c);
-        if (!del && c < word.length) { c++; setTimeout(tick, 62 + Math.random() * 50); }
-        else if (!del) { del = true; setTimeout(tick, 1900); }
-        else if (c > 0) { c--; setTimeout(tick, 34); }
-        else { del = false; r = (r + 1) % roles.length; setTimeout(tick, 420); }
+        if (!del && c < word.length) {
+          c++;
+          setTimeout(tick, 70 + Math.random() * 40);
+        } else if (!del) {
+          del = true;
+          setTimeout(tick, 1800);
+        } else if (c > 0) {
+          c--;
+          setTimeout(tick, 35);
+        } else {
+          del = false;
+          r = (r + 1) % roles.length;
+          setTimeout(tick, 350);
+        }
       })();
     }
 
