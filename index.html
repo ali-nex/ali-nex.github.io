@@ -1559,6 +1559,7 @@
           <button class="pill" data-filter="frontend">Frontend</button>
           <button class="pill" data-filter="backend">Backend & DB</button>
           <button class="pill" data-filter="tools">Tools & DevOps</button>
+          <button class="pill" data-filter="art">Art & Drawing</button>
         </div>
         <div id="skills-grid" class="mt-8 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4"></div>
       </div>
@@ -1578,6 +1579,9 @@
           <button class="pill active" data-filter="all">All</button>
           <button class="pill" data-filter="web">Web Apps</button>
           <button class="pill" data-filter="fullstack">Full-Stack</button>
+          <button class="pill" data-filter="sketching">Sketching</button>
+          <button class="pill" data-filter="calligraphy">Calligraphy</button>
+          <button class="pill" data-filter="painting">Painting</button>
           <button class="pill" data-filter="systems">Systems / CLI</button>
           <button class="pill" data-filter="uiux">UI / UX</button>
         </div>
@@ -1841,7 +1845,7 @@
       { id: 'mail', label: 'Email', icon: 'mail', url: 'mailto:' + EMAIL },
       { id: 'leet', label: 'LeetCode', icon: 'code-2', url: 'https://leetcode.com/ali-nex' },
     ];
-    const CAT_LABEL = { languages: 'Languages', frontend: 'Frontend', backend: 'Backend & DB', tools: 'Tools & DevOps' };
+    const CAT_LABEL = { languages: 'Languages', frontend: 'Frontend', backend: 'Backend & DB', tools: 'Tools & DevOps', art: 'Art & Drawing' };
     const SKILLS = [
       { n: 'JavaScript', cat: 'languages', lvl: 95, ic: 'braces' },
       { n: 'TypeScript', cat: 'languages', lvl: 90, ic: 'file-code-2' },
@@ -1865,6 +1869,10 @@
       { n: 'Vercel / Netlify', cat: 'tools', lvl: 92, ic: 'triangle' },
       { n: 'Postman', cat: 'tools', lvl: 89, ic: 'send' },
       { n: 'CI / Actions', cat: 'tools', lvl: 80, ic: 'infinity' },
+      { n: 'Graphite Pencils', cat: 'art', lvl: 90, ic: 'pencil' },
+      { n: 'Charcoal Pencil', cat: 'art', lvl: 85, ic: 'pen' },
+      { n: 'Calligraphy', cat: 'art', lvl: 90, ic: 'pen-tool' },
+      { n: 'Painting', cat: 'art', lvl: 70, ic: 'palette' },
     ];
     const PROJECTS = [
       {
@@ -1962,6 +1970,78 @@
         ['Theme editor state', 'Serialised themes to a single CSS string — shareable via URL hash, no backend.']],
         metrics: ['4.7k downloads', '100 Lighthouse', '14 presets'],
         demo: 'https://ali-nex.github.io/demo/aurora', repo: 'https://github.com/ali-nex/aurora-kit'
+      },
+      {
+        id: 'portrait-studies', title: 'Hyperrealistic Portraiture Studies', cat: 'sketching', catLabel: 'Sketching', year: '2024', seed: 'sketch-portrait',
+        desc: 'High-detail graphite and charcoal portraiture exploring micro-tonal gradation, skin pore realism and dramatic chiaroscuro lighting.',
+        tags: ['Graphite (2B-8B)', 'Charcoal', 'Tortillon', 'Fabriano 250gsm'],
+        features: ['Layered micro-hatching with soft graphite pencils', 'Deep contrast shadows using compressed willow charcoal', 'Precision anatomical facial proportioning and eye reflections'],
+        arch: [['pencil', 'Mediums', 'Staedtler Mars Lumograph · General Charcoal 6B'], ['layers', 'Paper', '250gsm Acid-Free Cold-Pressed Cotton'],
+        ['eye', 'Technique', 'Chiaroscuro · Tortillon blending · Eraser lifting'], ['sparkles', 'Archival', 'Krylon Fine Art Matte Fixative']],
+        challenges: [['Skin texture without muddiness', 'Used 0.3mm mechanical pencils for fine pores and dusted highlights with kneaded eraser.'],
+        ['Charcoal transfer & smudging', 'Applied workable fixative in 3 micro-mist passes between value layers.']],
+        metrics: ['90+ drawing hours', '12 studies completed', 'Exhibited locally'],
+        demo: 'https://ali-nex.github.io/#projects', repo: 'https://github.com/ali-nex'
+      },
+      {
+        id: 'arch-perspective', title: 'Architectural Line & Form Studies', cat: 'sketching', catLabel: 'Sketching', year: '2023', seed: 'sketch-arch',
+        desc: 'Precision architectural perspectives dissecting historic Islamic arches, modern brutalist structures and intricate geometric facade shadows.',
+        tags: ['Fine Liner (0.05-0.8mm)', 'Graphite', '2-Point Perspective', 'Bristol Board'],
+        features: ['Exact multi-point vanishing line construction', 'Dense cross-hatching and stippled stone textures', 'Dynamic atmospheric depth through line-weight hierarchy'],
+        arch: [['pen-tool', 'Pens', 'Sakura Pigma Micron (0.05mm - 0.8mm)'], ['ruler', 'Drafting', 'T-square & 60° triangle geometric grid'],
+        ['layers', 'Surface', 'Strathmore 300gsm Smooth Bristol'], ['sun', 'Lighting', 'Directional shadow casting & cast-shadow calculation']],
+        challenges: [['Curvilinear arch distortion', 'Constructed underlying isometric guide rings before freehand pen execution.'],
+        ['Maintaining line crispness', 'Graduated line weights from heavy 0.8mm foreground to 0.05mm vanishing horizon.']],
+        metrics: ['16 architectural plates', '0.05mm line precision', 'Original compositions'],
+        demo: 'https://ali-nex.github.io/#projects', repo: 'https://github.com/ali-nex'
+      },
+      {
+        id: 'nastaliq-calligraphy', title: 'Nastaliq & Thuluth Manuscript Panels', cat: 'calligraphy', catLabel: 'Calligraphy', year: '2024', seed: 'calligraphy-arabic',
+        desc: 'Classical Arabic & Nastaliq script compositions crafted with hand-cut bamboo reed pens, traditional soot ink and genuine gold leaf illumination.',
+        tags: ['Qalam (Reed Pen)', 'Soot Ink', 'Ahar Paper', '24K Gold Leaf'],
+        features: ['Nuqta (rhombus dot) proportional balance system', 'Hand-cut Iranian bamboo qalam with 63° oblique bevels', 'Tezhib floral border illumination and burnished gold leaf'],
+        arch: [['pen-tool', 'Qalam', 'Hand-cut Bamboo & Java Reeds (1.5mm–5.0mm)'], ['droplet', 'Ink', 'Handmade soot ink with gum arabic & silk likka'],
+        ['file-text', 'Paper', 'Traditional Ahar treated paper (egg-white & alum)'], ['sparkles', 'Illumination', 'Shell gold 24K pigment & mineral gouache']],
+        challenges: [['Ink starvation on sweeping ascenders', 'Infused raw silk fibers (Likka) into the inkwell to meter ink delivery perfectly.'],
+        ['Paper tooth snagging nib', 'Burnished Ahar paper with agate stone to create a mirror-smooth glide.']],
+        metrics: ['90% stroke accuracy', '8 finished manuscripts', 'Traditional Ahar treated'],
+        demo: 'https://ali-nex.github.io/#projects', repo: 'https://github.com/ali-nex'
+      },
+      {
+        id: 'gothic-lettering', title: 'Modern Gothic & Fraktur Typography', cat: 'calligraphy', catLabel: 'Calligraphy', year: '2023', seed: 'calligraphy-gothic',
+        desc: 'Bold contemporary Fraktur and Blackletter compositions fusing medieval geometry with modern gradient ink blending.',
+        tags: ['Pilot Parallel (3.8/6.0mm)', 'Brause Nib', 'Gouache', 'Metallic Ink'],
+        features: ['Razor-sharp diamond serifs and diamond fracturs', 'Dual-ink nib-to-nib color gradients', 'Custom heraldic monograms and illuminated capitals'],
+        arch: [['pen-tool', 'Pens', 'Pilot Parallel Pen (3.8mm, 6.0mm) & Brause Bandzug'], ['palette', 'Inks', 'Winsor & Newton Designers Gouache & Ecoline'],
+        ['layout', 'Grid', 'Slanted 45° nib angle with 5-nib-width x-height'], ['award', 'Finishing', 'Iridescent metallic bronze & silver accents']],
+        challenges: [['Ink feathering on heavy saturated strokes', 'Pre-dusted paper with gum sandarac powder to eliminate bleed.'],
+        ['Maintaining stroke consistency', 'Engineered custom ruled slant-guides on lightboard.']],
+        metrics: ['24 lettering plates', '100% handcrafted', 'Custom commissions'],
+        demo: 'https://ali-nex.github.io/#projects', repo: 'https://github.com/ali-nex'
+      },
+      {
+        id: 'oil-landscapes', title: 'Impressionist Canvas Oil Landscapes', cat: 'painting', catLabel: 'Painting', year: '2024', seed: 'painting-landscape',
+        desc: 'Vibrant landscape and atmospheric mountain scenery paintings rendered with rich impasto palette knife textures and oil glazes.',
+        tags: ['Artists Oil Colors', 'Liquitex Medium', 'Linen Canvas', 'Palette Knife'],
+        features: ['Heavy impasto knife work capturing dynamic mountain ridges', 'Color temperature interplay between warm golden hour and violet shadows', 'Multi-layered transparent oil glazes for luminous skies'],
+        arch: [['palette', 'Paints', 'Winsor & Newton Artists Oil Colors & Liquin Fine Detail'], ['layers', 'Canvas', 'Triple-gessoed Belgian Linen on wooden stretchers'],
+        ['paintbrush', 'Application', 'Italian steel palette knives & hog bristle filberts'], ['shield', 'Varnish', 'Gloss Damar final varnish with UV protection']],
+        challenges: [['Muddy mixes when applying wet-on-wet', 'Loaded unmixed pure pigments directly onto palette knife for clean, broken-color marks.'],
+        ['Layer drying regulation', 'Followed strict "fat-over-lean" medium ratios across 4 glaze stages.']],
+        metrics: ['10 gallery canvases', '4-layer glaze depth', 'Palette knife impasto'],
+        demo: 'https://ali-nex.github.io/#projects', repo: 'https://github.com/ali-nex'
+      },
+      {
+        id: 'watercolor-botanicals', title: 'Fluid Watercolor & Botanical Studies', cat: 'painting', catLabel: 'Painting', year: '2023', seed: 'painting-watercolor',
+        desc: 'Delicate botanical and still-life watercolor paintings balancing spontaneous wet-in-wet pigment blooms with crisp details.',
+        tags: ['Single Pigment Watercolors', 'Kolinsky Sable', 'Arches 300gsm', 'Masking Fluid'],
+        features: ['Luminous multi-wash color blending with zero chalkiness', 'Negative space preservation for sunlit petal edges', 'Granulating pigment textures creating organic soil and foliage depth'],
+        arch: [['droplet', 'Pigment', 'Daniel Smith Extra Fine Watercolors (single-pigment series)'], ['brush', 'Brushes', 'Pure Kolinsky Sable rounds (#2, #6, #10)'],
+        ['file-text', 'Paper', 'Arches 100% Cotton 300gsm Cold-Pressed Paper'], ['sparkles', 'Technique', 'Wet-on-wet, wet-on-dry, lifting and dry brushing']],
+        challenges: [['Paper buckling under heavy saturated washes', 'Stretched and taped 300gsm paper to marine plywood board before painting.'],
+        ['Loss of white paper highlights', 'Preserved delicate leaf veins using ruling pen masking fluid.']],
+        metrics: ['18 botanical plates', '100% cotton paper', 'Lightfast archival ratings'],
+        demo: 'https://ali-nex.github.io/#projects', repo: 'https://github.com/ali-nex'
       },
     ];
     const TIMELINE = [
