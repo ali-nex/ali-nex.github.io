@@ -128,16 +128,19 @@
 
     @media (hover:hover) and (pointer:fine) {
 
-      body,
       a,
       button,
-      [role="button"] {
-        cursor: none
+      [role="button"],
+      .pill,
+      .bio-tab,
+      .nav-link,
+      .exp-toggle {
+        cursor: pointer;
       }
 
       input,
       textarea {
-        cursor: text
+        cursor: text;
       }
     }
 
@@ -156,72 +159,10 @@
       z-index: 2
     }
 
-    /* ============ Custom cursor ============ */
+    /* ============ Custom cursor (Disabled) ============ */
     #cursor-dot,
     #cursor-ring {
-      position: fixed;
-      left: 0;
-      top: 0;
-      pointer-events: none;
-      z-index: 99;
-      opacity: 0
-    }
-
-    #cursor-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--ac)
-    }
-
-    #cursor-ring {
-      width: 38px;
-      height: 38px;
-      border-radius: 99px;
-      border: 1.5px solid rgba(var(--ac-rgb), .55);
-      display: grid;
-      place-items: center;
-      transition: width .3s cubic-bezier(.22, 1, .36, 1), height .3s cubic-bezier(.22, 1, .36, 1), background-color .3s, border-color .3s
-    }
-
-    #cursor-ring.on,
-    #cursor-dot.on {
-      opacity: 1
-    }
-
-    #cursor-ring.c-hover {
-      width: 56px;
-      height: 56px;
-      background: rgba(var(--ac-rgb), .08)
-    }
-
-    #cursor-ring.c-view {
-      width: 72px;
-      height: 72px;
-      background: var(--ac);
-      border-color: var(--ac)
-    }
-
-    .cursor-label {
-      font: 600 11px 'JetBrains Mono';
-      color: var(--ink-on-ac);
-      opacity: 0;
-      transform: scale(.4);
-      transition: .25s
-    }
-
-    #cursor-ring.c-view .cursor-label {
-      opacity: 1;
-      transform: none
-    }
-
-    @media (hover:none),
-    (pointer:coarse) {
-
-      #cursor-dot,
-      #cursor-ring {
-        display: none
-      }
+      display: none !important;
     }
 
     /* ============ Reveal system ============ */
@@ -1251,9 +1192,6 @@
 
 <body class="font-body antialiased">
 
-  <!-- Cursor -->
-  <div id="cursor-dot"></div>
-  <div id="cursor-ring"><span class="cursor-label">VIEW</span></div>
   <div id="scroll-progress"></div>
 
   <!-- ============ HEADER ============ -->
