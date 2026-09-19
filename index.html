@@ -168,26 +168,27 @@
     /* ============ Reveal system ============ */
     [data-reveal] {
       opacity: 0;
-      transform: translateY(30px);
-      transition: opacity .8s cubic-bezier(.22, 1, .36, 1), transform .8s cubic-bezier(.22, 1, .36, 1);
-      transition-delay: var(--rd, 0ms)
+      transform: translateY(24px);
+      transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+      transition-delay: var(--rd, 0ms);
+      will-change: transform, opacity;
     }
 
     [data-reveal="left"] {
-      transform: translateX(-36px)
+      transform: translateX(-28px);
     }
 
     [data-reveal="right"] {
-      transform: translateX(36px)
+      transform: translateX(28px);
     }
 
     [data-reveal="zoom"] {
-      transform: scale(.92)
+      transform: scale(0.95);
     }
 
     [data-reveal].revealed {
       opacity: 1;
-      transform: none
+      transform: translate3d(0, 0, 0) scale(1);
     }
 
     /* ============ Shared bits ============ */
@@ -769,12 +770,17 @@
     }
 
     /* ============ Traveling Avatar Scroll Transition ============ */
+    #home-avatar-box {
+      perspective: 1200px;
+    }
     #home-avatar-moving {
-      will-change: transform, border-radius, opacity;
+      will-change: transform, border-radius, opacity, filter;
       transform-origin: center center;
+      transform-style: preserve-3d;
+      backface-visibility: hidden;
     }
     #about-avatar-img {
-      transition: opacity 0.3s ease;
+      transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .social-rail a {
@@ -2826,68 +2832,112 @@ STACK
       const circleBg = homeBox.querySelector('.popout-circle-bg');
       const homeChips = homeBox.querySelectorAll('.chip-wrap');
 
-      function getDocPos(el) {
-        const r = el.getBoundingClientRect();
-        return {
-          x: r.left + window.scrollX,
-          y: r.top + window.scrollY,
-          w: r.width,
-          h: r.height
+      let homePos = { x: 0, y: 0, w: 1, h: 1 };
+      let aboutPos = { x: 0, y: 0, w: 1, h: 1 };
+      let startY = 0, endY = 1000;
+
+      function recalculateBounds() {
+        const hr = homeBox.getBoundingClientRect();
+        const ar = aboutTarget.getBoundingClientRect();
+        const sx = window.scrollX, sy = window.scrollY;
+
+        homePos = {
+          x: hr.left + sx,
+          y: hr.top + sy,
+          w: hr.width,
+          h: hr.height
         };
+        aboutPos = {
+          x: ar.left + sx,
+          y: ar.top + sy,
+          w: ar.width,
+          h: ar.height
+        };
+
+        startY = Math.max(0, homePos.y - 80);
+        endY = Math.max(startY + 250, aboutPos.y - window.innerHeight * 0.35);
       }
 
-      let rafId = null;
+      recalculateBounds();
+      window.addEventListener('resize', recalculateBounds, { passive: true });
+      window.addEventListener('load', recalculateBounds);
 
-      function update() {
-        const homePos = getDocPos(homeBox);
-        const aboutPos = getDocPos(aboutTarget);
+      let targetProgress = 0;
+      let currentProgress = 0;
+      let isRunning = false;
 
-        const startY = 10;
-        const endY = Math.max(startY + 150, aboutPos.y - window.innerHeight * 0.38);
+      function onScroll() {
         const scroll = window.scrollY;
+        targetProgress = clamp((scroll - startY) / (endY - startY), 0, 1);
+        if (!isRunning) {
+          isRunning = true;
+          requestAnimationFrame(renderLoop);
+        }
+      }
 
-        const rawP = (scroll - startY) / (endY - startY);
-        const p = clamp(rawP, 0, 1);
+      function renderLoop() {
+        // Continuous physics LERP damping (buttery smooth inertia)
+        const diff = targetProgress - currentProgress;
+        currentProgress += diff * 0.14;
 
-        // Smooth cubic easeInOut
+        if (Math.abs(diff) < 0.0005) {
+          currentProgress = targetProgress;
+        }
+
+        const p = currentProgress;
+        // Cubic Bézier easing for lifelike acceleration & deceleration
         const ease = p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2;
 
         const diffX = (aboutPos.x + (aboutPos.w - homePos.w) / 2) - homePos.x;
         const diffY = (aboutPos.y + (aboutPos.h - homePos.h) / 2) - homePos.y;
-        const scale = 1 + ((aboutPos.w / Math.max(1, homePos.w)) - 1) * ease;
+        const targetScale = aboutPos.w / Math.max(1, homePos.w);
+        const scale = 1 + (targetScale - 1) * ease;
 
-        movingWrap.style.transform = `translate3d(${(diffX * ease).toFixed(2)}px, ${(diffY * ease).toFixed(2)}px, 0) scale(${scale.toFixed(3)})`;
+        // Realistic flight physics: subtle 3D roll, yaw and parabolic elevation
+        const arcHeight = Math.sin(p * Math.PI);
+        const tiltZ = -arcHeight * 4.5;
+        const tiltY = arcHeight * 6.0;
+        const curX = diffX * ease;
+        const curY = diffY * ease;
 
-        // Border radius morph from popout curve to rounded card
+        movingWrap.style.transform = `translate3d(${curX.toFixed(2)}px, ${curY.toFixed(2)}px, 0) scale(${scale.toFixed(3)}) rotateY(${tiltY.toFixed(2)}deg) rotateZ(${tiltZ.toFixed(2)}deg)`;
+
+        // Border radius morph from popout bottom-curve to elegant rounded card
         const rTop = (26 * ease).toFixed(1);
         const rBottom = (165 * (1 - ease) + 26 * ease).toFixed(1);
         movingImg.style.borderRadius = `${rTop}px ${rTop}px ${rBottom}px ${rBottom}px`;
 
-        // Fade home background circle and floating chips as avatar departs
-        if (circleBg) circleBg.style.opacity = Math.max(0, 1 - p * 2.2).toFixed(2);
+        // Dynamic 3D elevation drop-shadow during flight
+        const shadowY = 14 + arcHeight * 22;
+        const shadowBlur = 24 + arcHeight * 30;
+        const shadowOpacity = 0.5 + arcHeight * 0.3;
+        movingImg.style.filter = `drop-shadow(0 ${shadowY.toFixed(1)}px ${shadowBlur.toFixed(1)}px rgba(var(--ac-rgb), ${shadowOpacity.toFixed(2)}))`;
+
+        // Fade home background circle and chips naturally
+        if (circleBg) {
+          circleBg.style.opacity = Math.max(0, 1 - p * 2.5).toFixed(2);
+          circleBg.style.transform = `scale(${Math.max(0.85, 1 - p * 0.25).toFixed(2)})`;
+        }
         homeChips.forEach(ch => {
-          ch.style.opacity = Math.max(0, 1 - p * 3).toFixed(2);
-          ch.style.transform = `scale(${Math.max(0.6, 1 - p * 0.4).toFixed(2)})`;
+          ch.style.opacity = Math.max(0, 1 - p * 3.5).toFixed(2);
+          ch.style.transform = `scale(${Math.max(0.65, 1 - p * 0.45).toFixed(2)})`;
         });
 
-        // Seamless dock into About card
+        // Seamless dock transition to About section
         if (aboutImg) {
-          aboutImg.style.opacity = p >= 0.95 ? '1' : '0';
+          aboutImg.style.opacity = p >= 0.96 ? ((p - 0.96) / 0.04).toFixed(2) : '0';
         }
         movingWrap.style.opacity = p >= 0.99 ? '0' : '1';
+
+        if (Math.abs(targetProgress - currentProgress) > 0.0001 || targetProgress !== currentProgress) {
+          requestAnimationFrame(renderLoop);
+        } else {
+          isRunning = false;
+        }
       }
 
-      window.addEventListener('scroll', () => {
-        if (!rafId) {
-          rafId = requestAnimationFrame(() => {
-            update();
-            rafId = null;
-          });
-        }
-      }, { passive: true });
-
-      window.addEventListener('resize', () => requestAnimationFrame(update), { passive: true });
-      update();
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
     }
 
     /* ---------------- Boot ---------------- */
