@@ -2108,10 +2108,8 @@
         'Software Engineer',
         'Web Developer',
         'UI/UX Designer',
-        'Programmer',
         'Video Editor',
         'Photo Editor',
-        'Automater',
         'Sketcher',
         'Painter'
       ];
@@ -2122,17 +2120,17 @@
         el.textContent = word.slice(0, c);
         if (!del && c < word.length) {
           c++;
-          setTimeout(tick, 70 + Math.random() * 40);
+          setTimeout(tick, 60 + Math.random() * 30);
         } else if (!del) {
           del = true;
-          setTimeout(tick, 1800);
+          setTimeout(tick, 1600);
         } else if (c > 0) {
           c--;
-          setTimeout(tick, 35);
+          setTimeout(tick, 30);
         } else {
           del = false;
           r = (r + 1) % roles.length;
-          setTimeout(tick, 350);
+          setTimeout(tick, 300);
         }
       })();
     }
