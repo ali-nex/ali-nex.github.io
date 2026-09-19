@@ -2003,29 +2003,8 @@
     }
     themeBtn.addEventListener('click', toggleTheme);
 
-    /* ---------------- Custom cursor ---------------- */
-    function initCursor() {
-      if (!FINE || RM) return;
-      const dot = $('#cursor-dot'), ring = $('#cursor-ring');
-      let mx = innerWidth / 2, my = innerHeight / 2, dx = mx, dy = my, rx = mx, ry = my, shown = false;
-      addEventListener('mousemove', e => {
-        mx = e.clientX; my = e.clientY;
-        if (!shown) { shown = true; dot.classList.add('on'); ring.classList.add('on'); }
-        const t = e.target;
-        const view = t.closest?.('.proj');
-        const hov = t.closest?.('a,button,[role="button"],input,textarea,label,.pill');
-        ring.classList.toggle('c-view', !!view);
-        ring.classList.toggle('c-hover', !!hov && !view);
-      });
-      document.addEventListener('mouseleave', () => { dot.classList.remove('on'); ring.classList.remove('on'); shown = false; });
-      (function loop() {
-        dx += (mx - dx) * .55; dy += (my - dy) * .55;
-        rx += (mx - rx) * .16; ry += (my - ry) * .16;
-        dot.style.transform = `translate(${dx}px,${dy}px) translate(-50%,-50%)`;
-        ring.style.transform = `translate(${rx}px,${ry}px) translate(-50%,-50%)`;
-        requestAnimationFrame(loop);
-      })();
-    }
+    /* ---------------- Custom cursor (Native cursor active) ---------------- */
+    function initCursor() {}
 
     /* ---------------- Header / nav ---------------- */
     const navbar = $('#navbar'), navInd = $('#nav-ind'), headerEl = $('#site-header');
@@ -2104,6 +2083,7 @@
     /* ---------------- Typing effect ---------------- */
     function initTyping() {
       const el = $('#typed');
+      if (!el) return;
       const roles = [
         'Software Engineer',
         'Web Developer',
@@ -2113,26 +2093,26 @@
         'Sketcher',
         'Painter'
       ];
-      if (RM) { el.textContent = roles[0]; return; }
       let r = 0, c = 0, del = false;
-      (function tick() {
+      function tick() {
         const word = roles[r];
         el.textContent = word.slice(0, c);
         if (!del && c < word.length) {
           c++;
-          setTimeout(tick, 60 + Math.random() * 30);
+          setTimeout(tick, 70 + Math.random() * 30);
         } else if (!del) {
           del = true;
           setTimeout(tick, 1600);
         } else if (c > 0) {
           c--;
-          setTimeout(tick, 30);
+          setTimeout(tick, 35);
         } else {
           del = false;
           r = (r + 1) % roles.length;
-          setTimeout(tick, 300);
+          setTimeout(tick, 350);
         }
-      })();
+      }
+      tick();
     }
 
     /* ---------------- Hero canvas: interactive constellation ---------------- */
@@ -2240,8 +2220,8 @@
 
     /* ---------------- Tilt ---------------- */
     function initTilt() {
-      if (!FINE || RM) return;
-      const scene = $('#tilt-scene'), card = $('#tilt-card'), chips = $$('.chip-wrap');
+      const scene = $('#tilt-scene') || $('.popout-avatar-box'), card = $('#tilt-card') || $('.popout-img-wrapper'), chips = $$('.chip-wrap');
+      if (!scene || !card) return;
       let tx = 0, ty = 0, cx = 0, cy = 0, hover = false;
       scene.addEventListener('pointermove', e => {
         const r = scene.getBoundingClientRect();
