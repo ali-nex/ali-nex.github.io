@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ali Hassan — Software Engineer</title>
   <meta name="description"
-    content="Ali Hassan — Software Engineer in Berlin. Full-stack products, 60fps interfaces, and the details in between.">
+    content="Ali Hassan — Software Engineering Student  in Uet Taxila. Full-stack products, 60fps interfaces, and the details in between.">
   <link rel="icon"
     href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230F172A'/%3E%3Ctext x='16' y='21' font-family='monospace' font-size='12' fill='%2322D3EE' text-anchor='middle' font-weight='bold'%3EAH%3C/text%3E%3C/svg%3E">
   <script>try { const t = localStorage.getItem('av-theme'); if (t) document.documentElement.dataset.theme = t } catch (e) { }</script>
@@ -705,12 +705,14 @@
       align-items: flex-end;
       justify-content: center;
     }
+
     @media (min-width: 640px) {
       .popout-avatar-box {
         width: 350px;
         height: 420px;
       }
     }
+
     .popout-circle-bg {
       position: absolute;
       bottom: 0;
@@ -719,31 +721,36 @@
       border-radius: 50%;
       background: radial-gradient(circle at 50% 50%, var(--card2) 0%, var(--bg2) 100%);
       border: 2px solid rgba(var(--ac-rgb), 0.45);
-      box-shadow: 0 10px 40px -10px rgba(0,0,0,0.5), inset 0 0 25px rgba(var(--ac-rgb), 0.2);
+      box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.5), inset 0 0 25px rgba(var(--ac-rgb), 0.2);
       transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
     }
+
     @media (min-width: 640px) {
       .popout-circle-bg {
         width: 330px;
         height: 330px;
       }
     }
+
     .popout-avatar-box:hover .popout-circle-bg {
       border-color: var(--ac);
       box-shadow: 0 0 55px rgba(var(--ac-rgb), 0.7), 0 0 95px rgba(var(--ac2-rgb), 0.4), inset 0 0 35px rgba(var(--ac-rgb), 0.35);
       transform: scale(1.02);
     }
+
     .popout-img-wrapper {
       position: relative;
       z-index: 2;
       width: 270px;
       transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
     }
+
     @media (min-width: 640px) {
       .popout-img-wrapper {
         width: 330px;
       }
     }
+
     .popout-avatar-img {
       width: 100%;
       height: auto;
@@ -752,11 +759,22 @@
       filter: drop-shadow(0 12px 25px rgba(0, 0, 0, 0.5));
       transition: filter 0.5s ease, transform 0.5s ease;
     }
+
     .popout-avatar-box:hover .popout-img-wrapper {
       transform: translateY(-8px) scale(1.03);
     }
+
     .popout-avatar-box:hover .popout-avatar-img {
       filter: drop-shadow(0 20px 40px rgba(var(--ac-rgb), 0.6));
+    }
+
+    /* ============ Traveling Avatar Scroll Transition ============ */
+    #home-avatar-moving {
+      will-change: transform, border-radius, opacity;
+      transform-origin: center center;
+    }
+    #about-avatar-img {
+      transition: opacity 0.3s ease;
     }
 
     .social-rail a {
@@ -1284,13 +1302,16 @@
 
   <main>
     <!-- ============ HERO ============ -->
-    <section id="home" class="relative overflow-hidden">
-      <canvas id="hero-canvas" class="absolute inset-0 h-full w-full"></canvas>
-      <div class="hero-grid absolute inset-0"></div>
-      <div class="orb absolute -top-48 right-[-12%] h-[560px] w-[560px]"
-        style="background:radial-gradient(circle,rgba(var(--ac-rgb),.16),transparent 62%)"></div>
-      <div class="orb absolute bottom-[-20%] left-[-14%] h-[480px] w-[480px]"
-        style="background:radial-gradient(circle,rgba(var(--ac2-rgb),.13),transparent 62%)"></div>
+    <section id="home" class="relative">
+      <!-- Background elements layer with contained overflow -->
+      <div class="absolute inset-0 overflow-hidden pointer-events-none">
+        <canvas id="hero-canvas" class="absolute inset-0 h-full w-full"></canvas>
+        <div class="hero-grid absolute inset-0"></div>
+        <div class="orb absolute -top-48 right-[-12%] h-[560px] w-[560px]"
+          style="background:radial-gradient(circle,rgba(var(--ac-rgb),.16),transparent 62%)"></div>
+        <div class="orb absolute bottom-[-20%] left-[-14%] h-[480px] w-[480px]"
+          style="background:radial-gradient(circle,rgba(var(--ac2-rgb),.13),transparent 62%)"></div>
+      </div>
 
       <div class="relative mx-auto flex min-h-screen max-w-6xl flex-col justify-center px-5 pb-24 pt-32 sm:px-8">
         <div class="grid items-center gap-16 lg:grid-cols-[1.05fr_.95fr]">
@@ -1306,7 +1327,7 @@
             </div>
             <p class="mt-6 max-w-xl leading-relaxed text-mute" data-reveal data-delay="240">
               I build fast, resilient products end-to-end — from database schemas to 60fps interfaces.
-              Currently crafting developer platforms at <span class="text-ink font-medium">NovaTech Labs</span>, Berlin.
+              Currently Study at <span class="text-ink font-medium">Uet Taxila </span>, Pakistan.
             </p>
             <div class="mt-9 flex flex-wrap items-center gap-4" data-reveal data-delay="320">
               <a href="#projects" data-magnetic
@@ -1322,14 +1343,16 @@
           </div>
 
           <!-- Right: Pop-out Avatar -->
-          <div class="relative mx-auto flex items-center justify-center pt-8 sm:pt-12" data-reveal="zoom" data-delay="200">
-            <div class="popout-avatar-box group cursor-pointer">
+          <div class="relative mx-auto flex items-center justify-center pt-8 sm:pt-12" data-reveal="zoom"
+            data-delay="200">
+            <div id="home-avatar-box" class="popout-avatar-box group cursor-pointer">
               <!-- Circle Base with Neon Glow -->
               <div class="popout-circle-bg"></div>
-              
-              <!-- Pop-out Image (Head extends out of frame) -->
-              <div class="popout-img-wrapper">
-                <img src="IMG_20260730_061443.png" alt="Ali Hassan" class="popout-avatar-img" width="680" height="820" loading="eager">
+
+              <!-- Pop-out Image (Head extends out of frame) & Traveling Avatar -->
+              <div id="home-avatar-moving" class="popout-img-wrapper z-30">
+                <img id="home-avatar-img" src="IMG_20260730_061443.png" alt="Ali Hassan" class="popout-avatar-img" width="680" height="820"
+                  loading="eager">
               </div>
 
               <!-- Floating Chips -->
@@ -1337,10 +1360,12 @@
                 <div class="chip float-idle"><span class="pulse-dot"></span>Available for work</div>
               </div>
               <div class="chip-wrap -right-2 bottom-16 sm:-right-6 z-10" data-depth="50">
-                <div class="chip float-idle" style="animation-delay:-2.2s"><i data-lucide="code-2" class="h-4 w-4 text-ac"></i>Software Engineer</div>
+                <div class="chip float-idle" style="animation-delay:-2.2s"><i data-lucide="code-2"
+                    class="h-4 w-4 text-ac"></i>Software Engineer</div>
               </div>
               <div class="chip-wrap left-4 -bottom-6 z-10" data-depth="22">
-                <div class="chip float-idle" style="animation-delay:-4.1s"><i data-lucide="sparkles" class="h-4 w-4 text-ac2"></i>Creative Developer</div>
+                <div class="chip float-idle" style="animation-delay:-4.1s"><i data-lucide="sparkles"
+                    class="h-4 w-4 text-ac2"></i>Creative Developer</div>
               </div>
             </div>
           </div>
@@ -1378,25 +1403,24 @@
         </div>
 
         <div class="mt-14 grid items-start gap-14 lg:grid-cols-[.85fr_1.15fr]">
-          <!-- Photo -->
+          <!-- Photo Target -->
           <div data-reveal="left">
-            <div class="beam-wrap relative mx-auto w-72 sm:w-80">
+            <div id="about-avatar-target" class="beam-wrap relative mx-auto w-72 sm:w-80">
               <div class="beam-border float-idle rounded-[28px]">
                 <div class="relative overflow-hidden rounded-[26px]">
-                  <img src="https://picsum.photos/seed/alihassan-portrait/640/760.jpg" alt="Portrait of Ali Hassan"
-                    width="640" height="760" loading="lazy" class="h-auto w-full object-cover">
+                  <img id="about-avatar-img" src="IMG_20260730_061443.png" alt="Ali Hassan"
+                    width="640" height="760" loading="lazy" class="h-auto w-full object-cover opacity-0 transition-opacity duration-300">
                   <div
                     class="shot-overlay absolute inset-x-4 bottom-4 rounded-2xl border border-white/15 bg-black/45 p-4 text-white backdrop-blur-xl">
                     <div class="font-disp font-semibold">Ali Hassan</div>
-                    <div class="mt-0.5 font-mono text-[11px] text-white/70">Software Engineer · Berlin, DE</div>
+                    <div class="mt-0.5 font-mono text-[11px] text-white/70">Software Engineer · Uet Taxila, Pakistan</div>
                     <div class="mt-3 flex items-center gap-2 text-[11px]"><span class="pulse-dot"></span>Available for
                       select projects</div>
                   </div>
                 </div>
               </div>
             </div>
-            <p class="mt-6 text-center font-mono text-[11px] text-mute">// currently building developer tools at
-              NovaTech</p>
+            <p class="mt-6 text-center font-mono text-[11px] text-mute">// crafting digital experiences & systems</p>
           </div>
 
           <!-- Bio -->
@@ -2004,7 +2028,7 @@
     themeBtn.addEventListener('click', toggleTheme);
 
     /* ---------------- Custom cursor (Native cursor active) ---------------- */
-    function initCursor() {}
+    function initCursor() { }
 
     /* ---------------- Header / nav ---------------- */
     const navbar = $('#navbar'), navInd = $('#nav-ind'), headerEl = $('#site-header');
@@ -2789,6 +2813,83 @@ STACK
       $('#to-top').addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
     }
 
+    /* ---------------- Scroll-driven Avatar Flight from Home to About ---------------- */
+    function initScrollAvatarTransition() {
+      const homeBox = $('#home-avatar-box');
+      const movingWrap = $('#home-avatar-moving');
+      const movingImg = $('#home-avatar-img');
+      const aboutTarget = $('#about-avatar-target');
+      const aboutImg = $('#about-avatar-img');
+
+      if (!homeBox || !movingWrap || !movingImg || !aboutTarget) return;
+
+      const circleBg = homeBox.querySelector('.popout-circle-bg');
+      const homeChips = homeBox.querySelectorAll('.chip-wrap');
+
+      function getDocPos(el) {
+        const r = el.getBoundingClientRect();
+        return {
+          x: r.left + window.scrollX,
+          y: r.top + window.scrollY,
+          w: r.width,
+          h: r.height
+        };
+      }
+
+      let rafId = null;
+
+      function update() {
+        const homePos = getDocPos(homeBox);
+        const aboutPos = getDocPos(aboutTarget);
+
+        const startY = 10;
+        const endY = Math.max(startY + 150, aboutPos.y - window.innerHeight * 0.38);
+        const scroll = window.scrollY;
+
+        const rawP = (scroll - startY) / (endY - startY);
+        const p = clamp(rawP, 0, 1);
+
+        // Smooth cubic easeInOut
+        const ease = p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2;
+
+        const diffX = (aboutPos.x + (aboutPos.w - homePos.w) / 2) - homePos.x;
+        const diffY = (aboutPos.y + (aboutPos.h - homePos.h) / 2) - homePos.y;
+        const scale = 1 + ((aboutPos.w / Math.max(1, homePos.w)) - 1) * ease;
+
+        movingWrap.style.transform = `translate3d(${(diffX * ease).toFixed(2)}px, ${(diffY * ease).toFixed(2)}px, 0) scale(${scale.toFixed(3)})`;
+
+        // Border radius morph from popout curve to rounded card
+        const rTop = (26 * ease).toFixed(1);
+        const rBottom = (165 * (1 - ease) + 26 * ease).toFixed(1);
+        movingImg.style.borderRadius = `${rTop}px ${rTop}px ${rBottom}px ${rBottom}px`;
+
+        // Fade home background circle and floating chips as avatar departs
+        if (circleBg) circleBg.style.opacity = Math.max(0, 1 - p * 2.2).toFixed(2);
+        homeChips.forEach(ch => {
+          ch.style.opacity = Math.max(0, 1 - p * 3).toFixed(2);
+          ch.style.transform = `scale(${Math.max(0.6, 1 - p * 0.4).toFixed(2)})`;
+        });
+
+        // Seamless dock into About card
+        if (aboutImg) {
+          aboutImg.style.opacity = p >= 0.95 ? '1' : '0';
+        }
+        movingWrap.style.opacity = p >= 0.99 ? '0' : '1';
+      }
+
+      window.addEventListener('scroll', () => {
+        if (!rafId) {
+          rafId = requestAnimationFrame(() => {
+            update();
+            rafId = null;
+          });
+        }
+      }, { passive: true });
+
+      window.addEventListener('resize', () => requestAnimationFrame(update), { passive: true });
+      update();
+    }
+
     /* ---------------- Boot ---------------- */
     renderSocials(); renderMarquee();
     renderSkills(); renderProjects(); renderTimeline();
@@ -2796,6 +2897,7 @@ STACK
     initHeader(); initNavSpy(); initMenu(); initReveal();
     initTyping(); initCanvas(); initTilt(); initMagnetic();
     initCounters(); initBioTabs(); initForm();
+    initScrollAvatarTransition();
     buildSearchIndex(); initFooter();
     setActiveSection('home');
   </script>
