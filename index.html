@@ -773,12 +773,14 @@
     #home-avatar-box {
       perspective: 1200px;
     }
+
     #home-avatar-moving {
       will-change: transform, border-radius, opacity, filter;
       transform-origin: center center;
       transform-style: preserve-3d;
       backface-visibility: hidden;
     }
+
     #about-avatar-img {
       transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     }
@@ -1197,6 +1199,109 @@
       opacity: 1
     }
 
+    /* ============ Resume Section Styles ============ */
+    .resume-glass-card {
+      background: var(--panel);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      transition: border-color .35s ease, box-shadow .35s ease, transform .35s ease;
+    }
+
+    .resume-glass-card:hover {
+      border-color: rgba(var(--ac-rgb), .35);
+    }
+
+    .resume-item-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 1.1rem;
+      padding: 1.35rem;
+      transition: all .35s cubic-bezier(.22, 1, .36, 1);
+    }
+
+    .resume-item-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(var(--ac-rgb), .45);
+      box-shadow: 0 14px 34px -14px rgba(var(--ac-rgb), .22);
+    }
+
+    .resume-bar-track {
+      background: var(--card2);
+      border-radius: 99px;
+      overflow: hidden;
+      height: 7px;
+      position: relative;
+    }
+
+    .resume-bar-fill {
+      height: 100%;
+      border-radius: 99px;
+      background: linear-gradient(90deg, var(--ac), var(--ac2));
+      width: 0%;
+      transition: width 1.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .resume-skill-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.38rem 0.8rem;
+      border-radius: 0.55rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.76rem;
+      background: var(--card2);
+      border: 1px solid var(--line);
+      color: var(--text);
+      transition: all .25s ease;
+    }
+
+    .resume-skill-badge:hover {
+      border-color: var(--ac);
+      color: var(--ac);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px -2px rgba(var(--ac-rgb), .25);
+    }
+
+    .resume-hero-glow {
+      position: relative;
+    }
+
+    .resume-hero-glow::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: 1.5rem;
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(var(--ac-rgb), .4), rgba(var(--ac2-rgb), .2), transparent);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+      #resume,
+      #resume * {
+        visibility: visible;
+      }
+      #resume {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+      }
+      .no-print {
+        display: none !important;
+      }
+    }
+
     @media (prefers-reduced-motion:reduce) {
 
       *,
@@ -1237,6 +1342,7 @@
             data-jf="education">Education</a>
           <a class="nav-link rounded-lg px-2.5 py-2 transition-colors hover:text-ink" href="#journey"
             data-jf="experience">Experience</a>
+          <a class="nav-link rounded-lg px-2.5 py-2 transition-colors hover:text-ink" href="#resume">Resume</a>
           <a class="nav-link rounded-lg px-2.5 py-2 transition-colors hover:text-ink" href="#contact">Contact</a>
           <span id="nav-ind" class="opacity-0"></span>
         </div>
@@ -1293,6 +1399,7 @@
         <a class="mm-link" href="#projects">Projects</a>
         <a class="mm-link" href="#journey" data-jf="education">Education</a>
         <a class="mm-link" href="#journey" data-jf="experience">Experience</a>
+        <a class="mm-link" href="#resume">Resume</a>
         <a class="mm-link" href="#contact">Contact</a>
       </nav>
       <button
@@ -1357,8 +1464,8 @@
 
               <!-- Pop-out Image (Head extends out of frame) & Traveling Avatar -->
               <div id="home-avatar-moving" class="popout-img-wrapper z-30">
-                <img id="home-avatar-img" src="IMG_20260730_061443.png" alt="Ali Hassan" class="popout-avatar-img" width="680" height="820"
-                  loading="eager">
+                <img id="home-avatar-img" src="IMG_20260730_061443.png" alt="Ali Hassan" class="popout-avatar-img"
+                  width="680" height="820" loading="eager">
               </div>
 
               <!-- Floating Chips -->
@@ -1414,12 +1521,13 @@
             <div id="about-avatar-target" class="beam-wrap relative mx-auto w-72 sm:w-80">
               <div class="beam-border float-idle rounded-[28px]">
                 <div class="relative overflow-hidden rounded-[26px]">
-                  <img id="about-avatar-img" src="IMG_20260730_061443.png" alt="Ali Hassan"
-                    width="640" height="760" loading="lazy" class="h-auto w-full object-cover opacity-0 transition-opacity duration-300">
+                  <img id="about-avatar-img" src="IMG_20260730_061443.png" alt="Ali Hassan" width="640" height="760"
+                    loading="lazy" class="h-auto w-full object-cover opacity-0 transition-opacity duration-300">
                   <div
                     class="shot-overlay absolute inset-x-4 bottom-4 rounded-2xl border border-white/15 bg-black/45 p-4 text-white backdrop-blur-xl">
                     <div class="font-disp font-semibold">Ali Hassan</div>
-                    <div class="mt-0.5 font-mono text-[11px] text-white/70">Software Engineer · Uet Taxila, Pakistan</div>
+                    <div class="mt-0.5 font-mono text-[11px] text-white/70">Software Engineer · Uet Taxila, Pakistan
+                    </div>
                     <div class="mt-3 flex items-center gap-2 text-[11px]"><span class="pulse-dot"></span>Available for
                       select projects</div>
                   </div>
@@ -1612,26 +1720,532 @@
       </div>
     </section>
 
+    <!-- ============ RESUME / CV SECTION ============ -->
+    <section id="resume" class="relative py-24 sm:py-32">
+      <div class="mx-auto max-w-6xl px-5 sm:px-8">
+        <!-- Section Title & Quick Actions -->
+        <div class="flex flex-col justify-between gap-6 md:flex-row md:items-end" data-reveal>
+          <div class="max-w-2xl">
+            <p class="mono-label">05 // resume</p>
+            <h2 class="mt-4 font-disp text-3xl font-bold tracking-tight sm:text-4xl">Curriculum Vitae & Credentials.</h2>
+            <p class="mt-4 leading-relaxed text-mute">A comprehensive record of my academic honors, technical competencies, engineering & hardware projects, student leadership, and freelance background.</p>
+          </div>
+          <div class="flex flex-wrap items-center gap-3">
+            <button class="js-cv hov-glow inline-flex items-center gap-2 rounded-xl bg-ac px-4 py-2.5 font-disp text-sm font-semibold text-[var(--ink-on-ac)]">
+              <span class="cv-s inline-flex items-center gap-2"><i data-lucide="download" class="h-4 w-4"></i>Download CV</span>
+              <span class="cv-s hidden items-center gap-2"><i data-lucide="loader-2" class="h-4 w-4 animate-spin"></i>Preparing…</span>
+              <span class="cv-s hidden items-center gap-2"><i data-lucide="check" class="pop h-4 w-4"></i>Saved!</span>
+            </button>
+            <button id="copy-resume-btn" type="button" class="inline-flex items-center gap-2 rounded-xl border border-line bg-panel px-4 py-2.5 font-disp text-sm font-medium text-mute transition hover:border-[rgba(var(--ac-rgb),.4)] hover:text-ink">
+              <i data-lucide="copy" class="h-4 w-4 text-ac"></i>Copy Text CV
+            </button>
+            <button onclick="window.print()" type="button" class="inline-flex items-center gap-2 rounded-xl border border-line bg-panel px-4 py-2.5 font-disp text-sm font-medium text-mute transition hover:border-[rgba(var(--ac-rgb),.4)] hover:text-ink">
+              <i data-lucide="printer" class="h-4 w-4 text-ac2"></i>Print CV
+            </button>
+          </div>
+        </div>
+
+        <!-- Master Resume Container -->
+        <div class="resume-glass-card resume-hero-glow mt-12 overflow-hidden rounded-3xl p-6 sm:p-10" data-reveal>
+          
+          <!-- Resume Header Bar -->
+          <div class="flex flex-col justify-between gap-6 border-b border-line pb-8 lg:flex-row lg:items-center">
+            <div>
+              <div class="flex flex-wrap items-center gap-3">
+                <h3 class="font-disp text-3xl font-bold tracking-tight sm:text-4xl text-ink">ALI HASSAN AZIZ</h3>
+                <span class="rounded-full border border-[rgba(var(--ok-rgb),.4)] bg-[rgba(var(--ok-rgb),.1)] px-3 py-1 font-mono text-[10.5px] font-medium text-[var(--ok)]">
+                  <span class="inline-block h-1.5 w-1.5 rounded-full bg-[var(--ok)] mr-1.5 animate-pulse"></span>Available for Roles & Freelance
+                </span>
+              </div>
+              <p class="mt-2 font-mono text-sm text-ac font-medium tracking-wide">
+                Software Engineering Student <span class="text-mute">|</span> Aspiring Software Developer
+              </p>
+              <div class="mt-4 flex flex-wrap items-center gap-y-2 gap-x-5 text-xs text-mute font-mono">
+                <span class="flex items-center gap-1.5">
+                  <i data-lucide="map-pin" class="h-3.5 w-3.5 text-ac"></i>Khanewal, Pakistan
+                </span>
+                <a href="tel:+923463655864" class="flex items-center gap-1.5 transition hover:text-ac">
+                  <i data-lucide="phone" class="h-3.5 w-3.5 text-ac"></i>+92 346 3655864
+                </a>
+                <a href="mailto:alihassanaziz110@gmail.com" class="flex items-center gap-1.5 transition hover:text-ac">
+                  <i data-lucide="mail" class="h-3.5 w-3.5 text-ac"></i>alihassanaziz110@gmail.com
+                </a>
+              </div>
+            </div>
+
+            <!-- Quick Profile Badges -->
+            <div class="flex flex-wrap items-center gap-2 lg:flex-col lg:items-end">
+              <a href="https://linkedin.com/in/engr-ali-hassan-aziz-228051398" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 rounded-xl border border-line bg-card2 px-3.5 py-2 font-mono text-xs text-mute transition hover:border-ac hover:text-ink">
+                <i data-lucide="linkedin" class="h-3.5 w-3.5 text-ac"></i>linkedin.com/in/engr-ali-hassan-aziz
+              </a>
+              <a href="https://github.com/ali-nex" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 rounded-xl border border-line bg-card2 px-3.5 py-2 font-mono text-xs text-mute transition hover:border-ac hover:text-ink">
+                <i data-lucide="github" class="h-3.5 w-3.5 text-ac"></i>github.com/ali-nex
+              </a>
+              <a href="https://ali-nex.github.io" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 rounded-xl border border-line bg-card2 px-3.5 py-2 font-mono text-xs text-mute transition hover:border-ac hover:text-ink">
+                <i data-lucide="globe" class="h-3.5 w-3.5 text-ac2"></i>ali-nex.github.io
+              </a>
+            </div>
+          </div>
+
+          <!-- Quick Highlight Stat Chips -->
+          <div class="mt-7 grid grid-cols-2 gap-3 sm:grid-cols-4">
+            <div class="rounded-xl border border-line bg-card p-3.5 text-center">
+              <span class="font-mono text-[10px] uppercase tracking-wider text-mute">University CGPA</span>
+              <div class="mt-1 font-disp text-lg font-bold text-ac">3.62 <span class="text-xs font-normal text-mute">/ 4.00</span></div>
+            </div>
+            <div class="rounded-xl border border-line bg-card p-3.5 text-center">
+              <span class="font-mono text-[10px] uppercase tracking-wider text-mute">Scholarship Honor</span>
+              <div class="mt-1 font-disp text-sm font-semibold text-[var(--ok)]">Hunhar Scholar</div>
+            </div>
+            <div class="rounded-xl border border-line bg-card p-3.5 text-center">
+              <span class="font-mono text-[10px] uppercase tracking-wider text-mute">Intermediate ICS</span>
+              <div class="mt-1 font-disp text-lg font-bold text-ac2">1012 <span class="text-xs font-normal text-mute">/ 1200</span></div>
+            </div>
+            <div class="rounded-xl border border-line bg-card p-3.5 text-center">
+              <span class="font-mono text-[10px] uppercase tracking-wider text-mute">Matriculation</span>
+              <div class="mt-1 font-disp text-lg font-bold text-ink">965 <span class="text-xs font-normal text-mute">/ 1100</span></div>
+            </div>
+          </div>
+
+          <!-- Main Resume Two-Column Matrix -->
+          <div class="mt-10 grid gap-10 lg:grid-cols-[1.1fr_.9fr]">
+            
+            <!-- Left Column: Summary, Education, Projects, Freelance -->
+            <div class="space-y-10">
+              
+              <!-- 1. Professional Summary -->
+              <div>
+                <div class="flex items-center gap-2.5 font-disp text-lg font-bold text-ink">
+                  <span class="icon-tile"><i data-lucide="user-check" class="h-4 w-4"></i></span>
+                  Professional Summary
+                </div>
+                <div class="resume-item-card mt-4 border-l-4 border-l-ac">
+                  <p class="text-sm leading-relaxed text-mute">
+                    Software Engineering student at <strong class="text-ink font-semibold">UET Taxila</strong> with a <strong class="text-ac font-semibold">3.62 CGPA</strong> and hands-on experience developing web applications, programming projects, and Arduino-based systems. Proficient in Java, Python, C++, C, JavaScript, HTML, and CSS, with knowledge of databases, data/AI tools, and software development technologies. Developed multiple academic and personal projects including a portfolio web application, radar security system, blind-assistance glasses, taxi booking application, and university management system. Strong problem-solving, technical, communication, leadership, and creative skills with experience in freelance digital services and student society leadership.
+                  </p>
+                </div>
+              </div>
+
+              <!-- 2. Education -->
+              <div>
+                <div class="flex items-center gap-2.5 font-disp text-lg font-bold text-ink">
+                  <span class="icon-tile"><i data-lucide="graduation-cap" class="h-4 w-4"></i></span>
+                  Education
+                </div>
+                <div class="mt-4 space-y-4">
+                  <!-- UET Taxila -->
+                  <div class="resume-item-card">
+                    <div class="flex flex-wrap items-start justify-between gap-2">
+                      <div>
+                        <h4 class="font-disp font-semibold text-ink text-base">University of Engineering and Technology (UET)</h4>
+                        <p class="text-xs text-mute font-mono">Taxila, Pakistan</p>
+                      </div>
+                      <span class="rounded-full bg-[rgba(var(--ac-rgb),.1)] px-2.5 py-1 font-mono text-[10px] font-medium text-ac">Sep 2025 – Jul 2029 (Expected)</span>
+                    </div>
+                    <div class="mt-2.5 font-medium text-sm text-ink">BS Software Engineering</div>
+                    <div class="mt-3 flex flex-wrap items-center gap-2">
+                      <span class="rounded-md border border-[rgba(var(--ac-rgb),.3)] bg-[rgba(var(--ac-rgb),.08)] px-2.5 py-1 font-mono text-xs font-semibold text-ac">CGPA: 3.62 / 4.00</span>
+                      <span class="rounded-md border border-[rgba(var(--ok-rgb),.3)] bg-[rgba(var(--ok-rgb),.08)] px-2.5 py-1 font-mono text-xs font-semibold text-[var(--ok)]">Hunhar Scholarship Recipient</span>
+                    </div>
+                  </div>
+
+                  <!-- Punjab Group of Colleges -->
+                  <div class="resume-item-card">
+                    <div class="flex flex-wrap items-start justify-between gap-2">
+                      <div>
+                        <h4 class="font-disp font-semibold text-ink text-base">Punjab Group of Colleges for Boys</h4>
+                        <p class="text-xs text-mute font-mono">Mian Channu, Pakistan</p>
+                      </div>
+                      <span class="font-mono text-[11px] text-mute">Intermediate</span>
+                    </div>
+                    <div class="mt-2 text-sm text-mute">Intermediate in Computer Science (ICS)</div>
+                    <div class="mt-2 font-mono text-xs text-ac font-semibold">Score: 1012 / 1200</div>
+                  </div>
+
+                  <!-- Govt High School -->
+                  <div class="resume-item-card">
+                    <div class="flex flex-wrap items-start justify-between gap-2">
+                      <div>
+                        <h4 class="font-disp font-semibold text-ink text-base">Government High School 30/10R</h4>
+                        <p class="text-xs text-mute font-mono">Khanewal, Pakistan</p>
+                      </div>
+                      <span class="font-mono text-[11px] text-mute">Matriculation</span>
+                    </div>
+                    <div class="mt-2 text-sm text-mute">Matriculation in Science</div>
+                    <div class="mt-2 font-mono text-xs text-ac font-semibold">Score: 965 / 1100</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 3. Projects in Resume -->
+              <div>
+                <div class="flex items-center gap-2.5 font-disp text-lg font-bold text-ink">
+                  <span class="icon-tile"><i data-lucide="cpu" class="h-4 w-4"></i></span>
+                  Engineering & Software Projects
+                </div>
+                <div class="mt-4 space-y-4">
+                  <!-- Project 1 -->
+                  <div class="resume-item-card">
+                    <div class="flex flex-wrap items-baseline justify-between gap-2">
+                      <h4 class="font-disp font-semibold text-ink">Personal Portfolio Web Application</h4>
+                      <span class="rounded bg-card2 px-2 py-0.5 font-mono text-[10px] text-ac">HTML · CSS · JavaScript</span>
+                    </div>
+                    <p class="mt-2 text-xs leading-relaxed text-mute">Developed a responsive web-based portfolio to present professional information, skills, projects, and CV content online. Designed and implemented independently as a personal software development project.</p>
+                    <a href="https://ali-nex.github.io" target="_blank" rel="noopener noreferrer" class="mt-2.5 inline-flex items-center gap-1.5 font-mono text-xs text-ac hover:underline">
+                      <i data-lucide="external-link" class="h-3 w-3"></i>ali-nex.github.io
+                    </a>
+                  </div>
+
+                  <!-- Project 2 -->
+                  <div class="resume-item-card">
+                    <div class="flex flex-wrap items-baseline justify-between gap-2">
+                      <h4 class="font-disp font-semibold text-ink">Radar Security System</h4>
+                      <span class="rounded bg-card2 px-2 py-0.5 font-mono text-[10px] text-ac2">Arduino Uno · Ultrasonic / Servo</span>
+                    </div>
+                    <p class="mt-2 text-xs leading-relaxed text-mute">Developed an Arduino-based radar system capable of detecting objects within its operating range. Designed the project as a basic security-monitoring solution.</p>
+                    <div class="mt-2.5">
+                      <span class="inline-flex items-center gap-1.5 rounded-full bg-[rgba(var(--ok-rgb),.1)] px-2.5 py-0.5 font-mono text-[10.5px] text-[var(--ok)] border border-[rgba(var(--ok-rgb),.2)]">
+                        <i data-lucide="award" class="h-3 w-3"></i>Selected for Exhibition at College
+                      </span>
+                    </div>
+                  </div>
+
+                  <!-- Project 3 -->
+                  <div class="resume-item-card">
+                    <div class="flex flex-wrap items-baseline justify-between gap-2">
+                      <h4 class="font-disp font-semibold text-ink">Blind Assistance Glasses</h4>
+                      <span class="rounded bg-card2 px-2 py-0.5 font-mono text-[10px] text-ac2">Arduino Uno · Buzzer System</span>
+                    </div>
+                    <p class="mt-2 text-xs leading-relaxed text-mute">Developed an assistive glasses prototype designed to help visually impaired users detect nearby obstacles. Implemented a buzzer-based alert mechanism to provide obstacle warnings.</p>
+                    <div class="mt-2.5">
+                      <span class="inline-flex items-center gap-1.5 rounded-full bg-[rgba(var(--ok-rgb),.1)] px-2.5 py-0.5 font-mono text-[10.5px] text-[var(--ok)] border border-[rgba(var(--ok-rgb),.2)]">
+                        <i data-lucide="award" class="h-3 w-3"></i>Selected for Exhibition at College
+                      </span>
+                    </div>
+                  </div>
+
+                  <!-- Project 4 -->
+                  <div class="resume-item-card">
+                    <h4 class="font-disp font-semibold text-ink">Additional Academic Applications</h4>
+                    <p class="mt-2 text-xs leading-relaxed text-mute">Developed academic software applications including a <strong class="text-ink">Taxi Booking Application</strong> and <strong class="text-ink">University Management System</strong>. Completed multiple programming and application-development projects during school and college.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 4. Freelance Experience -->
+              <div>
+                <div class="flex items-center gap-2.5 font-disp text-lg font-bold text-ink">
+                  <span class="icon-tile"><i data-lucide="briefcase" class="h-4 w-4"></i></span>
+                  Freelance Experience
+                </div>
+                <div class="resume-item-card mt-4">
+                  <div class="flex flex-wrap items-start justify-between gap-2">
+                    <h4 class="font-disp font-semibold text-ink">Freelance Digital Services</h4>
+                    <span class="rounded-full bg-card2 px-2.5 py-1 font-mono text-[10px] text-mute">Independent Consultant</span>
+                  </div>
+                  <p class="mt-2 text-xs leading-relaxed text-mute">
+                    Provide freelance services including Web Development, Java/Python Programming, Graphic Design, Video Editing, and Data Entry. Apply programming and digital skills to complete independent client-oriented tasks.
+                  </p>
+                  <div class="mt-3 flex flex-wrap gap-1.5">
+                    <span class="resume-skill-badge"><i data-lucide="layout" class="h-3 w-3 text-ac"></i>Web Dev</span>
+                    <span class="resume-skill-badge"><i data-lucide="code" class="h-3 w-3 text-ac"></i>Java/Python</span>
+                    <span class="resume-skill-badge"><i data-lucide="palette" class="h-3 w-3 text-ac2"></i>Graphic Design</span>
+                    <span class="resume-skill-badge"><i data-lucide="video" class="h-3 w-3 text-ac2"></i>Video Editing</span>
+                    <span class="resume-skill-badge"><i data-lucide="file-spreadsheet" class="h-3 w-3 text-mute"></i>Data Entry</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Right Column: Technical Skills, Leadership, Awards, Certifications, Languages -->
+            <div class="space-y-10">
+              
+              <!-- 1. Technical Skills Matrix -->
+              <div>
+                <div class="flex items-center gap-2.5 font-disp text-lg font-bold text-ink">
+                  <span class="icon-tile"><i data-lucide="wrench" class="h-4 w-4"></i></span>
+                  Technical Skills Matrix
+                </div>
+                <div class="resume-item-card mt-4 space-y-4">
+                  <div>
+                    <span class="font-mono text-[10.5px] uppercase tracking-wider text-ac font-semibold">Programming</span>
+                    <div class="mt-2 flex flex-wrap gap-1.5">
+                      <span class="resume-skill-badge font-semibold">Java</span>
+                      <span class="resume-skill-badge">JavaFX</span>
+                      <span class="resume-skill-badge font-semibold">Python</span>
+                      <span class="resume-skill-badge font-semibold">C++</span>
+                      <span class="resume-skill-badge">C</span>
+                      <span class="resume-skill-badge font-semibold">JavaScript</span>
+                    </div>
+                  </div>
+
+                  <div class="border-t border-line pt-3.5">
+                    <span class="font-mono text-[10.5px] uppercase tracking-wider text-ac font-semibold">Web Development</span>
+                    <div class="mt-2 flex flex-wrap gap-1.5">
+                      <span class="resume-skill-badge">HTML5</span>
+                      <span class="resume-skill-badge">CSS3</span>
+                      <span class="resume-skill-badge">JavaScript (ES6+)</span>
+                      <span class="resume-skill-badge">React</span>
+                      <span class="resume-skill-badge">Node.js</span>
+                    </div>
+                  </div>
+
+                  <div class="border-t border-line pt-3.5">
+                    <span class="font-mono text-[10.5px] uppercase tracking-wider text-ac font-semibold">Databases</span>
+                    <div class="mt-2 flex flex-wrap gap-1.5">
+                      <span class="resume-skill-badge">MySQL</span>
+                      <span class="resume-skill-badge">MongoDB</span>
+                      <span class="resume-skill-badge">PostgreSQL</span>
+                    </div>
+                  </div>
+
+                  <div class="border-t border-line pt-3.5">
+                    <span class="font-mono text-[10.5px] uppercase tracking-wider text-ac font-semibold">Tools & Platforms</span>
+                    <div class="mt-2 flex flex-wrap gap-1.5">
+                      <span class="resume-skill-badge">Git</span>
+                      <span class="resume-skill-badge">GitHub</span>
+                      <span class="resume-skill-badge">VS Code</span>
+                      <span class="resume-skill-badge">Docker</span>
+                    </div>
+                  </div>
+
+                  <div class="border-t border-line pt-3.5">
+                    <span class="font-mono text-[10.5px] uppercase tracking-wider text-ac2 font-semibold">Data & AI</span>
+                    <div class="mt-2 flex flex-wrap gap-1.5">
+                      <span class="resume-skill-badge">Power BI</span>
+                      <span class="resume-skill-badge">Pandas</span>
+                      <span class="resume-skill-badge">NumPy</span>
+                      <span class="resume-skill-badge">TensorFlow</span>
+                    </div>
+                  </div>
+
+                  <div class="border-t border-line pt-3.5">
+                    <span class="font-mono text-[10.5px] uppercase tracking-wider text-mute font-semibold">Creative & Other Skills</span>
+                    <div class="mt-2 flex flex-wrap gap-1.5">
+                      <span class="resume-skill-badge">Graphic Design</span>
+                      <span class="resume-skill-badge">Video Editing</span>
+                      <span class="resume-skill-badge">Office Management</span>
+                      <span class="resume-skill-badge">Data Entry</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 2. Leadership & Society Roles -->
+              <div>
+                <div class="flex items-center gap-2.5 font-disp text-lg font-bold text-ink">
+                  <span class="icon-tile"><i data-lucide="shield-check" class="h-4 w-4"></i></span>
+                  Leadership & Student Societies
+                </div>
+                <div class="mt-4 grid gap-3 sm:grid-cols-2">
+                  <div class="resume-item-card">
+                    <div class="flex items-center gap-2">
+                      <span class="grid h-7 w-7 place-items-center rounded-lg bg-[rgba(var(--ac-rgb),.1)] text-ac text-xs font-bold">🏛️</span>
+                      <div>
+                        <div class="font-disp text-sm font-semibold text-ink">President</div>
+                        <div class="text-xs text-mute font-mono">Wall of Hope</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="resume-item-card">
+                    <div class="flex items-center gap-2">
+                      <span class="grid h-7 w-7 place-items-center rounded-lg bg-[rgba(var(--ac-rgb),.1)] text-ac text-xs font-bold">💻</span>
+                      <div>
+                        <div class="font-disp text-sm font-semibold text-ink">President</div>
+                        <div class="text-xs text-mute font-mono">SoftDesk</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="resume-item-card">
+                    <div class="flex items-center gap-2">
+                      <span class="grid h-7 w-7 place-items-center rounded-lg bg-[rgba(var(--ac2-rgb),.1)] text-ac2 text-xs font-bold">📊</span>
+                      <div>
+                        <div class="font-disp text-sm font-semibold text-ink">Finance Secretary</div>
+                        <div class="text-xs text-mute font-mono">Umeed-e-Subh</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="resume-item-card">
+                    <div class="flex items-center gap-2">
+                      <span class="grid h-7 w-7 place-items-center rounded-lg bg-[rgba(var(--ac2-rgb),.1)] text-ac2 text-xs font-bold">📜</span>
+                      <div>
+                        <div class="font-disp text-sm font-semibold text-ink">General Secretary</div>
+                        <div class="text-xs text-mute font-mono">YPDC</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="mt-3 flex items-center gap-2 rounded-xl border border-dashed border-line bg-card/40 p-3 text-xs text-mute">
+                  <i data-lucide="users" class="h-3.5 w-3.5 text-ac"></i>
+                  Active participant & member in student organizations including <strong>U-Tach</strong> & <strong>UMT</strong>.
+                </div>
+              </div>
+
+              <!-- 3. Achievements & Awards -->
+              <div>
+                <div class="flex items-center gap-2.5 font-disp text-lg font-bold text-ink">
+                  <span class="icon-tile"><i data-lucide="trophy" class="h-4 w-4"></i></span>
+                  Awards & Co-Curricular Achievements
+                </div>
+                <div class="resume-item-card mt-4 space-y-3">
+                  <div class="flex items-start gap-3">
+                    <span class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-md bg-[rgba(var(--warn-rgb,251,191,36),.15)] text-[var(--warn)] text-xs font-bold">🥇</span>
+                    <div>
+                      <div class="text-sm font-medium text-ink">1st Position in Debate Competitions</div>
+                      <div class="text-xs text-mute">Inter-institutional & collegiate public speaking and debating</div>
+                    </div>
+                  </div>
+                  <div class="flex items-start gap-3 border-t border-line pt-2.5">
+                    <span class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-md bg-[rgba(var(--warn-rgb,251,191,36),.15)] text-[var(--warn)] text-xs font-bold">🥇</span>
+                    <div>
+                      <div class="text-sm font-medium text-ink">1st Position in Poetry Competitions</div>
+                      <div class="text-xs text-mute">Creative writing and literary recitation awards</div>
+                    </div>
+                  </div>
+                  <div class="flex items-start gap-3 border-t border-line pt-2.5">
+                    <span class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-md bg-[rgba(var(--warn-rgb,251,191,36),.15)] text-[var(--warn)] text-xs font-bold">🥇</span>
+                    <div>
+                      <div class="text-sm font-medium text-ink">1st Position in Painting Competitions</div>
+                      <div class="text-xs text-mute">Fine art, composition and visual illustration distinction</div>
+                    </div>
+                  </div>
+                  <div class="flex items-start gap-3 border-t border-line pt-2.5">
+                    <span class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-md bg-[rgba(var(--ok-rgb),.15)] text-[var(--ok)] text-xs font-bold">🏆</span>
+                    <div>
+                      <div class="text-sm font-medium text-ink">College Exhibition Selection</div>
+                      <div class="text-xs text-mute">Radar Security System & Blind Assistance Glasses selected for college exhibition</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 4. Certifications & Online Learning -->
+              <div>
+                <div class="flex items-center gap-2.5 font-disp text-lg font-bold text-ink">
+                  <span class="icon-tile"><i data-lucide="award" class="h-4 w-4"></i></span>
+                  Certifications & Learning
+                </div>
+                <div class="resume-item-card mt-4 space-y-2.5">
+                  <div class="flex items-center gap-2 text-xs text-ink font-medium">
+                    <i data-lucide="check-circle" class="h-3.5 w-3.5 text-ac shrink-0"></i>
+                    Java Programming Certificate
+                  </div>
+                  <div class="flex items-center gap-2 text-xs text-ink font-medium">
+                    <i data-lucide="check-circle" class="h-3.5 w-3.5 text-ac shrink-0"></i>
+                    Python Programming Certificate
+                  </div>
+                  <div class="flex items-center gap-2 text-xs text-ink font-medium">
+                    <i data-lucide="check-circle" class="h-3.5 w-3.5 text-ac shrink-0"></i>
+                    Web Development Certificate
+                  </div>
+                  <div class="border-t border-line pt-2 text-xs leading-relaxed text-mute">
+                    Additional online continuous learning completed in <span class="text-ink">Python</span>, <span class="text-ink">Web Development</span>, <span class="text-ink">Graphic Design</span>, and <span class="text-ink">Spoken English</span>.
+                  </div>
+                </div>
+              </div>
+
+              <!-- 5. Languages & Fluency -->
+              <div>
+                <div class="flex items-center gap-2.5 font-disp text-lg font-bold text-ink">
+                  <span class="icon-tile"><i data-lucide="languages" class="h-4 w-4"></i></span>
+                  Languages & Fluency
+                </div>
+                <div class="resume-item-card mt-4 space-y-3.5" id="resume-lang-bars">
+                  <!-- Punjabi -->
+                  <div>
+                    <div class="flex justify-between font-mono text-xs mb-1.5">
+                      <span class="font-medium text-ink">Punjabi</span>
+                      <span class="text-ac font-semibold">100% (Native)</span>
+                    </div>
+                    <div class="resume-bar-track">
+                      <div class="resume-bar-fill" data-lang-target="100%"></div>
+                    </div>
+                  </div>
+
+                  <!-- Urdu -->
+                  <div>
+                    <div class="flex justify-between font-mono text-xs mb-1.5">
+                      <span class="font-medium text-ink">Urdu</span>
+                      <span class="text-ac font-semibold">90% (Fluent / National)</span>
+                    </div>
+                    <div class="resume-bar-track">
+                      <div class="resume-bar-fill" data-lang-target="90%"></div>
+                    </div>
+                  </div>
+
+                  <!-- English -->
+                  <div>
+                    <div class="flex justify-between font-mono text-xs mb-1.5">
+                      <span class="font-medium text-ink">English</span>
+                      <span class="text-ac font-semibold">89% (Professional Working)</span>
+                    </div>
+                    <div class="resume-bar-track">
+                      <div class="resume-bar-fill" data-lang-target="89%"></div>
+                    </div>
+                  </div>
+
+                  <!-- Saraiki -->
+                  <div>
+                    <div class="flex justify-between font-mono text-xs mb-1.5">
+                      <span class="font-medium text-ink">Saraiki</span>
+                      <span class="text-ac font-semibold">80% (Conversational)</span>
+                    </div>
+                    <div class="resume-bar-track">
+                      <div class="resume-bar-fill" data-lang-target="80%"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Bottom Action Banner -->
+          <div class="mt-12 flex flex-col items-center justify-between gap-4 rounded-2xl border border-line bg-card p-6 sm:flex-row sm:p-7">
+            <div>
+              <div class="font-disp font-semibold text-ink text-base">Looking for a verified copy or full technical portfolio?</div>
+              <p class="mt-1 text-xs text-mute">Instant download in text format, or reach out directly for academic transcripts and code repositories.</p>
+            </div>
+            <div class="flex flex-wrap gap-3">
+              <button class="js-cv hov-glow inline-flex items-center gap-2 rounded-xl bg-ac px-4 py-2.5 font-disp text-sm font-semibold text-[var(--ink-on-ac)]">
+                <span class="cv-s inline-flex items-center gap-2"><i data-lucide="download" class="h-4 w-4"></i>Download CV</span>
+                <span class="cv-s hidden items-center gap-2"><i data-lucide="loader-2" class="h-4 w-4 animate-spin"></i>Preparing…</span>
+                <span class="cv-s hidden items-center gap-2"><i data-lucide="check" class="pop h-4 w-4"></i>Saved!</span>
+              </button>
+              <a href="#contact" class="inline-flex items-center gap-2 rounded-xl border border-line bg-panel px-4 py-2.5 font-disp text-sm font-medium text-mute transition hover:text-ink hover:border-ac">
+                <i data-lucide="mail" class="h-4 w-4 text-ac"></i>Contact Ali
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
     <!-- ============ CONTACT ============ -->
     <section id="contact" class="relative py-24 sm:py-32">
       <div class="mx-auto max-w-6xl px-5 sm:px-8">
         <div class="max-w-2xl" data-reveal>
-          <p class="mono-label">05 // contact</p>
+          <p class="mono-label">06 // contact</p>
           <h2 class="mt-4 font-disp text-3xl font-bold tracking-tight sm:text-4xl">Let's build something worth shipping.
           </h2>
           <p class="mt-4 leading-relaxed text-mute">Have an idea, a role, or just want to talk shop? My inbox is open —
-            I reply within 24 hours.</p>
+            I reply promptly.</p>
         </div>
 
         <div class="mt-14 grid gap-10 lg:grid-cols-[1fr_1.15fr]">
           <!-- Quick cards -->
           <div class="space-y-4" data-reveal="left">
-            <a href="mailto:alihassanaziz09@gmail.com"
+            <a href="mailto:alihassanaziz110@gmail.com"
               class="lift group flex items-center gap-4 rounded-2xl border border-line bg-panel p-5">
               <span class="icon-tile"><i data-lucide="mail" class="h-4 w-4"></i></span>
               <span class="min-w-0">
                 <span class="block font-mono text-[10px] uppercase tracking-widest text-mute">Email</span>
-                <span class="block truncate font-medium">alihassanaziz09@gmail.com</span>
+                <span class="block truncate font-medium">alihassanaziz110@gmail.com</span>
               </span>
               <button type="button" data-copy-email
                 class="ml-auto grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-line text-mute transition hover:text-ac"
@@ -1639,36 +2253,36 @@
                 <i data-lucide="copy" class="h-4 w-4"></i>
               </button>
             </a>
-            <a href="tel:+493012345678"
+            <a href="tel:+923463655864"
               class="lift flex items-center gap-4 rounded-2xl border border-line bg-panel p-5">
               <span class="icon-tile"><i data-lucide="phone" class="h-4 w-4"></i></span>
               <span>
                 <span class="block font-mono text-[10px] uppercase tracking-widest text-mute">Phone</span>
-                <span class="block font-medium">+49 30 1234 5678</span>
+                <span class="block font-medium">+92 346 3655864</span>
               </span>
               <i data-lucide="arrow-up-right" class="ml-auto h-4 w-4 text-mute transition group-hover:text-ac"></i>
             </a>
-            <a href="https://maps.google.com/?q=Berlin,Germany" target="_blank" rel="noopener noreferrer"
+            <a href="https://maps.google.com/?q=Khanewal,Pakistan" target="_blank" rel="noopener noreferrer"
               class="lift group flex items-center gap-4 rounded-2xl border border-line bg-panel p-5">
               <span class="icon-tile"><i data-lucide="map-pin" class="h-4 w-4"></i></span>
               <span>
                 <span class="block font-mono text-[10px] uppercase tracking-widest text-mute">Location</span>
-                <span class="block font-medium">Berlin, Germany · CET (UTC+1)</span>
+                <span class="block font-medium">Khanewal & Taxila, Pakistan · PKT (UTC+5)</span>
               </span>
               <i data-lucide="arrow-up-right" class="ml-auto h-4 w-4 text-mute transition group-hover:text-ac"></i>
             </a>
-            <a href="https://cal.com/ali-nex" target="_blank" rel="noopener noreferrer"
+            <a href="https://linkedin.com/in/engr-ali-hassan-aziz-228051398" target="_blank" rel="noopener noreferrer"
               class="lift group flex items-center gap-4 rounded-2xl border border-line bg-panel p-5">
-              <span class="icon-tile"><i data-lucide="calendar" class="h-4 w-4"></i></span>
+              <span class="icon-tile"><i data-lucide="linkedin" class="h-4 w-4"></i></span>
               <span>
-                <span class="block font-mono text-[10px] uppercase tracking-widest text-mute">Calendar</span>
-                <span class="block font-medium">Book a 30-minute intro call</span>
+                <span class="block font-mono text-[10px] uppercase tracking-widest text-mute">LinkedIn</span>
+                <span class="block font-medium">Connect on LinkedIn</span>
               </span>
               <i data-lucide="arrow-up-right" class="ml-auto h-4 w-4 text-mute transition group-hover:text-ac"></i>
             </a>
             <div
               class="flex items-center gap-2.5 rounded-2xl border border-dashed border-[rgba(var(--ok-rgb),.45)] p-4 text-sm text-mute">
-              <span class="pulse-dot"></span>Currently open to senior frontend / full-stack roles — remote-friendly.
+              <span class="pulse-dot"></span>Currently open to Software Engineering & Full-Stack developer opportunities.
             </div>
           </div>
 
@@ -1683,7 +2297,7 @@
               </svg>
               <div>
                 <div class="font-disp font-semibold">Message sent — talk soon.</div>
-                <div class="mt-0.5 text-sm text-mute">Thanks for reaching out. I'll get back to you within 24 hours.
+                <div class="mt-0.5 text-sm text-mute">Thanks for reaching out. I'll get back to you promptly.
                 </div>
               </div>
             </div>
@@ -1740,10 +2354,10 @@
         <div>
           <a href="#home"
             class="brand inline-grid h-10 w-10 place-items-center rounded-xl border border-line bg-card font-disp text-base font-bold">
-            <span class="brand-grad">AV</span>
+            <span class="brand-grad">AH</span>
           </a>
-          <p class="mt-4 max-w-xs text-sm leading-relaxed text-mute">Software engineer crafting performant,
-            human-centred products from Berlin. Sometimes pixels, sometimes packets — always the details.</p>
+          <p class="mt-4 max-w-xs text-sm leading-relaxed text-mute">Software engineering student crafting performant,
+            human-centred applications, hardware systems, and digital solutions.</p>
           <div id="socials-footer" class="social-rail mt-5 flex gap-1.5"></div>
         </div>
         <div>
@@ -1754,6 +2368,7 @@
             <a class="text-mute transition hover:text-ac" href="#skills">Skills</a>
             <a class="text-mute transition hover:text-ac" href="#projects">Projects</a>
             <a class="text-mute transition hover:text-ac" href="#journey">Journey</a>
+            <a class="text-mute transition hover:text-ac" href="#resume">Resume</a>
             <a class="text-mute transition hover:text-ac" href="#contact">Contact</a>
           </div>
         </div>
@@ -1763,7 +2378,7 @@
             <a class="text-mute transition hover:text-ac" target="_blank" rel="noopener noreferrer"
               href="https://github.com/ali-nex">GitHub</a>
             <a class="text-mute transition hover:text-ac" target="_blank" rel="noopener noreferrer"
-              href="https://linkedin.com/in/ali-nex">LinkedIn</a>
+              href="https://linkedin.com/in/engr-ali-hassan-aziz-228051398">LinkedIn</a>
             <a class="text-mute transition hover:text-ac" target="_blank" rel="noopener noreferrer"
               href="https://leetcode.com/ali-nex">LeetCode</a>
             <button class="js-cv text-left text-mute transition hover:text-ac">
@@ -1837,10 +2452,10 @@
     const refreshIcons = () => { if (window.lucide) lucide.createIcons(); };
 
     /* ---------------- Data ---------------- */
-    const EMAIL = 'alihassanaziz09@gmail.com';
+    const EMAIL = 'alihassanaziz110@gmail.com';
     const SOCIALS = [
       { id: 'github', label: 'GitHub', icon: 'github', url: 'https://github.com/ali-nex' },
-      { id: 'linkedin', label: 'LinkedIn', icon: 'linkedin', url: 'https://linkedin.com/in/ali-nex' },
+      { id: 'linkedin', label: 'LinkedIn', icon: 'linkedin', url: 'https://linkedin.com/in/engr-ali-hassan-aziz-228051398' },
       { id: 'x', label: 'X / Twitter', icon: 'twitter', url: 'https://x.com/ali-nex' },
       { id: 'mail', label: 'Email', icon: 'mail', url: 'mailto:' + EMAIL },
       { id: 'leet', label: 'LeetCode', icon: 'code-2', url: 'https://leetcode.com/ali-nex' },
@@ -1877,7 +2492,7 @@
     const PROJECTS = [
       {
         id: 'drift', title: 'Drift', cat: 'web', catLabel: 'Web App', year: '2024', seed: 'drift-editor',
-        desc: 'Real-time collaborative markdown editor with CRDT sync, offline-first storage and live multiplayer cursors.',
+        desc: 'Real-time Portfolio, Html , csss , js. , this web is my first web project',
         tags: ['React', 'Yjs', 'IndexedDB', 'WebRTC'],
         features: ['Multiplayer cursors with presence avatars', 'Offline edits merge conflict-free on reconnect', 'One-click export to PDF, HTML and Confluence'],
         arch: [['monitor-smartphone', 'Frontend', 'React 18 · Vite · Yjs CRDT · TipTap'], ['service', 'Sync layer', 'WebRTC data channels · WebSocket fallback'],
@@ -1885,7 +2500,7 @@
         challenges: [['Merge storms under latency', 'Switched to per-paragraph CRDT docs, cutting reconciliation time by 87%.'],
         ['Offline-first complexity', 'Built an op-log queue with optimistic UI so the editor never blocks on the network.']],
         metrics: ['9k monthly users', '<40ms sync p95', '100 Lighthouse'],
-        demo: 'https://ali-nex.github.io/demo/drift', repo: 'https://github.com/ali-nex/drift'
+        demo: 'https://alihassanaziz.netlify.app/', repo: 'https://github.com/ali-nex/drift'
       },
       {
         id: 'orbit', title: 'Orbit Chat', cat: 'web', catLabel: 'Web App', year: '2023', seed: 'orbit-chat',
@@ -2060,22 +2675,24 @@
         details: ['Led a zero-downtime migration from an Express monolith to modular services.', 'Wrote the internal Node/TypeScript handbook now used by 20+ engineers.']
       },
       {
-        type: 'education', date: '2022 — 2023', title: 'Erasmus+ Exchange — HCI', org: 'Aalto University', loc: 'Helsinki, FI',
-        points: ['Human-Computer Interaction studio and distributed systems coursework.',
-          'Led a 4-person HCI studio project — a wayfinding app piloted by the campus library.'],
-        details: ['HCI studio final grade: 5/5.', 'Coursework: Distributed Systems, Information Visualisation.']
+        type: 'education', date: '2021 — 2023', title: 'Matric', org: 'Govt. High School 30/10R Khanewal ', loc: 'Khanewal',
+        points: ['Math, Physic , Chemistry, Biology , English, Urdu'],
+        details: ['Marks: 965/1100.']
       },
       {
-        type: 'experience', date: '2021 — 2022', title: 'Software Engineering Intern', org: 'PixelForge Studio', loc: 'Munich, DE',
-        points: ['Shipped 14 client sites on a component-driven headless stack.',
-          'Built the internal starter kit that cut project bootstrapping from days to an hour.'],
-        details: ['Converted from intern to working student within 4 months.', 'Introduced automated visual-regression testing to the studio workflow.']
+        type: 'experience', date: '2023 — 2025', title: 'ICS', org: 'Punjab College for boys Mian Channu ', loc: 'Khanewal ',
+        points: ['Computer, Math , Physics , English'],
+        details: ['Marks: 1012/1200']
       },
       {
-        type: 'education', date: '2019 — 2023', title: 'B.Sc. Software Engineering', org: 'Technical University of Munich', loc: 'Munich, DE',
-        points: ['Relevant coursework: Data Structures & Algorithms, OOP, Database Systems, Web Engineering, Operating Systems.',
-          'Thesis: perceptual performance budgets for single-page applications.'],
-        details: ['Final grade 1.2 (German scale).', 'Thesis graded 1.0 — later released as an open-source budgeting tool.', 'Teaching assistant for the Algorithms lab, two semesters.']
+        type: 'education', date: '2023 — 2025', title: 'ICS', org: 'Punjab College for boys Mian Channu', loc: 'Khanewal',
+        points: ['Computer, Math , Physics , English'],
+        details: ['Marks: 1012/1200']
+      },
+      {
+        type: 'education', date: '2025 — 2029', title: 'BS Software engineering ', org: 'UET Taxila', loc: 'Taxila',
+        points: ['C++, Java, Python < DSA, OOP , CA&LD'],
+        details: ['1st Smester gpa:3.62', '2nd Smester gpa:3.78', 'total Cgpa: 3.62']
       },
     ];
 
@@ -2152,7 +2769,7 @@
       const spy = new IntersectionObserver(entries => {
         entries.forEach(en => { if (en.isIntersecting) setActiveSection(en.target.id); });
       }, { rootMargin: '-42% 0px -52%' });
-      ['home', 'about', 'skills', 'projects', 'journey', 'contact'].forEach(id => { const s = $('#' + id); if (s) spy.observe(s); });
+      ['home', 'about', 'skills', 'projects', 'journey', 'resume', 'contact'].forEach(id => { const s = $('#' + id); if (s) spy.observe(s); });
       addEventListener('resize', () => {
         const l = $('.nav-link.active');
         if (innerWidth >= 1024 && l) moveNavInd(l); else navInd.style.opacity = 0;
@@ -2717,31 +3334,76 @@
     }
 
     /* ---------------- CV download (real blob) ---------------- */
-    const RESUME = `============================================
-  ALI HASSAN — SOFTWARE ENGINEER
-  Berlin, DE · ${EMAIL}
-  github.com/ali-nex · ali-nex.github.io
-============================================
-SUMMARY
-  Full-stack engineer (5+ yrs) focused on performant,
-  human-centred web products.
-  TypeScript · React · Node · PostgreSQL
+    const RESUME = `=======================================================
+ALI HASSAN AZIZ — SOFTWARE ENGINEERING STUDENT & DEVELOPER
+Khanewal & Taxila, Pakistan · ${EMAIL} · +92 346 3655864
+LinkedIn: https://linkedin.com/in/engr-ali-hassan-aziz-228051398
+GitHub: https://github.com/ali-nex · Portfolio: https://ali-nex.github.io
+=======================================================
 
-EXPERIENCE
-  2024–now   Senior Software Engineer — NovaTech Labs, Berlin
-  2022–2024  Full-Stack Developer — CloudSprint (remote)
-  2021–2022  Software Engineering Intern — PixelForge Studio
+PROFESSIONAL SUMMARY
+Software Engineering student at UET Taxila with a 3.62 CGPA and hands-on experience developing web applications, programming projects, and Arduino-based systems. Proficient in Java, Python, C++, C, JavaScript, HTML, and CSS, with knowledge of databases, data/AI tools, and software development technologies. Developed multiple academic and personal projects including a portfolio web application, radar security system, blind-assistance glasses, taxi booking application, and university management system. Strong problem-solving, technical, communication, leadership, and creative skills with experience in freelance digital services and student society leadership.
 
 EDUCATION
-  2019–2023  B.Sc. Software Engineering — TU Munich (1.2)
-  2022       Erasmus+ HCI — Aalto University
+• University of Engineering and Technology (UET), Taxila, Pakistan
+  BS Software Engineering | Sep 2025 – Jul 2029 (Expected)
+  CGPA: 3.62 / 4.00 | Hunhar Scholarship Recipient
 
-STACK
-  TypeScript/JavaScript · React/Next.js · Node.js
-  PostgreSQL · Docker · GitHub Actions
+• Punjab Group of Colleges for Boys, Mian Channu, Pakistan
+  Intermediate in Computer Science (ICS) | Marks: 1012 / 1200
 
-  * Generated live from ali-nex.github.io — swap in your PDF.
-============================================`;
+• Government High School 30/10R, Khanewal, Pakistan
+  Matriculation in Science | Marks: 965 / 1100
+
+TECHNICAL SKILLS
+• Programming: Java, JavaFX, Python, C++, C, JavaScript
+• Web Development: HTML, CSS, JavaScript, React, Node.js
+• Databases: MySQL, MongoDB, PostgreSQL
+• Tools & Platforms: Git, GitHub, VS Code, Docker
+• Data & AI: Power BI, Pandas, NumPy, TensorFlow
+• Other: Graphic Design, Video Editing, Office Management, Data Entry
+
+PROJECTS
+• Personal Portfolio Web Application | HTML, CSS, JavaScript
+  Developed a responsive web-based portfolio to present professional information, skills, projects, and CV content online. Designed and implemented independently as a personal software development project.
+  Portfolio: https://ali-nex.github.io
+
+• Radar Security System | Arduino Uno
+  Developed an Arduino-based radar system capable of detecting objects within its operating range as a basic security-monitoring solution.
+  Selected for exhibition at college.
+
+• Blind Assistance Glasses | Arduino Uno, Buzzer System
+  Developed an assistive glasses prototype designed to help visually impaired users detect nearby obstacles with a buzzer-based alert mechanism.
+  Selected for exhibition at college.
+
+• Additional Projects:
+  Developed academic applications including a Taxi Booking Application and University Management System. Completed multiple programming and application-development projects during school and college.
+
+CERTIFICATIONS & LEARNING
+• Java Programming Certificate
+• Python Programming Certificate
+• Web Development Certificate
+• Additional online learning: Python, Web Development, Graphic Design, Spoken English
+
+LEADERSHIP & ACHIEVEMENTS
+• President, Wall of Hope
+• President, SoftDesk
+• Finance Secretary, Umeed-e-Subh
+• General Secretary, YPDC
+• Member/Participant in student organizations including U-Tach and UMT
+• 1st Position in Debate Competitions
+• 1st Position in Poetry Competitions
+• 1st Position in Painting Competitions
+• Radar Security System and Blind Assistance Glasses selected for college exhibition
+
+FREELANCE EXPERIENCE
+• Freelance Digital Services
+  Provide freelance services including Web Development, Java/Python Programming, Graphic Design, Video Editing, and Data Entry. Apply programming and digital skills to complete independent client-oriented tasks.
+
+LANGUAGES
+• Punjabi: 100% | Urdu: 90% | English: 89% | Saraiki: 80%
+=======================================================`;
+
     function cvState(btn, state) {
       btn.querySelectorAll('.cv-s').forEach((sp, i) => {
         const on = (state === 'idle' && i === 0) || (state === 'load' && i === 1) || (state === 'done' && i === 2);
@@ -2749,6 +3411,7 @@ STACK
         sp.classList.toggle(on ? (btn.classList.contains('text-left') ? 'inline' : 'inline-flex') : 'hidden', on);
       });
     }
+
     $$('.js-cv').forEach(btn => btn.addEventListener('click', () => {
       if (btn.dataset.busy) return;
       btn.dataset.busy = '1';
@@ -2756,7 +3419,7 @@ STACK
       setTimeout(() => {
         const blob = new Blob([RESUME], { type: 'text/plain;charset=utf-8' });
         const url = URL.createObjectURL(blob);
-        const a = Object.assign(document.createElement('a'), { href: url, download: 'Ali_Hassan_Resume.txt' });
+        const a = Object.assign(document.createElement('a'), { href: url, download: 'Ali_Hassan_Aziz_Resume.txt' });
         document.body.appendChild(a); a.click(); a.remove();
         setTimeout(() => URL.revokeObjectURL(url), 4000);
         cvState(btn, 'done');
@@ -2776,6 +3439,34 @@ STACK
       copyText(EMAIL, 'Email copied to clipboard');
     }));
 
+    /* ---------------- Resume Specific Interactions ---------------- */
+    function initResumeInteractions() {
+      const copyCvBtn = $('#copy-resume-btn');
+      if (copyCvBtn) {
+        copyCvBtn.addEventListener('click', () => {
+          copyText(RESUME, 'Full formatted CV copied to clipboard!');
+        });
+      }
+
+      // Language proficiency bars animated reveal
+      const langWrap = $('#resume-lang-bars');
+      if (langWrap) {
+        const langObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const bars = langWrap.querySelectorAll('.resume-bar-fill');
+              bars.forEach(b => {
+                const target = b.dataset.langTarget || '100%';
+                b.style.width = target;
+              });
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.25 });
+        langObserver.observe(langWrap);
+      }
+    }
+
     /* ---------------- Search palette ---------------- */
     const smodal = $('#search-modal'), sInput = $('#search-input'), sResults = $('#search-results');
     const S = { open: false, q: '', sel: 0, items: [], lastFocus: null };
@@ -2787,14 +3478,16 @@ STACK
         { label: 'About', hint: 'Section', icon: 'user', kw: 'bio journey philosophy stats', run: go('about') },
         { label: 'Skills', hint: 'Section', icon: 'zap', kw: 'stack toolbox matrix', run: go('skills') },
         { label: 'Projects', hint: 'Section', icon: 'folder-git-2', kw: 'work portfolio showcase', run: go('projects') },
-        { label: 'Education', hint: 'Section', icon: 'graduation-cap', kw: 'university degree timeline', run: go('journey', () => applyTlFilter('education')) },
-        { label: 'Experience', hint: 'Section', icon: 'briefcase', kw: 'jobs work career timeline', run: go('journey', () => applyTlFilter('experience')) },
+        { label: 'Education', hint: 'Section', icon: 'graduation-cap', kw: 'university degree timeline uet taxila', run: go('journey', () => applyTlFilter('education')) },
+        { label: 'Experience', hint: 'Section', icon: 'briefcase', kw: 'jobs work career timeline freelance', run: go('journey', () => applyTlFilter('experience')) },
+        { label: 'Resume / CV', hint: 'Section', icon: 'file-text', kw: 'resume cv credentials qualifications education skills leadership honors scholarship', run: go('resume') },
         { label: 'Contact', hint: 'Section', icon: 'mail', kw: 'email form message hire', run: go('contact') },
       );
       PROJECTS.forEach((p, i) => ix.push({ label: p.title, hint: 'Project', icon: 'folder-git-2', kw: p.tags.join(' ') + ' ' + p.cat, run: () => openProject(i) }));
       SKILLS.forEach(s => ix.push({ label: s.n, hint: 'Skill', icon: 'zap', kw: s.cat, run: () => { applySkillFilter(s.cat); $('#skills').scrollIntoView({ behavior: 'smooth' }); } }));
       ix.push(
         { label: 'Download CV / Resume', hint: 'Action', icon: 'download', kw: 'cv resume pdf download save', run: () => $('.js-cv')?.click() },
+        { label: 'Copy Full Resume Text', hint: 'Action', icon: 'copy', kw: 'cv resume copy text clipboard', run: () => copyText(RESUME, 'Full formatted CV copied to clipboard!') },
         { label: 'Toggle dark / light theme', hint: 'Action', icon: 'sun-medium', kw: 'theme dark light mode appearance', run: toggleTheme },
         { label: 'Copy email address', hint: 'Action', icon: 'copy', kw: 'email copy clipboard contact', run: () => copyText(EMAIL, 'Email copied to clipboard') },
       );
@@ -2894,7 +3587,7 @@ STACK
     function initFooter() {
       $('#year').textContent = new Date().getFullYear();
       const t = $('#local-time');
-      const fmt = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Berlin', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
+      const fmt = new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Karachi', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
       setInterval(() => t.textContent = fmt.format(new Date()), 1000);
       $('#to-top').addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
     }
@@ -3027,6 +3720,7 @@ STACK
     initHeader(); initNavSpy(); initMenu(); initReveal();
     initTyping(); initCanvas(); initTilt(); initMagnetic();
     initCounters(); initBioTabs(); initForm();
+    initResumeInteractions();
     initScrollAvatarTransition();
     buildSearchIndex(); initFooter();
     setActiveSection('home');
