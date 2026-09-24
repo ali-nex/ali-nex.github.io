@@ -32,11 +32,13 @@
   </script>
   <style>
     /* ============ Design tokens ============ */
-    :root {
+    /* ============ Design tokens & Multi-Theme System ============ */
+    :root,
+    [data-theme="dark"] {
       color-scheme: dark;
       --bg: #0F172A;
       --bg2: #0B1120;
-      --panel: rgba(17, 26, 45, .72);
+      --panel: rgba(17, 26, 45, .75);
       --card: #111A2E;
       --card2: #18233D;
       --line: rgba(148, 163, 184, .15);
@@ -56,11 +58,131 @@
       --shadow: 0 24px 50px -24px rgba(0, 0, 0, .55);
     }
 
+    [data-theme="emerald"] {
+      color-scheme: dark;
+      --bg: #061A14;
+      --bg2: #030F0B;
+      --panel: rgba(8, 35, 27, .78);
+      --card: #0A2920;
+      --card2: #0F3D30;
+      --line: rgba(52, 211, 153, .18);
+      --text: #ECFDF5;
+      --mute: #6EE7B7;
+      --ac: #10B981;
+      --ac-rgb: 16, 185, 129;
+      --ac2: #34D399;
+      --ac2-rgb: 52, 211, 153;
+      --ok: #10B981;
+      --ok-rgb: 16, 185, 129;
+      --bad: #FB7185;
+      --warn: #FBBF24;
+      --dot-rgb: 52, 211, 153;
+      --grid: rgba(16, 185, 129, .12);
+      --ink-on-ac: #022014;
+      --shadow: 0 24px 50px -24px rgba(0, 0, 0, .65);
+    }
+
+    [data-theme="tokyo"] {
+      color-scheme: dark;
+      --bg: #0F091A;
+      --bg2: #090510;
+      --panel: rgba(26, 16, 42, .78);
+      --card: #1C1230;
+      --card2: #281A43;
+      --line: rgba(244, 63, 94, .2);
+      --text: #FDF2F8;
+      --mute: #C084FC;
+      --ac: #F43F5E;
+      --ac-rgb: 244, 63, 94;
+      --ac2: #06B6D4;
+      --ac2-rgb: 6, 182, 212;
+      --ok: #2DD4BF;
+      --ok-rgb: 45, 212, 191;
+      --bad: #F43F5E;
+      --warn: #F59E0B;
+      --dot-rgb: 244, 63, 94;
+      --grid: rgba(244, 63, 94, .12);
+      --ink-on-ac: #FFFFFF;
+      --shadow: 0 24px 50px -24px rgba(0, 0, 0, .65);
+    }
+
+    [data-theme="nebula"] {
+      color-scheme: dark;
+      --bg: #0B0F29;
+      --bg2: #060919;
+      --panel: rgba(18, 23, 56, .78);
+      --card: #151A42;
+      --card2: #1E255C;
+      --line: rgba(139, 92, 246, .2);
+      --text: #F5F3FF;
+      --mute: #A5B4FC;
+      --ac: #8B5CF6;
+      --ac-rgb: 139, 92, 246;
+      --ac2: #38BDF8;
+      --ac2-rgb: 56, 189, 248;
+      --ok: #34D399;
+      --ok-rgb: 52, 211, 153;
+      --bad: #F43F5E;
+      --warn: #FBBF24;
+      --dot-rgb: 139, 92, 246;
+      --grid: rgba(139, 92, 246, .12);
+      --ink-on-ac: #FFFFFF;
+      --shadow: 0 24px 50px -24px rgba(0, 0, 0, .65);
+    }
+
+    [data-theme="sunset"] {
+      color-scheme: dark;
+      --bg: #18110D;
+      --bg2: #100B08;
+      --panel: rgba(38, 24, 18, .78);
+      --card: #2B1B14;
+      --card2: #3E271D;
+      --line: rgba(249, 115, 22, .2);
+      --text: #FFF7ED;
+      --mute: #FDBA74;
+      --ac: #F97316;
+      --ac-rgb: 249, 115, 22;
+      --ac2: #FBBF24;
+      --ac2-rgb: 251, 191, 36;
+      --ok: #34D399;
+      --ok-rgb: 52, 211, 153;
+      --bad: #EF4444;
+      --warn: #F59E0B;
+      --dot-rgb: 249, 115, 22;
+      --grid: rgba(249, 115, 22, .12);
+      --ink-on-ac: #1A0A02;
+      --shadow: 0 24px 50px -24px rgba(0, 0, 0, .65);
+    }
+
+    [data-theme="teal"] {
+      color-scheme: dark;
+      --bg: #0B161B;
+      --bg2: #060E12;
+      --panel: rgba(16, 33, 40, .78);
+      --card: #122831;
+      --card2: #193845;
+      --line: rgba(20, 184, 166, .2);
+      --text: #F0FDFA;
+      --mute: #5EEAD4;
+      --ac: #14B8A6;
+      --ac-rgb: 20, 184, 166;
+      --ac2: #60A5FA;
+      --ac2-rgb: 96, 165, 250;
+      --ok: #2DD4BF;
+      --ok-rgb: 45, 212, 191;
+      --bad: #F43F5E;
+      --warn: #FBBF24;
+      --dot-rgb: 20, 184, 166;
+      --grid: rgba(20, 184, 166, .12);
+      --ink-on-ac: #041B18;
+      --shadow: 0 24px 50px -24px rgba(0, 0, 0, .65);
+    }
+
     [data-theme="light"] {
       color-scheme: light;
       --bg: #F6F8FB;
       --bg2: #FFFFFF;
-      --panel: rgba(255, 255, 255, .82);
+      --panel: rgba(255, 255, 255, .84);
       --card: #FFFFFF;
       --card2: #EEF2F7;
       --line: rgba(15, 23, 42, .12);
@@ -78,6 +200,228 @@
       --grid: rgba(15, 23, 42, .07);
       --ink-on-ac: #F2FBFD;
       --shadow: 0 24px 50px -28px rgba(15, 23, 42, .25);
+    }
+
+    [data-theme="sand"] {
+      color-scheme: light;
+      --bg: #FAF6F0;
+      --bg2: #FFFFFF;
+      --panel: rgba(255, 255, 255, .88);
+      --card: #FFFFFF;
+      --card2: #F3ECE1;
+      --line: rgba(120, 80, 50, .14);
+      --text: #2C221A;
+      --mute: #7C6958;
+      --ac: #D97706;
+      --ac-rgb: 217, 119, 6;
+      --ac2: #B45309;
+      --ac2-rgb: 180, 83, 9;
+      --ok: #059669;
+      --ok-rgb: 5, 150, 105;
+      --bad: #BE123C;
+      --warn: #D97706;
+      --dot-rgb: 140, 100, 70;
+      --grid: rgba(180, 83, 9, .06);
+      --ink-on-ac: #FFFBEB;
+      --shadow: 0 24px 50px -28px rgba(70, 40, 15, .2);
+    }
+
+    [data-theme="rose"] {
+      color-scheme: dark;
+      --bg: #1A0A10;
+      --bg2: #100508;
+      --panel: rgba(38, 12, 22, .80);
+      --card: #200B15;
+      --card2: #300F1E;
+      --line: rgba(251, 113, 133, .2);
+      --text: #FFF1F2;
+      --mute: #FDA4AF;
+      --ac: #FB7185;
+      --ac-rgb: 251, 113, 133;
+      --ac2: #F472B6;
+      --ac2-rgb: 244, 114, 182;
+      --ok: #34D399;
+      --ok-rgb: 52, 211, 153;
+      --bad: #FB7185;
+      --warn: #FBBF24;
+      --dot-rgb: 251, 113, 133;
+      --grid: rgba(251, 113, 133, .10);
+      --ink-on-ac: #1A0008;
+      --shadow: 0 24px 50px -24px rgba(0, 0, 0, .65);
+    }
+
+    [data-theme="midnight"] {
+      color-scheme: dark;
+      --bg: #020204;
+      --bg2: #000000;
+      --panel: rgba(6, 6, 12, .90);
+      --card: #080810;
+      --card2: #101020;
+      --line: rgba(99, 102, 241, .18);
+      --text: #F0F0FF;
+      --mute: #818CF8;
+      --ac: #6366F1;
+      --ac-rgb: 99, 102, 241;
+      --ac2: #A78BFA;
+      --ac2-rgb: 167, 139, 250;
+      --ok: #34D399;
+      --ok-rgb: 52, 211, 153;
+      --bad: #F43F5E;
+      --warn: #FBBF24;
+      --dot-rgb: 99, 102, 241;
+      --grid: rgba(99, 102, 241, .08);
+      --ink-on-ac: #FFFFFF;
+      --shadow: 0 24px 50px -24px rgba(0, 0, 0, .85);
+    }
+
+    [data-theme="sapphire"] {
+      color-scheme: dark;
+      --bg: #06101E;
+      --bg2: #030A13;
+      --panel: rgba(10, 22, 42, .80);
+      --card: #0A1A30;
+      --card2: #102440;
+      --line: rgba(56, 189, 248, .18);
+      --text: #F0F9FF;
+      --mute: #7DD3FC;
+      --ac: #38BDF8;
+      --ac-rgb: 56, 189, 248;
+      --ac2: #818CF8;
+      --ac2-rgb: 129, 140, 248;
+      --ok: #34D399;
+      --ok-rgb: 52, 211, 153;
+      --bad: #F43F5E;
+      --warn: #FBBF24;
+      --dot-rgb: 56, 189, 248;
+      --grid: rgba(56, 189, 248, .10);
+      --ink-on-ac: #020C14;
+      --shadow: 0 24px 50px -24px rgba(0, 0, 0, .70);
+    }
+
+    [data-theme="crimson"] {
+      color-scheme: dark;
+      --bg: #120608;
+      --bg2: #0A0305;
+      --panel: rgba(28, 8, 12, .82);
+      --card: #1C080C;
+      --card2: #2C0E14;
+      --line: rgba(239, 68, 68, .22);
+      --text: #FFF5F5;
+      --mute: #FCA5A5;
+      --ac: #EF4444;
+      --ac-rgb: 239, 68, 68;
+      --ac2: #F97316;
+      --ac2-rgb: 249, 115, 22;
+      --ok: #34D399;
+      --ok-rgb: 52, 211, 153;
+      --bad: #EF4444;
+      --warn: #FBBF24;
+      --dot-rgb: 239, 68, 68;
+      --grid: rgba(239, 68, 68, .10);
+      --ink-on-ac: #FFFFFF;
+      --shadow: 0 24px 50px -24px rgba(0, 0, 0, .70);
+    }
+
+    [data-theme="forest"] {
+      color-scheme: dark;
+      --bg: #091209;
+      --bg2: #050A05;
+      --panel: rgba(12, 24, 12, .80);
+      --card: #0E1E0E;
+      --card2: #162816;
+      --line: rgba(74, 222, 128, .16);
+      --text: #F0FDF4;
+      --mute: #86EFAC;
+      --ac: #4ADE80;
+      --ac-rgb: 74, 222, 128;
+      --ac2: #A3E635;
+      --ac2-rgb: 163, 230, 53;
+      --ok: #4ADE80;
+      --ok-rgb: 74, 222, 128;
+      --bad: #F43F5E;
+      --warn: #FBBF24;
+      --dot-rgb: 74, 222, 128;
+      --grid: rgba(74, 222, 128, .09);
+      --ink-on-ac: #052010;
+      --shadow: 0 24px 50px -24px rgba(0, 0, 0, .65);
+    }
+
+    [data-theme="nordic"] {
+      color-scheme: light;
+      --bg: #ECEFF4;
+      --bg2: #E5E9F0;
+      --panel: rgba(236, 239, 244, .90);
+      --card: #FFFFFF;
+      --card2: #D8DEE9;
+      --line: rgba(94, 129, 172, .18);
+      --text: #2E3440;
+      --mute: #4C566A;
+      --ac: #5E81AC;
+      --ac-rgb: 94, 129, 172;
+      --ac2: #88C0D0;
+      --ac2-rgb: 136, 192, 208;
+      --ok: #A3BE8C;
+      --ok-rgb: 163, 190, 140;
+      --bad: #BF616A;
+      --warn: #EBCB8B;
+      --dot-rgb: 94, 129, 172;
+      --grid: rgba(94, 129, 172, .08);
+      --ink-on-ac: #ECEFF4;
+      --shadow: 0 24px 50px -28px rgba(46, 52, 64, .20);
+    }
+
+    /* ============ Theme Studio Cards ============ */
+    .theme-card {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      padding: 1rem 1.15rem;
+      border-radius: 1.1rem;
+      border: 1px solid var(--line);
+      background: var(--card);
+      text-align: left;
+      transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+      cursor: pointer;
+    }
+
+    .theme-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(var(--ac-rgb), 0.55);
+      background: var(--card2);
+      box-shadow: 0 10px 28px -10px rgba(var(--ac-rgb), 0.35);
+    }
+
+    .theme-card.active {
+      border-color: var(--ac);
+      box-shadow: 0 0 0 1.5px var(--ac), 0 12px 32px -10px rgba(var(--ac-rgb), 0.45);
+      background: var(--card2);
+    }
+
+    .theme-swatch {
+      width: 2.35rem;
+      height: 2.35rem;
+      border-radius: 0.8rem;
+      flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    }
+
+    .theme-swatch .sw-prim {
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+    }
+
+    .theme-swatch .sw-sec {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 58%;
+      height: 58%;
+      border-radius: 50% 0 0.8rem 0;
     }
 
     html {
@@ -165,30 +509,41 @@
       display: none !important;
     }
 
-    /* ============ Reveal system ============ */
+    /* ============ Premium Scroll Reveal System ============ */
     [data-reveal] {
       opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: translateY(32px);
+      transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), filter 0.85s ease;
       transition-delay: var(--rd, 0ms);
-      will-change: transform, opacity;
+      will-change: transform, opacity, filter;
+      filter: blur(4px);
     }
 
     [data-reveal="left"] {
-      transform: translateX(-28px);
+      transform: translateX(-36px) translateY(0);
     }
 
     [data-reveal="right"] {
-      transform: translateX(28px);
+      transform: translateX(36px) translateY(0);
     }
 
     [data-reveal="zoom"] {
-      transform: scale(0.95);
+      transform: scale(0.92) translateY(12px);
+    }
+
+    [data-reveal="scale-up"] {
+      transform: scale(0.86) translateY(24px);
+    }
+
+    [data-reveal="flip"] {
+      transform: rotateX(15deg) translateY(28px);
+      transform-origin: center top;
     }
 
     [data-reveal].revealed {
       opacity: 1;
-      transform: translate3d(0, 0, 0) scale(1);
+      transform: translate3d(0, 0, 0) scale(1) rotateX(0deg);
+      filter: blur(0px);
     }
 
     /* ============ Shared bits ============ */
@@ -1138,23 +1493,27 @@
     }
 
     /* ============ Overlays ============ */
+    #theme-modal .sm-backdrop,
     #search-modal .sm-backdrop,
     #proj-modal .pm-backdrop {
       opacity: 0;
       transition: opacity .35s
     }
 
+    #theme-modal.open .sm-backdrop,
     #search-modal.open .sm-backdrop,
     #proj-modal.open .pm-backdrop {
       opacity: 1
     }
 
+    #theme-modal .sm-panel,
     #search-modal .sm-panel {
       opacity: 0;
       transform: translateX(-50%) translateY(14px) scale(.97);
       transition: .35s cubic-bezier(.22, 1, .36, 1)
     }
 
+    #theme-modal.open .sm-panel,
     #search-modal.open .sm-panel {
       opacity: 1;
       transform: translateX(-50%) translateY(0) scale(1)
@@ -1316,10 +1675,397 @@
         scroll-behavior: auto
       }
     }
+
+    /* ============ Nav Scroll → Icon → Rail Animation ============ */
+    /* Each nav-link now contains an icon + text span */
+    .nav-link { position: relative; overflow: hidden; }
+    .nl-icon {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 0; opacity: 0; flex-shrink: 0;
+      transition: opacity .3s ease, width .4s cubic-bezier(.22,1,.36,1);
+      vertical-align: middle;
+    }
+    .nl-text {
+      display: inline-block;
+      max-width: 90px;
+      overflow: hidden; white-space: nowrap; vertical-align: middle;
+      transition: max-width .42s cubic-bezier(.22,1,.36,1), opacity .3s ease;
+    }
+    /* Icon-only mode (triggered by scroll) */
+    html.nav-icon-mode .nav-link { 
+      padding: .45rem .55rem; 
+      transform: scale(1.1);
+    }
+    html.nav-icon-mode .nl-text  { max-width: 0 !important; opacity: 0; }
+    html.nav-icon-mode .nl-icon  { opacity: 1; width: 1.1rem; }
+
+    /* Hide site-header with flying arc trajectory when rail mode activates */
+    #site-header {
+      transition: transform .6s cubic-bezier(.34, 1.25, .64, 1), opacity .45s ease;
+    }
+    html.nav-rail-mode #site-header {
+      transform: translateY(-120%) scale(0.9) rotate(-3deg);
+      opacity: 0;
+      pointer-events: none;
+    }
+    html.nav-rail-mode .nav-link .nl-icon {
+      transform: translateY(20px) translateX(-50px) scale(1.4) rotate(-25deg);
+      opacity: 0;
+      transition: transform .5s cubic-bezier(.34, 1.3, .64, 1), opacity .3s ease;
+    }
+
+    /* ── Floating Right Theme Circle Button ── */
+    #floating-theme-btn {
+      position: fixed;
+      right: 18px;
+      top: 50%;
+      transform: translateY(-50%) scale(0.6);
+      z-index: 45;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--panel);
+      border: 1.5px solid var(--line);
+      color: var(--ac);
+      display: grid;
+      place-items: center;
+      box-shadow: 0 8px 24px rgba(0,0,0,.25), 0 0 15px rgba(var(--ac-rgb),.2);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      opacity: 0;
+      pointer-events: none;
+      cursor: pointer;
+      transition: transform .55s cubic-bezier(.34, 1.4, .64, 1), opacity .4s ease, border-color .3s, box-shadow .3s;
+    }
+    #floating-theme-btn.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(-50%) scale(1);
+    }
+    #floating-theme-btn:hover {
+      border-color: rgba(var(--ac-rgb), .6);
+      transform: translateY(-50%) scale(1.12) rotate(12deg);
+      box-shadow: 0 10px 28px rgba(0,0,0,.35), 0 0 20px rgba(var(--ac-rgb),.4);
+    }
+    #floating-theme-btn .fl-dot {
+      position: absolute;
+      top: 3px;
+      right: 3px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--ac);
+      box-shadow: 0 0 8px var(--ac);
+    }
+
+    /* ── Left Icon Rail (Flying Landing Animation) ── */
+    #nav-rail {
+      position: fixed; left: 0; top: 50%;
+      transform: translateY(-50%) translateX(-120%) scale(0.85);
+      z-index: 39;
+      display: flex; flex-direction: column;
+      align-items: center; gap: 6px;
+      padding: 16px 9px;
+      background: var(--panel);
+      border: 1.5px solid var(--line); border-left: none;
+      border-radius: 0 20px 20px 0;
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      box-shadow: 6px 0 32px rgba(0,0,0,.3), 0 0 20px rgba(var(--ac-rgb),.15);
+      transition: transform .6s cubic-bezier(.34, 1.25, .64, 1), opacity .4s ease;
+      opacity: 0; pointer-events: none;
+    }
+    #nav-rail.rail-visible {
+      transform: translateY(-50%) translateX(0) scale(1);
+      opacity: 1; pointer-events: auto;
+    }
+    .rail-link {
+      position: relative;
+      display: grid; place-items: center;
+      width: 38px; height: 38px;
+      border-radius: 12px;
+      color: var(--mute);
+      border: 1px solid transparent;
+      background: transparent;
+      text-decoration: none;
+      opacity: 0;
+      /* Flying landing trajectory effect: icon flies from top-right towards left rail */
+      transform: translate(60px, -45px) scale(1.5) rotate(20deg);
+      transition: color .25s, border-color .25s, background .25s,
+                  transform .65s cubic-bezier(.34, 1.35, .64, 1), opacity .55s cubic-bezier(.16, 1, 0.3, 1);
+      transition-delay: calc(var(--ri, 0) * 45ms);
+    }
+    #nav-rail.rail-visible .rail-link {
+      opacity: 1; 
+      transform: translate(0, 0) scale(1) rotate(0deg);
+    }
+    .rail-link:hover, .rail-link.active {
+      color: var(--ac);
+      border-color: rgba(var(--ac-rgb), .35);
+      background: rgba(var(--ac-rgb), .08);
+    }
+    .rail-link.active { box-shadow: 0 0 10px rgba(var(--ac-rgb), .25); }
+    /* Tooltip */
+    .rail-link::after {
+      content: attr(data-label);
+      position: absolute;
+      left: calc(100% + 10px); top: 50%;
+      transform: translateY(-50%) translateX(-5px);
+      background: var(--card); border: 1px solid var(--line);
+      color: var(--text);
+      font: 500 10.5px 'JetBrains Mono', monospace;
+      padding: 4px 10px; border-radius: 8px;
+      white-space: nowrap; opacity: 0; pointer-events: none;
+      transition: opacity .2s, transform .2s;
+      box-shadow: var(--shadow); z-index: 50;
+    }
+    .rail-link:hover::after {
+      opacity: 1; transform: translateY(-50%) translateX(0);
+    }
+    /* Divider dot in rail */
+    .rail-div {
+      width: 4px; height: 4px; border-radius: 50%;
+      background: var(--line); margin: 2px 0;
+      opacity: 0; transition: opacity .4s ease calc(var(--rd, 0) * 55ms);
+    }
+    #nav-rail.rail-visible .rail-div { opacity: 1; }
+
+    /* ============ Inter-Section Mini-Games Styling ============ */
+    .game-section {
+      position: relative;
+      padding: 1.75rem 0;
+      background: linear-gradient(180deg, transparent, rgba(var(--ac-rgb), .03), transparent);
+    }
+    .game-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 1.5rem;
+      padding: 1.25rem 1.5rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,.15);
+      backdrop-filter: blur(12px);
+      transition: border-color .3s, box-shadow .3s;
+    }
+    .game-card:hover {
+      border-color: rgba(var(--ac-rgb),.4);
+      box-shadow: 0 14px 36px rgba(var(--ac-rgb),.15);
+    }
+    .game-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 10px;
+      border-radius: 99px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      background: rgba(var(--ac-rgb),.12);
+      color: var(--ac);
+      border: 1px solid rgba(var(--ac-rgb),.25);
+    }
+    .g-btn {
+      transition: all .2s cubic-bezier(.22,1,.36,1);
+      user-select: none;
+    }
+    .g-btn:hover {
+      transform: translateY(-2px) scale(1.04);
+    }
+    .g-btn:active {
+      transform: translateY(0) scale(0.96);
+    }
+    /* Game 1: Color Name Fill */
+    .color-swatch {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: transform .2s, border-color .2s;
+    }
+    .color-swatch:hover, .color-swatch.active {
+      transform: scale(1.18);
+      border-color: var(--text);
+    }
+    .color-letter {
+      display: inline-block;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 800;
+      font-size: 1.6rem;
+      cursor: pointer;
+      padding: 0 3px;
+      transition: color .3s, transform .2s;
+      user-select: none;
+    }
+    .color-letter:hover {
+      transform: translateY(-4px) scale(1.2);
+    }
+    /* Game 2: Bubble Pop */
+    .pop-bubble {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, rgba(var(--ac-rgb),.4), var(--panel));
+      border: 1.5px solid rgba(var(--ac-rgb),.5);
+      box-shadow: inset 0 0 10px rgba(var(--ac-rgb),.3), 0 4px 12px rgba(0,0,0,.15);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      font-size: 18px;
+      transition: transform .2s cubic-bezier(.34,1.56,.64,1), opacity .2s;
+      animation: floaty 4s ease-in-out infinite alternate;
+    }
+    .pop-bubble:hover {
+      transform: scale(1.15);
+      border-color: var(--ac);
+    }
+    .pop-bubble.popped {
+      transform: scale(0);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* ============ Creative Computer Field Preloader & Slow Net Bar ============ */
+    #tech-preloader {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      background: var(--bg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s ease;
+    }
+    #tech-preloader.done {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    /* Computer terminal preloader box */
+    .terminal-box {
+      width: 320px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 1.25rem;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.4), 0 0 30px rgba(var(--ac-rgb), 0.15);
+      overflow: hidden;
+      backdrop-filter: blur(16px);
+    }
+    .terminal-bar {
+      background: var(--card2);
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      border-bottom: 1px solid var(--line);
+    }
+    .t-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    .terminal-body {
+      padding: 1.25rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+    }
+    .terminal-code {
+      color: var(--ac);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .loader-spin-icon {
+      animation: spin 1.2s linear infinite;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    .terminal-progress-track {
+      width: 100%;
+      height: 6px;
+      border-radius: 99px;
+      background: var(--card2);
+      overflow: hidden;
+      margin-top: 10px;
+      border: 1px solid var(--line);
+    }
+    .terminal-progress-fill {
+      height: 100%;
+      border-radius: 99px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--ac), var(--ac2));
+      transition: width 0.3s ease;
+    }
+
+    /* Creative Slow Network Bar / Button */
+    #slow-net-bar {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      z-index: 9999;
+      background: var(--panel);
+      border: 1.5px solid rgba(var(--ac-rgb), 0.4);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.3), 0 0 20px rgba(var(--ac-rgb), 0.2);
+      border-radius: 99px;
+      padding: 8px 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11.5px;
+      color: var(--text);
+      backdrop-filter: blur(16px);
+      opacity: 0;
+      pointer-events: none;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+    }
+    #slow-net-bar.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(0);
+    }
   </style>
 </head>
 
 <body class="font-body antialiased">
+
+  <!-- ============ CREATIVE COMPUTER FIELD PRELOADER ============ -->
+  <div id="tech-preloader" aria-label="Loading Website">
+    <div class="terminal-box">
+      <div class="terminal-bar">
+        <span class="t-dot bg-rose-500"></span>
+        <span class="t-dot bg-amber-500"></span>
+        <span class="t-dot bg-emerald-500"></span>
+        <span class="ml-2 font-mono text-[10px] text-mute">system.init // ali-nex.io</span>
+      </div>
+      <div class="terminal-body">
+        <div class="terminal-code">
+          <i data-lucide="terminal" class="h-4 w-4 text-ac"></i>
+          <span>Booting portfolio kernel...</span>
+        </div>
+        <div class="text-[11px] text-mute flex items-center justify-between">
+          <span id="preload-status">Compiling modules...</span>
+          <span id="preload-percent" class="text-ac font-bold font-mono">0%</span>
+        </div>
+        <div class="terminal-progress-track">
+          <div id="preload-progress-fill" class="terminal-progress-fill"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SLOW NETWORK CREATIVE FLOATING BAR ============ -->
+  <div id="slow-net-bar" aria-live="polite">
+    <i data-lucide="wifi-off" class="h-4 w-4 text-amber-400 animate-pulse"></i>
+    <span>Slow connection detected — loading light mode...</span>
+    <button id="slow-net-retry" class="ml-2 rounded-lg bg-card2 border border-line px-2.5 py-1 text-[10.5px] font-semibold text-ac hover:border-ac transition">
+      Retry ⚡
+    </button>
+  </div>
 
   <div id="scroll-progress"></div>
 
@@ -1334,16 +2080,30 @@
           <span class="brand-grad">AH</span>
         </a>
         <div id="nav-links" class="relative mr-1 hidden items-center gap-0.5 text-sm font-medium text-mute lg:flex">
-          <a class="nav-link rounded-lg px-2.5 py-2 transition-colors hover:text-ink" href="#home">Home</a>
-          <a class="nav-link rounded-lg px-2.5 py-2 transition-colors hover:text-ink" href="#about">About</a>
-          <a class="nav-link rounded-lg px-2.5 py-2 transition-colors hover:text-ink" href="#skills">Skills</a>
-          <a class="nav-link rounded-lg px-2.5 py-2 transition-colors hover:text-ink" href="#projects">Projects</a>
-          <a class="nav-link rounded-lg px-2.5 py-2 transition-colors hover:text-ink" href="#journey"
-            data-jf="education">Education</a>
-          <a class="nav-link rounded-lg px-2.5 py-2 transition-colors hover:text-ink" href="#journey"
-            data-jf="experience">Experience</a>
-          <a class="nav-link rounded-lg px-2.5 py-2 transition-colors hover:text-ink" href="#resume">Resume</a>
-          <a class="nav-link rounded-lg px-2.5 py-2 transition-colors hover:text-ink" href="#contact">Contact</a>
+          <a class="nav-link rounded-lg px-2.5 py-2 transition-colors hover:text-ink" href="#home">
+            <i data-lucide="home" class="nl-icon h-4 w-4"></i><span class="nl-text">Home</span>
+          </a>
+          <a class="nav-link rounded-lg px-2.5 py-2 transition-colors hover:text-ink" href="#about">
+            <i data-lucide="user" class="nl-icon h-4 w-4"></i><span class="nl-text">About</span>
+          </a>
+          <a class="nav-link rounded-lg px-2.5 py-2 transition-colors hover:text-ink" href="#skills">
+            <i data-lucide="code-2" class="nl-icon h-4 w-4"></i><span class="nl-text">Skills</span>
+          </a>
+          <a class="nav-link rounded-lg px-2.5 py-2 transition-colors hover:text-ink" href="#projects">
+            <i data-lucide="layers" class="nl-icon h-4 w-4"></i><span class="nl-text">Projects</span>
+          </a>
+          <a class="nav-link rounded-lg px-2.5 py-2 transition-colors hover:text-ink" href="#journey" data-jf="education">
+            <i data-lucide="graduation-cap" class="nl-icon h-4 w-4"></i><span class="nl-text">Education</span>
+          </a>
+          <a class="nav-link rounded-lg px-2.5 py-2 transition-colors hover:text-ink" href="#journey" data-jf="experience">
+            <i data-lucide="briefcase" class="nl-icon h-4 w-4"></i><span class="nl-text">Experience</span>
+          </a>
+          <a class="nav-link rounded-lg px-2.5 py-2 transition-colors hover:text-ink" href="#resume">
+            <i data-lucide="file-text" class="nl-icon h-4 w-4"></i><span class="nl-text">Resume</span>
+          </a>
+          <a class="nav-link rounded-lg px-2.5 py-2 transition-colors hover:text-ink" href="#contact">
+            <i data-lucide="mail" class="nl-icon h-4 w-4"></i><span class="nl-text">Contact</span>
+          </a>
           <span id="nav-ind" class="opacity-0"></span>
         </div>
         <button id="search-btn" aria-label="Open search (Ctrl/Cmd+K)"
@@ -1351,26 +2111,11 @@
           <i data-lucide="search" class="h-4 w-4"></i>
           <kbd class="hidden font-mono text-[10px] tracking-wider md:inline">⌘K</kbd>
         </button>
-        <button id="theme-btn" aria-label="Toggle color theme"
-          class="t-col grid h-10 w-10 place-items-center rounded-xl border border-line bg-card text-mute transition hover:text-ink">
-          <svg class="theme-ic h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round">
-            <mask id="moonMask">
-              <rect width="24" height="24" fill="#fff" />
-              <circle class="mask-c" cx="15" cy="15" r="6.5" fill="#000" />
-            </mask>
-            <circle cx="12" cy="12" r="5.5" mask="url(#moonMask)" fill="currentColor" stroke="none" />
-            <g class="rays">
-              <line x1="20.4" y1="12" x2="23" y2="12" />
-              <line x1="17.94" y1="17.94" x2="19.78" y2="19.78" />
-              <line x1="12" y1="20.4" x2="12" y2="23" />
-              <line x1="6.06" y1="17.94" x2="4.22" y2="19.78" />
-              <line x1="3.6" y1="12" x2="1" y2="12" />
-              <line x1="6.06" y1="6.06" x2="4.22" y2="4.22" />
-              <line x1="12" y1="3.6" x2="12" y2="1" />
-              <line x1="17.94" y1="6.06" x2="19.78" y2="4.22" />
-            </g>
-          </svg>
+        <button id="theme-btn" aria-label="Open Theme Studio (Change color scheme)"
+          class="t-col group relative flex items-center gap-2 rounded-xl border border-line bg-card px-3 py-2 text-mute transition hover:border-[rgba(var(--ac-rgb),.5)] hover:text-ink">
+          <i data-lucide="palette" class="h-4 w-4 text-ac transition duration-300 group-hover:rotate-12"></i>
+          <span class="hidden font-mono text-xs font-medium lg:inline" id="active-theme-name">Themes</span>
+          <span id="theme-nav-dot" class="inline-block h-2 w-2 rounded-full bg-ac shadow-[0_0_8px_var(--ac)]"></span>
         </button>
         <button
           class="js-cv relative hidden items-center gap-2 overflow-hidden rounded-xl bg-ac px-4 py-2.5 font-disp text-sm font-semibold text-[var(--ink-on-ac)] hov-glow sm:inline-flex">
@@ -1388,6 +2133,26 @@
     </div>
   </header>
 
+  <!-- ============ LEFT ICON RAIL ============ -->
+  <nav id="nav-rail" aria-label="Side navigation">
+    <a class="rail-link" href="#home"    data-label="Home"       style="--ri:0"><i data-lucide="home"           class="h-4 w-4"></i></a>
+    <a class="rail-link" href="#about"   data-label="About"      style="--ri:1"><i data-lucide="user"           class="h-4 w-4"></i></a>
+    <a class="rail-link" href="#skills"  data-label="Skills"     style="--ri:2"><i data-lucide="code-2"         class="h-4 w-4"></i></a>
+    <a class="rail-link" href="#projects" data-label="Projects"  style="--ri:3"><i data-lucide="layers"         class="h-4 w-4"></i></a>
+    <div class="rail-div" style="--rd:4"></div>
+    <a class="rail-link" href="#journey" data-label="Education"  style="--ri:5" data-jf="education"><i data-lucide="graduation-cap" class="h-4 w-4"></i></a>
+    <a class="rail-link" href="#journey" data-label="Experience" style="--ri:6" data-jf="experience"><i data-lucide="briefcase"      class="h-4 w-4"></i></a>
+    <div class="rail-div" style="--rd:7"></div>
+    <a class="rail-link" href="#resume"  data-label="Resume"     style="--ri:8"><i data-lucide="file-text"      class="h-4 w-4"></i></a>
+    <a class="rail-link" href="#contact" data-label="Contact"    style="--ri:9"><i data-lucide="mail"           class="h-4 w-4"></i></a>
+  </nav>
+
+  <!-- ============ FLOATING RIGHT THEME CIRCLE BUTTON ============ -->
+  <button id="floating-theme-btn" aria-label="Open Theme Studio (Change color scheme)">
+    <i data-lucide="palette" class="h-5 w-5"></i>
+    <span class="fl-dot"></span>
+  </button>
+
   <!-- Mobile menu -->
   <div id="mobile-menu" class="fixed inset-0 z-30 lg:hidden">
     <div class="mm-backdrop absolute inset-0 bg-black/55 backdrop-blur-sm"></div>
@@ -1402,6 +2167,16 @@
         <a class="mm-link" href="#resume">Resume</a>
         <a class="mm-link" href="#contact">Contact</a>
       </nav>
+      <div class="mt-2 border-t border-line pt-2">
+        <button id="mobile-theme-btn" type="button"
+          class="flex w-full items-center justify-between rounded-xl border border-line bg-card2 px-4 py-2.5 text-xs font-medium text-mute transition hover:text-ink">
+          <span class="flex items-center gap-2">
+            <i data-lucide="palette" class="h-4 w-4 text-ac"></i>
+            <span>Theme Studio (<span id="mobile-active-theme" class="text-ink font-semibold">Cyber Slate</span>)</span>
+          </span>
+          <span class="inline-block h-2 w-2 rounded-full bg-ac shadow-[0_0_6px_var(--ac)]"></span>
+        </button>
+      </div>
       <button
         class="js-cv mt-2 flex w-full items-center justify-center gap-2 rounded-xl bg-ac px-4 py-3 font-disp text-sm font-semibold text-[var(--ink-on-ac)]">
         <span class="cv-s inline-flex items-center gap-2"><i data-lucide="download" class="h-4 w-4"></i>Download
@@ -1519,10 +2294,10 @@
           <!-- Photo Target -->
           <div data-reveal="left">
             <div id="about-avatar-target" class="beam-wrap relative mx-auto w-72 sm:w-80">
-              <div class="beam-border float-idle rounded-[28px]">
-                <div class="relative overflow-hidden rounded-[26px]">
+              <div class="beam-border float-idle" id="about-avatar-ring" style="border-radius:28px; transition: none;">
+                <div class="relative overflow-hidden" id="about-avatar-clip" style="border-radius:26px; transition: none;">
                   <img id="about-avatar-img" src="IMG_20260730_061443.png" alt="Ali Hassan" width="640" height="760"
-                    loading="lazy" class="h-auto w-full object-cover opacity-0 transition-opacity duration-300">
+                    loading="lazy" class="h-auto w-full object-cover" style="opacity:0;">
                   <div
                     class="shot-overlay absolute inset-x-4 bottom-4 rounded-2xl border border-white/15 bg-black/45 p-4 text-white backdrop-blur-xl">
                     <div class="font-disp font-semibold">Ali Hassan</div>
@@ -1626,7 +2401,7 @@
             </div>
 
             <!-- Stats -->
-            <div class="mt-9 grid grid-cols-2 gap-4 sm:grid-cols-4">
+            <div class="mt-9 grid grid-cols-2 gap-4 sm:grid-cols-4" data-reveal="scale-up" data-delay="150">
               <div class="lift rounded-2xl border border-line bg-panel p-5">
                 <div class="font-disp text-3xl font-bold"><span class="count" data-target="32">0</span><span
                     class="text-ac">+</span></div>
@@ -1652,16 +2427,59 @@
       </div>
     </section>
 
+    <!-- ============ MINI GAME 1: COLOR FILLING NAME ============ -->
+    <section class="game-section my-6" data-reveal="scale-up">
+      <div class="mx-auto max-w-4xl px-5 sm:px-8">
+        <div class="game-card flex flex-col items-center justify-between gap-6 text-center md:flex-row md:text-left">
+          <div class="space-y-1 max-w-xs">
+            <span class="game-badge">🎨 Mini Game 1 // Color Painter</span>
+            <h3 class="font-disp text-lg font-bold text-ink">Color My Name!</h3>
+            <p class="text-xs text-mute">Pick a color box below, then click any letter in <strong>ALI HASSAN AZIZ</strong> to paint it!</p>
+          </div>
+          <div class="flex flex-col items-center gap-3 md:items-end">
+            <!-- Palette swatches -->
+            <div id="g1-palette" class="flex items-center gap-2">
+              <span class="color-swatch active" style="background:#22D3EE" data-color="#22D3EE"></span>
+              <span class="color-swatch" style="background:#F59E0B" data-color="#F59E0B"></span>
+              <span class="color-swatch" style="background:#10B981" data-color="#10B981"></span>
+              <span class="color-swatch" style="background:#EC4899" data-color="#EC4899"></span>
+              <span class="color-swatch" style="background:#8B5CF6" data-color="#8B5CF6"></span>
+              <span class="color-swatch" style="background:#EF4444" data-color="#EF4444"></span>
+              <span class="color-swatch" style="background:#3B82F6" data-color="#3B82F6"></span>
+            </div>
+            <!-- Letter boxes -->
+            <div id="g1-name-display" class="flex flex-wrap items-center justify-center gap-1.5 pt-1">
+              <span class="color-letter" style="color:var(--ac);">A</span>
+              <span class="color-letter" style="color:var(--ac);">L</span>
+              <span class="color-letter" style="color:var(--ac);">I</span>
+              <span class="mx-2 text-mute/40 font-bold">•</span>
+              <span class="color-letter" style="color:var(--ac2);">H</span>
+              <span class="color-letter" style="color:var(--ac2);">A</span>
+              <span class="color-letter" style="color:var(--ac2);">S</span>
+              <span class="color-letter" style="color:var(--ac2);">S</span>
+              <span class="color-letter" style="color:var(--ac2);">A</span>
+              <span class="color-letter" style="color:var(--ac2);">N</span>
+              <span class="mx-2 text-mute/40 font-bold">•</span>
+              <span class="color-letter" style="color:var(--ac);">A</span>
+              <span class="color-letter" style="color:var(--ac);">Z</span>
+              <span class="color-letter" style="color:var(--ac);">I</span>
+              <span class="color-letter" style="color:var(--ac);">Z</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ============ SKILLS ============ -->
     <section id="skills" class="relative py-24 sm:py-32">
       <div class="mx-auto max-w-6xl px-5 sm:px-8">
-        <div class="max-w-2xl" data-reveal>
+        <div class="max-w-2xl" data-reveal="left">
           <p class="mono-label">02 // skills</p>
           <h2 class="mt-4 font-disp text-3xl font-bold tracking-tight sm:text-4xl">A toolbox built for shipping.</h2>
           <p class="mt-4 leading-relaxed text-mute">The tools I reach for daily — with an honest read on where I stand
             with each one.</p>
         </div>
-        <div id="skill-filters" class="mt-9 flex flex-wrap gap-2.5" data-reveal>
+        <div id="skill-filters" class="mt-9 flex flex-wrap gap-2.5" data-reveal="right" data-delay="100">
           <button class="pill active" data-filter="all">All</button>
           <button class="pill" data-filter="languages">Languages</button>
           <button class="pill" data-filter="frontend">Frontend</button>
@@ -1669,52 +2487,116 @@
           <button class="pill" data-filter="tools">Tools & DevOps</button>
           <button class="pill" data-filter="art">Art & Drawing</button>
         </div>
-        <div id="skills-grid" class="mt-8 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4"></div>
+        <div id="skills-grid" class="mt-8 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4" data-reveal="scale-up" data-delay="180"></div>
+      </div>
+    </section>
+
+    <!-- ============ MINI GAME 2: BUBBLE POP ANIMATION ============ -->
+    <section class="game-section my-6" data-reveal="scale-up">
+      <div class="mx-auto max-w-4xl px-5 sm:px-8">
+        <div class="game-card flex flex-col items-center justify-between gap-5 text-center md:flex-row md:text-left">
+          <div class="space-y-1 max-w-xs">
+            <span class="game-badge">🫧 Mini Game 2 // Bubble Pop</span>
+            <h3 class="font-disp text-lg font-bold text-ink">Pop All Bubbles!</h3>
+            <p class="text-xs text-mute" id="g2-status">Click bubbles to pop them before they float away!</p>
+          </div>
+          <div class="flex items-center gap-3" id="g2-bubble-container">
+            <button class="pop-bubble g-btn" style="animation-delay:-0.4s">🫧</button>
+            <button class="pop-bubble g-btn" style="animation-delay:-1.2s">✨</button>
+            <button class="pop-bubble g-btn" style="animation-delay:-2.1s">⚡</button>
+            <button class="pop-bubble g-btn" style="animation-delay:-0.8s">🚀</button>
+            <button class="pop-bubble g-btn" style="animation-delay:-2.7s">🔥</button>
+            <button id="g2-reset-btn" type="button" class="g-btn hidden rounded-xl border border-line bg-card px-3 py-2 font-mono text-xs text-ac hover:border-ac">
+              Reset Bubbles 🔄
+            </button>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- ============ PROJECTS ============ -->
     <section id="projects" class="relative py-24 sm:py-32">
       <div class="mx-auto max-w-6xl px-5 sm:px-8">
-        <div class="max-w-2xl" data-reveal>
+        <div class="max-w-2xl" data-reveal="flip">
           <p class="mono-label">03 // projects</p>
           <h2 class="mt-4 font-disp text-3xl font-bold tracking-tight sm:text-4xl">Things I've designed, built &
             shipped.</h2>
           <p class="mt-4 leading-relaxed text-mute">Filter by discipline, hover a card for the highlights — or open the
             full case study with architecture and challenges solved.</p>
         </div>
-        <div id="proj-filters" class="mt-9 flex flex-wrap gap-2.5" data-reveal>
-          <button class="pill active" data-filter="all">All</button>
+        <div id="proj-filters" class="mt-9 flex flex-wrap gap-2.5" data-reveal data-delay="100">
+          <button class="pill active" data-filter="all">All Projects</button>
           <button class="pill" data-filter="web">Web Apps</button>
-          <button class="pill" data-filter="fullstack">Full-Stack</button>
-          <button class="pill" data-filter="sketching">Sketching</button>
-          <button class="pill" data-filter="calligraphy">Calligraphy</button>
-          <button class="pill" data-filter="painting">Painting</button>
-          <button class="pill" data-filter="systems">Systems / CLI</button>
-          <button class="pill" data-filter="uiux">UI / UX</button>
+          <button class="pill" data-filter="fullstack">Full-Stack / Software</button>
+          <button class="pill" data-filter="systems">Hardware & Embedded</button>
         </div>
-        <div id="projects-grid" class="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3"></div>
+        <div id="projects-grid" class="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3" data-reveal="scale-up" data-delay="160"></div>
+      </div>
+    </section>
+
+    <!-- ============ MINI GAME 3: 5-SECOND SPEED CLICKER ============ -->
+    <section class="game-section my-6" data-reveal="scale-up">
+      <div class="mx-auto max-w-4xl px-5 sm:px-8">
+        <div class="game-card flex flex-col items-center justify-between gap-4 text-center md:flex-row md:text-left">
+          <div class="space-y-1">
+            <span class="game-badge">⚡ Mini Game 3 // Speed Reflex Test</span>
+            <h3 class="font-disp text-lg font-bold text-ink">5-Second Speed Clicker!</h3>
+            <p class="text-xs text-mute">Tap the lightning icon as fast as you can in 5 seconds!</p>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="text-center font-mono">
+              <div class="text-[10px] uppercase text-mute">Clicks</div>
+              <div id="g3-score" class="font-disp text-2xl font-bold text-ac">0</div>
+            </div>
+            <div class="text-center font-mono">
+              <div class="text-[10px] uppercase text-mute">Timer</div>
+              <div id="g3-time" class="font-disp text-2xl font-bold text-ac2">5.0s</div>
+            </div>
+            <button id="g3-btn" type="button" class="g-btn hov-glow flex h-12 w-12 items-center justify-center rounded-2xl bg-ac text-[var(--ink-on-ac)] font-bold shadow-lg">
+              <i data-lucide="zap" class="h-6 w-6"></i>
+            </button>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- ============ JOURNEY (Education & Experience) ============ -->
     <section id="journey" class="relative py-24 sm:py-32">
       <div class="mx-auto max-w-6xl px-5 sm:px-8">
-        <div class="max-w-2xl" data-reveal>
+        <div class="max-w-2xl" data-reveal="left">
           <p class="mono-label">04 // journey</p>
           <h2 class="mt-4 font-disp text-3xl font-bold tracking-tight sm:text-4xl">Education & experience, in one
             stream.</h2>
           <p class="mt-4 leading-relaxed text-mute">The formal path and the professional one — degrees, roles, and the
             highlights in between.</p>
         </div>
-        <div id="t-filters" class="mt-9 flex flex-wrap gap-2.5" data-reveal>
+        <div id="t-filters" class="mt-9 flex flex-wrap gap-2.5" data-reveal="right" data-delay="100">
           <button class="pill active" data-tfilter="all">All</button>
           <button class="pill" data-tfilter="experience">Experience</button>
           <button class="pill" data-tfilter="education">Education</button>
         </div>
-        <div id="timeline" class="relative mx-auto mt-14 max-w-3xl">
+        <div id="timeline" class="relative mx-auto mt-14 max-w-3xl" data-reveal="zoom" data-delay="160">
           <div class="tl-track absolute bottom-0 left-4 top-0 w-px md:left-1/2 md:-translate-x-1/2"></div>
           <div id="tl-fill" class="tl-fill absolute left-4 top-0 w-px md:left-1/2 md:-translate-x-1/2" style="height:0">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MINI GAME 4: MEMORY TECH PAIR MATCH ============ -->
+    <section class="game-section my-6" data-reveal="scale-up">
+      <div class="mx-auto max-w-4xl px-5 sm:px-8">
+        <div class="game-card flex flex-col items-center justify-between gap-5 text-center md:flex-row md:text-left">
+          <div class="space-y-1">
+            <span class="game-badge">🧠 Mini Game 4 // Memory Card Match</span>
+            <h3 class="font-disp text-lg font-bold text-ink">Match the Tech Icons!</h3>
+            <p class="text-xs text-mute" id="g4-status">Flip 2 cards to discover matching pairs.</p>
+          </div>
+          <div class="flex items-center gap-2" id="g4-grid">
+            <button class="g4-card g-btn flex h-12 w-12 items-center justify-center rounded-2xl border border-line bg-card text-lg font-bold text-mute" data-val="💻"></button>
+            <button class="g4-card g-btn flex h-12 w-12 items-center justify-center rounded-2xl border border-line bg-card text-lg font-bold text-mute" data-val="🚀"></button>
+            <button class="g4-card g-btn flex h-12 w-12 items-center justify-center rounded-2xl border border-line bg-card text-lg font-bold text-mute" data-val="💻"></button>
+            <button class="g4-card g-btn flex h-12 w-12 items-center justify-center rounded-2xl border border-line bg-card text-lg font-bold text-mute" data-val="🚀"></button>
           </div>
         </div>
       </div>
@@ -1724,7 +2606,7 @@
     <section id="resume" class="relative py-24 sm:py-32">
       <div class="mx-auto max-w-6xl px-5 sm:px-8">
         <!-- Section Title & Quick Actions -->
-        <div class="flex flex-col justify-between gap-6 md:flex-row md:items-end" data-reveal>
+        <div class="flex flex-col justify-between gap-6 md:flex-row md:items-end" data-reveal="flip">
           <div class="max-w-2xl">
             <p class="mono-label">05 // resume</p>
             <h2 class="mt-4 font-disp text-3xl font-bold tracking-tight sm:text-4xl">Curriculum Vitae & Credentials.</h2>
@@ -1746,7 +2628,7 @@
         </div>
 
         <!-- Master Resume Container -->
-        <div class="resume-glass-card resume-hero-glow mt-12 overflow-hidden rounded-3xl p-6 sm:p-10" data-reveal>
+        <div class="resume-glass-card resume-hero-glow mt-12 overflow-hidden rounded-3xl p-6 sm:p-10" data-reveal="scale-up" data-delay="120">
           
           <!-- Resume Header Bar -->
           <div class="flex flex-col justify-between gap-6 border-b border-line pb-8 lg:flex-row lg:items-center">
@@ -2398,10 +3280,64 @@
       <div
         class="mt-12 flex flex-col items-center justify-between gap-3 border-t border-line pt-6 text-xs text-mute sm:flex-row">
         <span>© <span id="year"></span> Ali Hassan — designed & engineered from scratch, no templates harmed.</span>
-        <span class="font-mono">Berlin, DE — <span id="local-time">--:--:--</span></span>
+        <span class="font-mono">Pakistan — <span id="local-time">--:--:--</span> (PKT)</span>
       </div>
     </div>
   </footer>
+
+  <!-- ============ THEME PICKER DROPDOWN ============ -->
+  <div id="theme-picker" style="
+    display:none;
+    position:fixed;
+    top:72px;
+    right:16px;
+    z-index:9999;
+    width:340px;
+    max-width:calc(100vw - 24px);
+    max-height:82vh;
+    overflow-y:auto;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:1.25rem;
+    box-shadow:0 24px 60px rgba(0,0,0,.5);
+    padding:1rem;
+    backdrop-filter:blur(16px);
+  " role="dialog" aria-label="Theme Picker">
+    <!-- Header -->
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem;padding-bottom:.75rem;border-bottom:1px solid var(--line);">
+      <div style="display:flex;align-items:center;gap:.5rem;">
+        <span style="width:28px;height:28px;border-radius:8px;background:rgba(var(--ac-rgb),.12);border:1px solid rgba(var(--ac-rgb),.2);display:grid;place-items:center;color:var(--ac);">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
+        </span>
+        <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:.95rem;color:var(--text);">Theme Studio</span>
+      </div>
+      <button id="theme-picker-close" aria-label="Close" style="width:28px;height:28px;border-radius:8px;border:1px solid var(--line);background:var(--card2);color:var(--mute);cursor:pointer;display:grid;place-items:center;font-size:16px;transition:.2s;" onmouseenter="this.style.color='var(--text)'" onmouseleave="this.style.color='var(--mute)'">&times;</button>
+    </div>
+
+    <!-- Dark label -->
+    <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;">
+      <span style="width:6px;height:6px;border-radius:50%;background:var(--ac);display:inline-block;"></span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:var(--mute);">Dark</span>
+      <span style="flex:1;height:1px;background:var(--line);"></span>
+    </div>
+    <!-- Dark theme grid -->
+    <div id="tp-dark" style="display:grid;grid-template-columns:repeat(2,1fr);gap:6px;margin-bottom:10px;"></div>
+
+    <!-- Light label -->
+    <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;">
+      <span style="width:6px;height:6px;border-radius:50%;background:#F59E0B;display:inline-block;"></span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:var(--mute);">Light</span>
+      <span style="flex:1;height:1px;background:var(--line);"></span>
+    </div>
+    <!-- Light theme grid -->
+    <div id="tp-light" style="display:grid;grid-template-columns:repeat(2,1fr);gap:6px;"></div>
+
+    <!-- Footer -->
+    <div style="margin-top:10px;padding-top:10px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--mute);">✦ Saved automatically</span>
+      <button id="tp-flip" style="font-family:'JetBrains Mono',monospace;font-size:10px;padding:4px 10px;border-radius:8px;border:1px solid var(--line);background:var(--card2);color:var(--text);cursor:pointer;transition:.2s;" title="Quick dark/light flip">☀︎ / ☾ Flip</button>
+    </div>
+  </div>
 
   <!-- ============ SEARCH MODAL ============ -->
   <div id="search-modal" class="fixed inset-0 z-50 hidden" role="dialog" aria-modal="true" aria-label="Quick search">
@@ -2491,172 +3427,64 @@
     ];
     const PROJECTS = [
       {
-        id: 'drift', title: 'Drift', cat: 'web', catLabel: 'Web App', year: '2024', seed: 'drift-editor',
-        desc: 'Real-time Portfolio, Html , csss , js. , this web is my first web project',
-        tags: ['React', 'Yjs', 'IndexedDB', 'WebRTC'],
-        features: ['Multiplayer cursors with presence avatars', 'Offline edits merge conflict-free on reconnect', 'One-click export to PDF, HTML and Confluence'],
-        arch: [['monitor-smartphone', 'Frontend', 'React 18 · Vite · Yjs CRDT · TipTap'], ['service', 'Sync layer', 'WebRTC data channels · WebSocket fallback'],
-        ['hard-drive', 'Storage', 'IndexedDB (local) · S3 (snapshots)'], ['shield-check', 'Privacy', 'End-to-end encryption for private docs']],
-        challenges: [['Merge storms under latency', 'Switched to per-paragraph CRDT docs, cutting reconciliation time by 87%.'],
-        ['Offline-first complexity', 'Built an op-log queue with optimistic UI so the editor never blocks on the network.']],
-        metrics: ['9k monthly users', '<40ms sync p95', '100 Lighthouse'],
-        demo: 'https://alihassanaziz.netlify.app/', repo: 'https://github.com/ali-nex/drift'
+        id: 'portfolio-web', title: 'Personal Portfolio Web Application', cat: 'web', catLabel: 'Web App', year: '2024', seed: 'portfolio-site',
+        desc: 'My primary personal web development project built from scratch using HTML5, CSS3, and JavaScript — featuring real-time themes, interactive mini-games, and responsive layout.',
+        tags: ['HTML5', 'CSS3', 'JavaScript', 'Tailwind', 'Responsive'],
+        features: ['14 Custom Selectable Color Themes with real-time UI switching', 'Interactive Mini-Games integrated between portfolio sections', 'Scroll-driven profile avatar transformation and nav icon rail'],
+        arch: [['layout', 'Frontend', 'Vanilla JS · Tailwind CSS · Custom Tokens'], ['palette', 'Themes', 'CSS Variables · LocalStorage Persistence'],
+        ['gamepad-2', 'Interactive', 'Custom Canvas & DOM Mini-Game Engines'], ['globe', 'Hosting', 'GitHub Pages Deployment']],
+        challenges: [['Dynamic color theme engine', 'Built CSS variable design tokens allowing zero-lag theme transitions.'],
+        ['Scroll animation performance', 'Optimized requestAnimationFrame loop for 60fps avatar morphing and canvas particle physics.']],
+        metrics: ['100% Custom Code', '14 Theme Palettes', '100 Lighthouse'],
+        demo: 'https://ali-nex.github.io/', repo: 'https://github.com/ali-nex/ali-nex.github.io'
       },
       {
-        id: 'orbit', title: 'Orbit Chat', cat: 'web', catLabel: 'Web App', year: '2023', seed: 'orbit-chat',
-        desc: 'End-to-end encrypted chat with ephemeral rooms, a zero-knowledge server and drag-and-drop file sharing.',
-        tags: ['Socket.io', 'WebCrypto', 'Redis'],
-        features: ['E2E encryption — keys never leave the device', 'Rooms self-destruct after inactivity', 'Encrypted file drops up to 100MB'],
-        arch: [['monitor-smartphone', 'Frontend', 'Svelte · WebCrypto (AES-GCM)'], ['service', 'Realtime', 'Socket.io rooms · Redis pub/sub'],
-        ['server', 'Server', 'Zero-knowledge Node.js relay'], ['database', 'Storage', 'Encrypted blobs · TTL cleanup']],
-        challenges: [['Key exchange without a PKI', 'Adopted double-ratchet-style ephemeral keys exchanged over the signalling channel.'],
-        ['Message ordering', 'Designed a Lamport-clock ordering scheme that survives reconnects.']],
-        metrics: ['2.4k stars', 'E2E by default', '12MB bundle'],
-        demo: 'https://ali-nex.github.io/demo/orbit', repo: 'https://github.com/ali-nex/orbit-chat'
+        id: 'radar-system', title: 'Arduino Radar Security System', cat: 'systems', catLabel: 'Hardware / Embedded', year: '2023', seed: 'radar-arduino',
+        desc: 'Arduino-based ultrasonic radar security system that sweeps 180 degrees using a servo motor, detecting nearby obstacle distances and visualizing radar sweeps.',
+        tags: ['Arduino Uno', 'Ultrasonic HC-SR04', 'Servo Motor', 'C++', 'Processing'],
+        features: ['180-degree continuous pan servo sweep', 'Real-time ultrasonic distance calculation & obstacle detection', 'Radar display visualization in Processing/GUI interface'],
+        arch: [['cpu', 'Microcontroller', 'Arduino Uno R3 ATmega328P'], ['radio', 'Sensor', 'HC-SR04 Ultrasonic Distance Sensor'],
+        ['compass', 'Actuator', 'SG90 Micro Servo Motor'], ['award', 'Recognition', 'Selected for College Science & Hardware Exhibition']],
+        challenges: [['Ultrasonic noise filtering', 'Applied median signal filtering to eliminate false distance spikes during rapid rotation.'],
+        ['Servo jitter reduction', 'Separated power rails to prevent motor draw from resetting microcontroller logic.']],
+        metrics: ['180° Coverage', '100% Real-time', 'College Exhibition Winner'],
+        demo: 'https://github.com/ali-nex', repo: 'https://github.com/ali-nex'
       },
       {
-        id: 'ledgerly', title: 'Ledgerly', cat: 'fullstack', catLabel: 'Full-Stack', year: '2024', seed: 'ledgerly-app',
-        desc: 'Personal finance tracker with automatic transaction categorisation, envelope budgets and cash-flow forecasting.',
-        tags: ['Next.js', 'Prisma', 'PostgreSQL', 'Recharts'],
-        features: ['Auto-categorisation with a small on-device model', 'Envelope budgets with rollover rules', '12-month cash-flow forecast with scenarios'],
-        arch: [['monitor-smartphone', 'Frontend', 'Next.js 14 · Server Components · Recharts'], ['service', 'API', 'tRPC · Zod validation'],
-        ['database', 'Data', 'PostgreSQL · Prisma · pg-cron jobs'], ['cloud', 'Infra', 'Docker · Fly.io · GitHub Actions']],
-        challenges: [['Categorisation accuracy', 'Shipped a Naive-Bayes model trained on user corrections — 94% precision after two weeks.'],
-        ['Money math', 'Moved all balances to integer minor units to eliminate floating-point drift.']],
-        metrics: ['3.1k signups', '94% auto-category', '99.95% uptime'],
-        demo: 'https://ali-nex.github.io/demo/ledgerly', repo: 'https://github.com/ali-nex/ledgerly'
+        id: 'blind-glasses', title: 'Blind Assistance Glasses', cat: 'systems', catLabel: 'Hardware / Assistive', year: '2023', seed: 'assistive-glasses',
+        desc: 'Assistive wearable glasses prototype designed for visually impaired individuals, providing real-time audio/buzzer alert feedback as obstacles approach.',
+        tags: ['Arduino', 'Ultrasonic Sensor', 'Buzzer', 'C++', 'Wearable Tech'],
+        features: ['Compact wearable frame integration with ultrasonic sensing', 'Proportional buzzer audio alert frequency based on distance', 'Low-power portable battery operation'],
+        arch: [['glasses', 'Frame', '3D-Engineered Lightweight Headset Mount'], ['cpu', 'Controller', 'Arduino Nano / Micro System'],
+        ['volume-2', 'Feedback', 'Piezo Buzzer Haptic/Audio Alert Mechanism'], ['award', 'Recognition', 'Selected & Exhibited at College Project Expo']],
+        challenges: [['Response latency', 'Optimized sensor polling cycle down to <15ms for immediate obstacle detection.'],
+        ['Power efficiency', 'Implemented sleep modes between sonar pulses to extend portable battery run-time.']],
+        metrics: ['<15ms Latency', 'Hands-Free', 'Exhibition Selection'],
+        demo: 'https://github.com/ali-nex', repo: 'https://github.com/ali-nex'
       },
       {
-        id: 'pulse', title: 'PulseBoard', cat: 'fullstack', catLabel: 'Full-Stack', year: '2023', seed: 'pulseboard-analytics',
-        desc: 'Team analytics platform streaming product events over WebSockets into live charts, funnels and anomaly alerts.',
-        tags: ['Node.js', 'WebSocket', 'ClickHouse', 'Docker'],
-        features: ['Live funnels & retention with sub-second refresh', 'Anomaly alerts via statistical baselines', 'Shareable embed dashboards with scoped tokens'],
-        arch: [['monitor-smartphone', 'Frontend', 'React · uPlot streaming charts'], ['service', 'Ingest', 'Node worker pool · batching writes'],
-        ['database', 'Data', 'ClickHouse · Redis hot cache'], ['cloud', 'Infra', 'Docker Compose · Grafana · GH Actions']],
-        challenges: [['Write amplification', 'Batched inserts with a flush window — 40x fewer inserts at equal durability.'],
-        ['Chart jank', 'Replaced SVG charts with canvas uPlot; 50k points at a stable 60fps.']],
-        metrics: ['50k events/sec', '60fps live charts', 'SOC2-ready logs'],
-        demo: 'https://ali-nex.github.io/demo/pulseboard', repo: 'https://github.com/ali-nex/pulseboard'
+        id: 'taxi-booking', title: 'Taxi Booking Application', cat: 'fullstack', catLabel: 'Software App', year: '2024', seed: 'taxi-booking',
+        desc: 'Desktop/Web taxi reservation and management application with fare estimation, driver assignment, passenger management, and ride tracking.',
+        tags: ['Java', 'JavaFX', 'OOP', 'SQL', 'Data Structures'],
+        features: ['Passenger and driver profile registration & management', 'Algorithmic fare estimation based on distance and vehicle class', 'Real-time ride status updates and history logs'],
+        arch: [['car', 'Application', 'Java GUI / OOP Architecture'], ['database', 'Database', 'SQL Database for Drivers & Rides'],
+        ['calculator', 'Billing', 'Distance & Class-based Fare Calculation Engine'], ['users', 'Auth', 'Role-based access (Driver vs Rider)']],
+        challenges: [['Driver allocation matching', 'Implemented queue-based nearest-driver assignment algorithm.'],
+        ['Data integrity', 'Utilized transaction locks to avoid double-booking drivers across concurrent requests.']],
+        metrics: ['Full CRUD Support', 'Role-Based Access', 'Academic Distinction'],
+        demo: 'https://github.com/ali-nex', repo: 'https://github.com/ali-nex'
       },
       {
-        id: 'forge', title: 'Forge CLI', cat: 'systems', catLabel: 'Systems / CLI', year: '2023', seed: 'forge-cli-terminal',
-        desc: 'Opinionated project scaffolding CLI with a plugin runtime, code generators and zero-config CI recipes.',
-        tags: ['Node.js', 'npm', 'GitHub Actions'],
-        features: ['Plugin API with lifecycle hooks', 'Interactive prompts with sensible defaults', 'Generates CI, linting and release pipelines'],
-        arch: [['terminal', 'CLI core', 'Commander · Enquirer prompts'], ['puzzle', 'Plugin runtime', 'Sandboxed hooks · semver-scoped APIs'],
-        ['file-code', 'Templates', 'Handlebars with dry-run diffs'], ['git-branch', 'Delivery', 'npm · changesets release flow']],
-        challenges: [['Template drift', 'Templates became tests — every generated repo runs a contract suite in CI.'],
-        ['Slow cold starts', 'Deferred heavy imports behind lazy loaders; startup went 900ms → 120ms.']],
-        metrics: ['120ms startup', '18 plugins', '6k weekly installs'],
-        demo: 'https://ali-nex.github.io/demo/forge', repo: 'https://github.com/ali-nex/forge-cli'
-      },
-      {
-        id: 'gitpeek', title: 'GitPeek', cat: 'systems', catLabel: 'Systems / CLI', year: '2022', seed: 'gitpeek-repo',
-        desc: 'Terminal dashboard that dissects any repository: hotspot files, bus factor, dependency risk and commit rhythm.',
-        tags: ['Go', 'Cobra', 'gRPC'],
-        features: ['Hotspot map of churn vs complexity', 'Bus-factor warnings per module', 'Commit-rhythm heatmap right in the terminal'],
-        arch: [['terminal', 'CLI', 'Go · Cobra · Bubble Tea TUI'], ['service', 'Analysis', 'git plumbing · AST complexity pass'],
-        ['database', 'Cache', 'SQLite local cache · incremental scans'], ['network', 'Optional API', 'gRPC service for org-wide scans']],
-        challenges: [['Performance on monorepos', 'Incremental scanning with a content-hash cache — re-scan of a 40k-commit repo in 900ms.'],
-        ['Complexity metric honesty', 'Combined cyclomatic + churn weighting after false positives from generated code.']],
-        metrics: ['900ms re-scan', '1.8k stars', 'Zero config'],
-        demo: 'https://ali-nex.github.io/demo/gitpeek', repo: 'https://github.com/ali-nex/gitpeek'
-      },
-      {
-        id: 'synth', title: 'Synth UI', cat: 'uiux', catLabel: 'UI / UX', year: '2024', seed: 'synthui-library',
-        desc: 'Accessible React component library with design tokens, dark mode and micro-interactions tuned to 60fps.',
-        tags: ['React', 'TypeScript', 'Storybook', 'Radix'],
-        features: ['WCAG 2.2 AA audited components', 'Token pipeline: Figma → CSS variables', 'Motion primitives with reduced-motion fallbacks'],
-        arch: [['monitor-smartphone', 'Library', 'React 18 · Radix primitives · CVA'], ['palette', 'Tokens', 'Style Dictionary → CSS vars'],
-        ['flask-conical', 'Testing', 'Storybook interaction tests · axe-core'], ['package', 'Delivery', 'tsup ESM/CJS · changesets']],
-        challenges: [['Focus management', 'Rebuilt dialog primitives around Radix to get focus trapping and screen-reader semantics right.'],
-        ['Token drift', 'Single-source tokens compiled to CSS vars and a Figma sync — design and code never disagree.']],
-        metrics: ['AA audited', '34 components', '9kb core gz'],
-        demo: 'https://ali-nex.github.io/demo/synthui', repo: 'https://github.com/ali-nex/synth-ui'
-      },
-      {
-        id: 'aurora', title: 'Aurora Kit', cat: 'uiux', catLabel: 'UI / UX', year: '2022', seed: 'aurora-portfolio',
-        desc: 'Animated portfolio template kit with scroll choreography, page transitions and a visual theme editor.',
-        tags: ['Next.js', 'GSAP', 'Tailwind', 'MDX'],
-        features: ['Scroll choreography presets (zero GSAP skills needed)', 'Visual theme editor with live preview', 'MDX case-study authoring flow'],
-        arch: [['monitor-smartphone', 'Framework', 'Next.js · MDX content layer'], ['film', 'Motion', 'GSAP ScrollTrigger choreography presets'],
-        ['palette', 'Theming', 'CSS custom properties · editor UI'], ['rocket', 'Delivery', 'Static export · Netlify edge']],
-        challenges: [['Scroll jank on low-end devices', 'Rebuilt choreography on transform-only tweens with a motion budget per viewport.'],
-        ['Theme editor state', 'Serialised themes to a single CSS string — shareable via URL hash, no backend.']],
-        metrics: ['4.7k downloads', '100 Lighthouse', '14 presets'],
-        demo: 'https://ali-nex.github.io/demo/aurora', repo: 'https://github.com/ali-nex/aurora-kit'
-      },
-      {
-        id: 'portrait-studies', title: 'Hyperrealistic Portraiture Studies', cat: 'sketching', catLabel: 'Sketching', year: '2024', seed: 'sketch-portrait',
-        desc: 'High-detail graphite and charcoal portraiture exploring micro-tonal gradation, skin pore realism and dramatic chiaroscuro lighting.',
-        tags: ['Graphite (2B-8B)', 'Charcoal', 'Tortillon', 'Fabriano 250gsm'],
-        features: ['Layered micro-hatching with soft graphite pencils', 'Deep contrast shadows using compressed willow charcoal', 'Precision anatomical facial proportioning and eye reflections'],
-        arch: [['pencil', 'Mediums', 'Staedtler Mars Lumograph · General Charcoal 6B'], ['layers', 'Paper', '250gsm Acid-Free Cold-Pressed Cotton'],
-        ['eye', 'Technique', 'Chiaroscuro · Tortillon blending · Eraser lifting'], ['sparkles', 'Archival', 'Krylon Fine Art Matte Fixative']],
-        challenges: [['Skin texture without muddiness', 'Used 0.3mm mechanical pencils for fine pores and dusted highlights with kneaded eraser.'],
-        ['Charcoal transfer & smudging', 'Applied workable fixative in 3 micro-mist passes between value layers.']],
-        metrics: ['90+ drawing hours', '12 studies completed', 'Exhibited locally'],
-        demo: 'https://ali-nex.github.io/#projects', repo: 'https://github.com/ali-nex'
-      },
-      {
-        id: 'arch-perspective', title: 'Architectural Line & Form Studies', cat: 'sketching', catLabel: 'Sketching', year: '2023', seed: 'sketch-arch',
-        desc: 'Precision architectural perspectives dissecting historic Islamic arches, modern brutalist structures and intricate geometric facade shadows.',
-        tags: ['Fine Liner (0.05-0.8mm)', 'Graphite', '2-Point Perspective', 'Bristol Board'],
-        features: ['Exact multi-point vanishing line construction', 'Dense cross-hatching and stippled stone textures', 'Dynamic atmospheric depth through line-weight hierarchy'],
-        arch: [['pen-tool', 'Pens', 'Sakura Pigma Micron (0.05mm - 0.8mm)'], ['ruler', 'Drafting', 'T-square & 60° triangle geometric grid'],
-        ['layers', 'Surface', 'Strathmore 300gsm Smooth Bristol'], ['sun', 'Lighting', 'Directional shadow casting & cast-shadow calculation']],
-        challenges: [['Curvilinear arch distortion', 'Constructed underlying isometric guide rings before freehand pen execution.'],
-        ['Maintaining line crispness', 'Graduated line weights from heavy 0.8mm foreground to 0.05mm vanishing horizon.']],
-        metrics: ['16 architectural plates', '0.05mm line precision', 'Original compositions'],
-        demo: 'https://ali-nex.github.io/#projects', repo: 'https://github.com/ali-nex'
-      },
-      {
-        id: 'nastaliq-calligraphy', title: 'Nastaliq & Thuluth Manuscript Panels', cat: 'calligraphy', catLabel: 'Calligraphy', year: '2024', seed: 'calligraphy-arabic',
-        desc: 'Classical Arabic & Nastaliq script compositions crafted with hand-cut bamboo reed pens, traditional soot ink and genuine gold leaf illumination.',
-        tags: ['Qalam (Reed Pen)', 'Soot Ink', 'Ahar Paper', '24K Gold Leaf'],
-        features: ['Nuqta (rhombus dot) proportional balance system', 'Hand-cut Iranian bamboo qalam with 63° oblique bevels', 'Tezhib floral border illumination and burnished gold leaf'],
-        arch: [['pen-tool', 'Qalam', 'Hand-cut Bamboo & Java Reeds (1.5mm–5.0mm)'], ['droplet', 'Ink', 'Handmade soot ink with gum arabic & silk likka'],
-        ['file-text', 'Paper', 'Traditional Ahar treated paper (egg-white & alum)'], ['sparkles', 'Illumination', 'Shell gold 24K pigment & mineral gouache']],
-        challenges: [['Ink starvation on sweeping ascenders', 'Infused raw silk fibers (Likka) into the inkwell to meter ink delivery perfectly.'],
-        ['Paper tooth snagging nib', 'Burnished Ahar paper with agate stone to create a mirror-smooth glide.']],
-        metrics: ['90% stroke accuracy', '8 finished manuscripts', 'Traditional Ahar treated'],
-        demo: 'https://ali-nex.github.io/#projects', repo: 'https://github.com/ali-nex'
-      },
-      {
-        id: 'gothic-lettering', title: 'Modern Gothic & Fraktur Typography', cat: 'calligraphy', catLabel: 'Calligraphy', year: '2023', seed: 'calligraphy-gothic',
-        desc: 'Bold contemporary Fraktur and Blackletter compositions fusing medieval geometry with modern gradient ink blending.',
-        tags: ['Pilot Parallel (3.8/6.0mm)', 'Brause Nib', 'Gouache', 'Metallic Ink'],
-        features: ['Razor-sharp diamond serifs and diamond fracturs', 'Dual-ink nib-to-nib color gradients', 'Custom heraldic monograms and illuminated capitals'],
-        arch: [['pen-tool', 'Pens', 'Pilot Parallel Pen (3.8mm, 6.0mm) & Brause Bandzug'], ['palette', 'Inks', 'Winsor & Newton Designers Gouache & Ecoline'],
-        ['layout', 'Grid', 'Slanted 45° nib angle with 5-nib-width x-height'], ['award', 'Finishing', 'Iridescent metallic bronze & silver accents']],
-        challenges: [['Ink feathering on heavy saturated strokes', 'Pre-dusted paper with gum sandarac powder to eliminate bleed.'],
-        ['Maintaining stroke consistency', 'Engineered custom ruled slant-guides on lightboard.']],
-        metrics: ['24 lettering plates', '100% handcrafted', 'Custom commissions'],
-        demo: 'https://ali-nex.github.io/#projects', repo: 'https://github.com/ali-nex'
-      },
-      {
-        id: 'oil-landscapes', title: 'Impressionist Canvas Oil Landscapes', cat: 'painting', catLabel: 'Painting', year: '2024', seed: 'painting-landscape',
-        desc: 'Vibrant landscape and atmospheric mountain scenery paintings rendered with rich impasto palette knife textures and oil glazes.',
-        tags: ['Artists Oil Colors', 'Liquitex Medium', 'Linen Canvas', 'Palette Knife'],
-        features: ['Heavy impasto knife work capturing dynamic mountain ridges', 'Color temperature interplay between warm golden hour and violet shadows', 'Multi-layered transparent oil glazes for luminous skies'],
-        arch: [['palette', 'Paints', 'Winsor & Newton Artists Oil Colors & Liquin Fine Detail'], ['layers', 'Canvas', 'Triple-gessoed Belgian Linen on wooden stretchers'],
-        ['paintbrush', 'Application', 'Italian steel palette knives & hog bristle filberts'], ['shield', 'Varnish', 'Gloss Damar final varnish with UV protection']],
-        challenges: [['Muddy mixes when applying wet-on-wet', 'Loaded unmixed pure pigments directly onto palette knife for clean, broken-color marks.'],
-        ['Layer drying regulation', 'Followed strict "fat-over-lean" medium ratios across 4 glaze stages.']],
-        metrics: ['10 gallery canvases', '4-layer glaze depth', 'Palette knife impasto'],
-        demo: 'https://ali-nex.github.io/#projects', repo: 'https://github.com/ali-nex'
-      },
-      {
-        id: 'watercolor-botanicals', title: 'Fluid Watercolor & Botanical Studies', cat: 'painting', catLabel: 'Painting', year: '2023', seed: 'painting-watercolor',
-        desc: 'Delicate botanical and still-life watercolor paintings balancing spontaneous wet-in-wet pigment blooms with crisp details.',
-        tags: ['Single Pigment Watercolors', 'Kolinsky Sable', 'Arches 300gsm', 'Masking Fluid'],
-        features: ['Luminous multi-wash color blending with zero chalkiness', 'Negative space preservation for sunlit petal edges', 'Granulating pigment textures creating organic soil and foliage depth'],
-        arch: [['droplet', 'Pigment', 'Daniel Smith Extra Fine Watercolors (single-pigment series)'], ['brush', 'Brushes', 'Pure Kolinsky Sable rounds (#2, #6, #10)'],
-        ['file-text', 'Paper', 'Arches 100% Cotton 300gsm Cold-Pressed Paper'], ['sparkles', 'Technique', 'Wet-on-wet, wet-on-dry, lifting and dry brushing']],
-        challenges: [['Paper buckling under heavy saturated washes', 'Stretched and taped 300gsm paper to marine plywood board before painting.'],
-        ['Loss of white paper highlights', 'Preserved delicate leaf veins using ruling pen masking fluid.']],
-        metrics: ['18 botanical plates', '100% cotton paper', 'Lightfast archival ratings'],
-        demo: 'https://ali-nex.github.io/#projects', repo: 'https://github.com/ali-nex'
+        id: 'uni-mgmt', title: 'University Management System', cat: 'fullstack', catLabel: 'Software App', year: '2024', seed: 'university-system',
+        desc: 'Comprehensive university administration software managing student enrollment, course registration, grading, department records, and faculty data.',
+        tags: ['C++', 'Java', 'File Handling', 'OOP', 'Data Structures'],
+        features: ['Student & Faculty profile records and course enrollment', 'Automatic GPA & Grade point calculator', 'Course prerequisite checking and fee record generation'],
+        arch: [['graduation-cap', 'Core System', 'Object-Oriented Programming (OOP)'], ['file-text', 'Records', 'Persistent File Handling & SQL Database'],
+        ['shield-check', 'Security', 'Admin & Student portal authorization'], ['award', 'Feature', 'Transcript and GPA calculation module']],
+        challenges: [['Complex record relations', 'Designed clean class inheritance structures for Faculty, Student, and Course entities.'],
+        ['File persistence reliability', 'Implemented structured binary and text record saving to prevent data corruption.']],
+        metrics: ['Multi-Department', 'GPA Auto-calc', 'Robust OOP Architecture'],
+        demo: 'https://github.com/ali-nex', repo: 'https://github.com/ali-nex'
       },
     ];
     const TIMELINE = [
@@ -2707,38 +3535,204 @@
       setTimeout(() => { el.classList.remove('show'); setTimeout(() => el.remove(), 350); }, 3200);
     }
 
-    /* ---------------- Theme ---------------- */
-    const themeBtn = $('#theme-btn');
-    function applyTheme(t) {
-      document.documentElement.dataset.theme = t;
-      try { localStorage.setItem('av-theme', t); } catch (e) { }
+    /* ================================================================
+       THEME SYSTEM — clean, self-contained, guaranteed to work
+       ================================================================ */
+    const THEMES = [
+      // Dark
+      { id: 'dark',     name: 'Cyber Slate',    type: 'dark',  bg: '#0F172A', ac: '#22D3EE', ac2: '#A78BFA', desc: 'Navy + electric cyan',   emoji: '⚡' },
+      { id: 'emerald',  name: 'Emerald Matrix', type: 'dark',  bg: '#061A14', ac: '#10B981', ac2: '#34D399', desc: 'Forest + vivid emerald', emoji: '🌿' },
+      { id: 'tokyo',    name: 'Tokyo Night',    type: 'dark',  bg: '#0F091A', ac: '#F43F5E', ac2: '#06B6D4', desc: 'Violet + neon rose',     emoji: '🎌' },
+      { id: 'nebula',   name: 'Nebula Violet',  type: 'dark',  bg: '#0B0F29', ac: '#8B5CF6', ac2: '#38BDF8', desc: 'Deep space + purple',   emoji: '🔮' },
+      { id: 'sunset',   name: 'Sunset Amber',   type: 'dark',  bg: '#18110D', ac: '#F97316', ac2: '#FBBF24', desc: 'Charcoal + golden hour', emoji: '🌅' },
+      { id: 'teal',     name: 'Glacial Teal',   type: 'dark',  bg: '#0B161B', ac: '#14B8A6', ac2: '#60A5FA', desc: 'Arctic + luminous teal', emoji: '🧊' },
+      { id: 'rose',     name: 'Rose Petal',     type: 'dark',  bg: '#1A0A10', ac: '#FB7185', ac2: '#F472B6', desc: 'Dark cherry + neon rose', emoji: '🌸' },
+      { id: 'midnight', name: 'Midnight Ink',   type: 'dark',  bg: '#020204', ac: '#6366F1', ac2: '#A78BFA', desc: 'Black void + indigo',    emoji: '🖤' },
+      { id: 'sapphire', name: 'Sapphire Wave',  type: 'dark',  bg: '#06101E', ac: '#38BDF8', ac2: '#818CF8', desc: 'Deep navy + sky blue',   emoji: '💎' },
+      { id: 'crimson',  name: 'Crimson Dusk',   type: 'dark',  bg: '#120608', ac: '#EF4444', ac2: '#F97316', desc: 'Volcanic red + amber',   emoji: '🔥' },
+      { id: 'forest',   name: 'Forest Moss',    type: 'dark',  bg: '#091209', ac: '#4ADE80', ac2: '#A3E635', desc: 'Forest + bio-electric',  emoji: '🌲' },
+      // Light
+      { id: 'light',    name: 'Clean White',    type: 'light', bg: '#F6F8FB', ac: '#0891B2', ac2: '#7C3AED', desc: 'Crisp light + cyan',     emoji: '☀️' },
+      { id: 'sand',     name: 'Warm Sand',      type: 'light', bg: '#FAF6F0', ac: '#D97706', ac2: '#B45309', desc: 'Parchment + earth tones', emoji: '🏜️' },
+      { id: 'nordic',   name: 'Nordic Frost',   type: 'light', bg: '#ECEFF4', ac: '#5E81AC', ac2: '#88C0D0', desc: 'Scandinavian + icy blue', emoji: '❄️' },
+    ];
+
+    // ── Core: apply theme ──────────────────────────────────────────
+    function setTheme(id) {
+      const t = THEMES.find(x => x.id === id) || THEMES[0];
+      document.documentElement.dataset.theme = t.id;
+      try { localStorage.setItem('av-theme', t.id); } catch(e) {}
+
+      // Update nav label & dot
+      const nameEl = document.getElementById('active-theme-name');
+      const dotEl  = document.getElementById('theme-nav-dot');
+      if (nameEl) nameEl.textContent = t.name;
+      if (dotEl)  dotEl.style.background = t.ac;
+
+      // Mobile label
+      const mobileEl = document.getElementById('mobile-active-theme');
+      if (mobileEl) mobileEl.textContent = t.name;
+
+      // Fire canvas recolour etc.
       window.dispatchEvent(new CustomEvent('themechange'));
+
+      // Refresh picker active states
+      document.querySelectorAll('.tp-card').forEach(card => {
+        const isActive = card.dataset.themeId === t.id;
+        card.style.border = isActive
+          ? '2px solid ' + t.ac
+          : '2px solid ' + (t.type === 'light' ? 'rgba(0,0,0,.1)' : 'rgba(255,255,255,.1)');
+        card.style.boxShadow = isActive ? '0 0 0 3px ' + t.ac + '44' : 'none';
+        const check = card.querySelector('.tp-check');
+        if (check) check.style.opacity = isActive ? '1' : '0';
+      });
     }
-    function toggleTheme() {
-      const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
-      if (document.startViewTransition && !RM) {
-        const vt = document.startViewTransition(() => applyTheme(next));
-        vt.ready.then(() => {
-          const r = themeBtn.getBoundingClientRect();
-          const x = r.left + r.width / 2, y = r.top + r.height / 2;
-          const rad = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
-          document.documentElement.animate(
-            { clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${rad}px at ${x}px ${y}px)`] },
-            { duration: 650, easing: 'cubic-bezier(.4,0,.2,1)', pseudoElement: '::view-transition-new(root)' });
+
+    // ── Build the picker cards ─────────────────────────────────────
+    function buildThemePicker() {
+      const cur = document.documentElement.dataset.theme || 'dark';
+      ['dark','light'].forEach(type => {
+        const container = document.getElementById('tp-' + type);
+        if (!container) return;
+        container.innerHTML = '';
+        THEMES.filter(t => t.type === type).forEach(t => {
+          const isActive = t.id === cur;
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'tp-card';
+          btn.dataset.themeId = t.id;
+          btn.title = t.desc;
+          btn.style.cssText = `
+            display:flex; align-items:center; gap:8px;
+            padding:8px 10px; border-radius:10px; cursor:pointer;
+            background:var(--card2); text-align:left; width:100%;
+            border:2px solid ${isActive ? t.ac : (type === 'light' ? 'rgba(0,0,0,.1)' : 'rgba(255,255,255,.1)')};
+            box-shadow:${isActive ? '0 0 0 3px ' + t.ac + '44' : 'none'};
+            transition: border .2s, box-shadow .2s;
+          `;
+          btn.innerHTML = `
+            <div style="position:relative;width:36px;height:36px;border-radius:8px;background:${t.bg};flex-shrink:0;overflow:hidden;">
+              <div style="position:absolute;inset:0;background:linear-gradient(135deg,${t.ac},${t.ac2});opacity:.3;"></div>
+              <div style="position:absolute;bottom:4px;right:4px;width:7px;height:7px;border-radius:50%;background:${t.ac};"></div>
+              <div style="position:absolute;top:4px;left:4px;width:5px;height:5px;border-radius:50%;background:${t.ac2};opacity:.8;"></div>
+              <div style="position:absolute;inset:0;display:grid;place-items:center;font-size:11px;">${t.emoji}</div>
+            </div>
+            <div style="flex:1;min-width:0;">
+              <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:12px;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${t.name}</div>
+              <div style="font-size:10px;color:var(--mute);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${t.desc}</div>
+            </div>
+            <div class="tp-check" style="opacity:${isActive ? 1 : 0};color:${t.ac};transition:opacity .2s;font-size:14px;">✔</div>
+          `;
+          btn.addEventListener('click', () => {
+            setTheme(t.id);
+            toast(`${t.emoji} ${t.name}`, 'palette', 'text-ac');
+          });
+          container.appendChild(btn);
         });
-      } else applyTheme(next);
+      });
     }
-    themeBtn.addEventListener('click', toggleTheme);
+
+    // ── Picker open / close ────────────────────────────────────────
+    function initThemeStudio() {
+      // Restore saved theme
+      let saved = 'dark';
+      try { saved = localStorage.getItem('av-theme') || 'dark'; } catch(e) {}
+      if (!THEMES.some(t => t.id === saved)) saved = 'dark';
+      setTheme(saved);
+      buildThemePicker();
+
+      const picker       = document.getElementById('theme-picker');
+      const themeBtn     = document.getElementById('theme-btn');
+      const floatThemeBtn= document.getElementById('floating-theme-btn');
+      const closeBtn     = document.getElementById('theme-picker-close');
+      const flipBtn      = document.getElementById('tp-flip');
+      const mobileBtn    = document.getElementById('mobile-theme-btn');
+
+      function openPicker() {
+        buildThemePicker(); // always fresh
+        picker.style.display = 'block';
+        // Position under the button on smaller screens
+        if (window.innerWidth < 400) {
+          picker.style.right = '8px';
+          picker.style.left  = '8px';
+          picker.style.width = 'auto';
+        } else {
+          picker.style.right = '16px';
+          picker.style.left  = 'auto';
+          picker.style.width = '340px';
+        }
+      }
+      function closePicker() { picker.style.display = 'none'; }
+
+      if (themeBtn)      themeBtn.addEventListener('click',      e => { e.stopPropagation(); picker.style.display === 'none' ? openPicker() : closePicker(); });
+      if (floatThemeBtn) floatThemeBtn.addEventListener('click', e => { e.stopPropagation(); picker.style.display === 'none' ? openPicker() : closePicker(); });
+      if (mobileBtn)     mobileBtn.addEventListener('click',     e => { e.stopPropagation(); openPicker(); });
+      if (closeBtn)      closeBtn.addEventListener('click',      () => closePicker());
+
+      if (flipBtn) flipBtn.addEventListener('click', () => {
+        const cur = document.documentElement.dataset.theme || 'dark';
+        const curObj = THEMES.find(t => t.id === cur) || THEMES[0];
+        const next = curObj.type === 'dark' ? 'light' : 'dark';
+        setTheme(next);
+        buildThemePicker();
+        const nextObj = THEMES.find(t => t.id === next);
+        toast(`${nextObj.emoji} ${nextObj.name}`, 'palette', 'text-ac');
+      });
+
+      // Close picker when clicking outside
+      document.addEventListener('click', e => {
+        if (picker.style.display !== 'none' && !picker.contains(e.target) && e.target !== themeBtn && !themeBtn?.contains(e.target) && e.target !== floatThemeBtn && !floatThemeBtn?.contains(e.target)) {
+          closePicker();
+        }
+      });
+
+      // Close on Escape
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') closePicker();
+      });
+    }
 
     /* ---------------- Custom cursor (Native cursor active) ---------------- */
     function initCursor() { }
 
     /* ---------------- Header / nav ---------------- */
     const navbar = $('#navbar'), navInd = $('#nav-ind'), headerEl = $('#site-header');
+    const navRail = $('#nav-rail');
+
     function initHeader() {
       requestAnimationFrame(() => headerEl.classList.add('header-in'));
       const progress = $('#scroll-progress');
-      let ticking = false;
+      const html = document.documentElement;
+
+      // Thresholds
+      const ICON_MODE_PX = 90;   // text → icons
+      const RAIL_MODE_PX = 180;  // icons fly to left rail
+
+      let iconMode = false, railMode = false, ticking = false;
+
+      const floatBtn = $('#floating-theme-btn');
+
+      function showRail() {
+        if (railMode) return;
+        railMode = true;
+        html.classList.add('nav-rail-mode');
+        // Small delay so nav-links starts fading before rail appears
+        setTimeout(() => {
+          navRail.classList.add('rail-visible');
+          if (floatBtn) floatBtn.classList.add('visible');
+          if (window.lucide) lucide.createIcons({ nodes: [navRail, floatBtn] });
+        }, 120);
+      }
+
+      function hideRail() {
+        if (!railMode) return;
+        railMode = false;
+        navRail.classList.remove('rail-visible');
+        if (floatBtn) floatBtn.classList.remove('visible');
+        // Wait for rail slide-out before restoring nav-links
+        setTimeout(() => html.classList.remove('nav-rail-mode'), 300);
+      }
+
       function onScroll() {
         if (ticking) return; ticking = true;
         requestAnimationFrame(() => {
@@ -2746,10 +3740,41 @@
           const h = document.documentElement.scrollHeight - innerHeight;
           progress.style.transform = `scaleX(${h > 0 ? scrollY / h : 0})`;
           updateTlFill();
+
+          // ── Icon mode ──
+          if (scrollY > ICON_MODE_PX && !iconMode) {
+            iconMode = true;
+            html.classList.add('nav-icon-mode');
+            refreshIcons();
+          } else if (scrollY <= ICON_MODE_PX && iconMode) {
+            iconMode = false;
+            html.classList.remove('nav-icon-mode');
+          }
+
+          // ── Rail mode ──
+          if (scrollY > RAIL_MODE_PX) showRail();
+          else hideRail();
+
           ticking = false;
         });
       }
       addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+      // Rail active section sync
+      window.addEventListener('themechange', () => {
+        if (window.lucide) lucide.createIcons({ nodes: [navRail, floatBtn] });
+      });
+    }
+
+    // Keep rail active link in sync with nav spy
+    function syncRailActive(sectionId) {
+      document.querySelectorAll('.rail-link').forEach(a => {
+        const href = a.getAttribute('href')?.replace('#', '');
+        const jf   = a.dataset.jf;
+        let match = href === sectionId;
+        if (sectionId === 'journey' && jf) match = true;
+        a.classList.toggle('active', match);
+      });
     }
     function moveNavInd(link) {
       if (!link || !navInd) { navInd.style.opacity = 0; return; }
@@ -2764,6 +3789,7 @@
       if (id === 'journey') link = $(`.nav-link[data-jf="${tlFilter}"]`);
       else link = $(`.nav-link[href="#${id}"]`);
       if (link) { link.classList.add('active'); if (innerWidth >= 1024) moveNavInd(link); }
+      syncRailActive(id);
     }
     function initNavSpy() {
       const spy = new IntersectionObserver(entries => {
@@ -3485,10 +4511,20 @@ LANGUAGES
       );
       PROJECTS.forEach((p, i) => ix.push({ label: p.title, hint: 'Project', icon: 'folder-git-2', kw: p.tags.join(' ') + ' ' + p.cat, run: () => openProject(i) }));
       SKILLS.forEach(s => ix.push({ label: s.n, hint: 'Skill', icon: 'zap', kw: s.cat, run: () => { applySkillFilter(s.cat); $('#skills').scrollIntoView({ behavior: 'smooth' }); } }));
+      THEMES.forEach(t => {
+        ix.push({
+          label: `Theme: ${t.name}`,
+          hint: `${t.type === 'dark' ? 'Dark' : 'Light'} Palette`,
+          icon: 'palette',
+          kw: `theme color palette ${t.id} ${t.name} ${t.tag} ${t.desc} mode`,
+          run: () => { applyTheme(t.id); toast(`Switched to ${t.name} theme`, 'palette', 'text-ac'); }
+        });
+      });
       ix.push(
+        { label: 'Theme Studio (Browse all palettes)', hint: 'Action', icon: 'palette', kw: 'theme studio color palette dark light appearance customize', run: openThemeModal },
         { label: 'Download CV / Resume', hint: 'Action', icon: 'download', kw: 'cv resume pdf download save', run: () => $('.js-cv')?.click() },
         { label: 'Copy Full Resume Text', hint: 'Action', icon: 'copy', kw: 'cv resume copy text clipboard', run: () => copyText(RESUME, 'Full formatted CV copied to clipboard!') },
-        { label: 'Toggle dark / light theme', hint: 'Action', icon: 'sun-medium', kw: 'theme dark light mode appearance', run: toggleTheme },
+        { label: 'Toggle dark / light theme', hint: 'Action', icon: 'sun-medium', kw: 'theme dark light mode appearance flip quick', run: toggleThemeQuick },
         { label: 'Copy email address', hint: 'Action', icon: 'copy', kw: 'email copy clipboard contact', run: () => copyText(EMAIL, 'Email copied to clipboard') },
       );
       SOCIALS.forEach(s => ix.push({ label: s.label, hint: 'Link', icon: s.icon, kw: 'social profile open', run: () => window.open(s.url, '_blank', 'noopener') }));
@@ -3577,7 +4613,8 @@ LANGUAGES
       if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); S.open ? closeSearch() : openSearch(); return; }
       if (e.key === '/' && !/input|textarea/i.test(document.activeElement?.tagName || '')) { e.preventDefault(); openSearch(); return; }
       if (e.key === 'Escape') {
-        if (projModal.classList.contains('open')) closeProject();
+        if (themeModal && !themeModal.classList.contains('hidden')) closeThemeModal();
+        else if (projModal.classList.contains('open')) closeProject();
         else if (S.open) closeSearch();
         else window.__closeMenu?.();
       }
@@ -3594,126 +4631,318 @@ LANGUAGES
 
     /* ---------------- Scroll-driven Avatar Flight from Home to About ---------------- */
     function initScrollAvatarTransition() {
-      const homeBox = $('#home-avatar-box');
-      const movingWrap = $('#home-avatar-moving');
-      const movingImg = $('#home-avatar-img');
-      const aboutTarget = $('#about-avatar-target');
-      const aboutImg = $('#about-avatar-img');
+      const homeBox      = $('#home-avatar-box');
+      const movingWrap   = $('#home-avatar-moving');
+      const movingImg    = $('#home-avatar-img');
+      const aboutTarget  = $('#about-avatar-target');
+      const aboutImg     = $('#about-avatar-img');
+      const aboutRing    = $('#about-avatar-ring');
+      const aboutClip    = $('#about-avatar-clip');
 
       if (!homeBox || !movingWrap || !movingImg || !aboutTarget) return;
 
-      const circleBg = homeBox.querySelector('.popout-circle-bg');
+      const circleBg  = homeBox.querySelector('.popout-circle-bg');
       const homeChips = homeBox.querySelectorAll('.chip-wrap');
 
-      let homePos = { x: 0, y: 0, w: 1, h: 1 };
-      let aboutPos = { x: 0, y: 0, w: 1, h: 1 };
+      let homePos  = { x:0, y:0, w:1, h:1 };
+      let aboutPos = { x:0, y:0, w:1, h:1 };
       let startY = 0, endY = 1000;
 
-      function recalculateBounds() {
+      function recalc() {
         const hr = homeBox.getBoundingClientRect();
         const ar = aboutTarget.getBoundingClientRect();
-        const sx = window.scrollX, sy = window.scrollY;
-
-        homePos = {
-          x: hr.left + sx,
-          y: hr.top + sy,
-          w: hr.width,
-          h: hr.height
-        };
-        aboutPos = {
-          x: ar.left + sx,
-          y: ar.top + sy,
-          w: ar.width,
-          h: ar.height
-        };
-
+        const sx = scrollX, sy = scrollY;
+        homePos  = { x: hr.left + sx, y: hr.top  + sy, w: hr.width,  h: hr.height  };
+        aboutPos = { x: ar.left + sx, y: ar.top  + sy, w: ar.width,  h: ar.height  };
         startY = Math.max(0, homePos.y - 80);
-        endY = Math.max(startY + 250, aboutPos.y - window.innerHeight * 0.35);
+        endY   = Math.max(startY + 300, aboutPos.y - innerHeight * 0.4);
       }
+      recalc();
+      addEventListener('resize', recalc, { passive: true });
+      addEventListener('load',   recalc);
 
-      recalculateBounds();
-      window.addEventListener('resize', recalculateBounds, { passive: true });
-      window.addEventListener('load', recalculateBounds);
+      let targetP = 0, curP = 0, raf = false;
 
-      let targetProgress = 0;
-      let currentProgress = 0;
-      let isRunning = false;
+      function tick() {
+        const diff = targetP - curP;
+        curP += diff * 0.12;         // LERP factor — lower = smoother / more inertia
+        if (Math.abs(diff) < 0.0003) curP = targetP;
 
-      function onScroll() {
-        const scroll = window.scrollY;
-        targetProgress = clamp((scroll - startY) / (endY - startY), 0, 1);
-        if (!isRunning) {
-          isRunning = true;
-          requestAnimationFrame(renderLoop);
-        }
-      }
+        const p    = curP;
+        const ease = p < 0.5 ? 4*p*p*p : 1 - Math.pow(-2*p+2,3)/2;  // cubic ease-in-out
 
-      function renderLoop() {
-        // Continuous physics LERP damping (buttery smooth inertia)
-        const diff = targetProgress - currentProgress;
-        currentProgress += diff * 0.14;
-
-        if (Math.abs(diff) < 0.0005) {
-          currentProgress = targetProgress;
-        }
-
-        const p = currentProgress;
-        // Cubic Bézier easing for lifelike acceleration & deceleration
-        const ease = p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2;
-
-        const diffX = (aboutPos.x + (aboutPos.w - homePos.w) / 2) - homePos.x;
-        const diffY = (aboutPos.y + (aboutPos.h - homePos.h) / 2) - homePos.y;
+        /* ── Position & scale ── */
+        const dx = (aboutPos.x + (aboutPos.w - homePos.w)/2) - homePos.x;
+        const dy = (aboutPos.y + (aboutPos.h - homePos.h)/2) - homePos.y;
         const targetScale = aboutPos.w / Math.max(1, homePos.w);
         const scale = 1 + (targetScale - 1) * ease;
 
-        // Realistic flight physics: subtle 3D roll, yaw and parabolic elevation
-        const arcHeight = Math.sin(p * Math.PI);
-        const tiltZ = -arcHeight * 4.5;
-        const tiltY = arcHeight * 6.0;
-        const curX = diffX * ease;
-        const curY = diffY * ease;
+        /* ── Parabolic arc lift + gentle tilt ── */
+        const arc  = Math.sin(p * Math.PI);
+        const tiltZ = -arc * 3.5;
+        const tiltY =  arc * 4.5;
 
-        movingWrap.style.transform = `translate3d(${curX.toFixed(2)}px, ${curY.toFixed(2)}px, 0) scale(${scale.toFixed(3)}) rotateY(${tiltY.toFixed(2)}deg) rotateZ(${tiltZ.toFixed(2)}deg)`;
+        movingWrap.style.transform =
+          `translate3d(${(dx*ease).toFixed(2)}px,${(dy*ease).toFixed(2)}px,0) ` +
+          `scale(${scale.toFixed(3)}) ` +
+          `rotateY(${tiltY.toFixed(2)}deg) rotateZ(${tiltZ.toFixed(2)}deg)`;
 
-        // Border radius morph from popout bottom-curve to elegant rounded card
-        const rTop = (26 * ease).toFixed(1);
-        const rBottom = (165 * (1 - ease) + 26 * ease).toFixed(1);
-        movingImg.style.borderRadius = `${rTop}px ${rTop}px ${rBottom}px ${rBottom}px`;
+        /* ── Border-radius morph on the MOVING image:
+             Start: bottom-heavy popout curve (0px top, 165px bottom)
+             Mid:   flatten symmetrically
+             End:   perfect circle (50%) ── */
+        const rTopPx    = lerp(0,   50,  ease);
+        const rBottomPx = lerp(165, 50,  ease);
+        const rCircle   = lerp(0,   50,  Math.max(0, (p-0.6)/0.4));  // circle kick in at 60%
+        const finalR    = Math.max(rTopPx, rCircle);
+        const finBotR   = Math.max(rBottomPx > 50 ? lerp(rBottomPx,50,Math.max(0,(p-0.3)/0.7)) : rBottomPx, rCircle);
+        movingImg.style.borderRadius = `${finalR.toFixed(1)}px ${finalR.toFixed(1)}px ${finBotR.toFixed(1)}px ${finBotR.toFixed(1)}px`;
 
-        // Dynamic 3D elevation drop-shadow during flight
-        const shadowY = 14 + arcHeight * 22;
-        const shadowBlur = 24 + arcHeight * 30;
-        const shadowOpacity = 0.5 + arcHeight * 0.3;
-        movingImg.style.filter = `drop-shadow(0 ${shadowY.toFixed(1)}px ${shadowBlur.toFixed(1)}px rgba(var(--ac-rgb), ${shadowOpacity.toFixed(2)}))`;
+        /* ── About image border-radius sync (rectangle → full circle) ── */
+        if (aboutClip && aboutRing) {
+          const aboutR = lerp(26, 50, Math.max(0, (p-0.5)/0.5));     // starts morphing at p=0.5
+          const ringR  = lerp(28, 50, Math.max(0, (p-0.5)/0.5));
+          aboutClip.style.borderRadius = `${aboutR.toFixed(1)}%`;
+          aboutRing.style.borderRadius = `${ringR.toFixed(1)}%`;
+        }
 
-        // Fade home background circle and chips naturally
+        /* ── Dynamic shadow during flight ── */
+        const sY   = 12 + arc * 20;
+        const sBlur= 22 + arc * 28;
+        const sAlpha= 0.45 + arc * 0.3;
+        movingImg.style.filter =
+          `drop-shadow(0 ${sY.toFixed(1)}px ${sBlur.toFixed(1)}px rgba(var(--ac-rgb),${sAlpha.toFixed(2)}))`;
+
+        /* ── Home decorations fade ── */
         if (circleBg) {
-          circleBg.style.opacity = Math.max(0, 1 - p * 2.5).toFixed(2);
-          circleBg.style.transform = `scale(${Math.max(0.85, 1 - p * 0.25).toFixed(2)})`;
+          circleBg.style.opacity   = clamp(1 - p*2.2, 0, 1).toFixed(2);
+          circleBg.style.transform = `scale(${clamp(1 - p*0.22, 0.82, 1).toFixed(2)})`;
         }
         homeChips.forEach(ch => {
-          ch.style.opacity = Math.max(0, 1 - p * 3.5).toFixed(2);
-          ch.style.transform = `scale(${Math.max(0.65, 1 - p * 0.45).toFixed(2)})`;
+          ch.style.opacity   = clamp(1 - p*3,    0, 1).toFixed(2);
+          ch.style.transform = `scale(${clamp(1-p*0.4, 0.65, 1).toFixed(2)})`;
         });
 
-        // Seamless dock transition to About section
-        if (aboutImg) {
-          aboutImg.style.opacity = p >= 0.96 ? ((p - 0.96) / 0.04).toFixed(2) : '0';
-        }
-        movingWrap.style.opacity = p >= 0.99 ? '0' : '1';
+        /* ── Smooth cross-fade: moving out, about in ── */
+        // Moving avatar starts fading at p=0.75 and is gone by p=1
+        movingWrap.style.opacity = clamp((1 - p) / 0.25, 0, 1).toFixed(3);
+        // About img fades IN from p=0.5 to p=1 — perfectly overlaps moving avatar
+        if (aboutImg) aboutImg.style.opacity = clamp((p-0.5)/0.5, 0, 1).toFixed(3);
 
-        if (Math.abs(targetProgress - currentProgress) > 0.0001 || targetProgress !== currentProgress) {
-          requestAnimationFrame(renderLoop);
+        if (Math.abs(targetP - curP) > 0.0002 || targetP !== curP) {
+          requestAnimationFrame(tick);
         } else {
-          isRunning = false;
+          raf = false;
+          // Ensure clean final state
+          if (curP >= 0.999) {
+            movingWrap.style.opacity = '0';
+            if (aboutImg) aboutImg.style.opacity = '1';
+            if (aboutClip) aboutClip.style.borderRadius = '50%';
+            if (aboutRing) aboutRing.style.borderRadius = '50%';
+          }
         }
       }
 
-      window.addEventListener('scroll', onScroll, { passive: true });
-      onScroll();
+      addEventListener('scroll', () => {
+        targetP = clamp((scrollY - startY) / (endY - startY), 0, 1);
+        if (!raf) { raf = true; requestAnimationFrame(tick); }
+      }, { passive: true });
+
+      // Kick once so page-load state is correct
+      targetP = clamp((scrollY - startY) / (endY - startY), 0, 1);
+      curP = targetP;
+      requestAnimationFrame(tick);
     }
 
+    /* ---------------- Inter-Section Mini Games Logic ---------------- */
+    function initMiniGames() {
+      // Game 1: Color Name Painter (ALI HASSAN AZIZ)
+      const palette = $('#g1-palette'), nameDisplay = $('#g1-name-display');
+      if (palette && nameDisplay) {
+        let activeColor = '#22D3EE';
+        palette.querySelectorAll('.color-swatch').forEach(swatch => {
+          swatch.addEventListener('click', () => {
+            palette.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('active'));
+            swatch.classList.add('active');
+            activeColor = swatch.dataset.color;
+          });
+        });
+        nameDisplay.querySelectorAll('.color-letter').forEach(letter => {
+          letter.addEventListener('click', () => {
+            letter.style.color = activeColor;
+            letter.style.transform = 'scale(1.3)';
+            setTimeout(() => letter.style.transform = 'none', 200);
+            toast(`🎨 Letter '${letter.textContent}' painted!`, 'palette', 'text-ac');
+          });
+        });
+      }
+
+      // Game 2: Bubble Pop Animation
+      const bubbleContainer = $('#g2-bubble-container'), g2Status = $('#g2-status'), g2ResetBtn = $('#g2-reset-btn');
+      if (bubbleContainer) {
+        let poppedCount = 0;
+        const bubbles = bubbleContainer.querySelectorAll('.pop-bubble');
+        bubbles.forEach(b => {
+          b.addEventListener('click', () => {
+            if (b.classList.contains('popped')) return;
+            b.classList.add('popped');
+            poppedCount++;
+            if (poppedCount === bubbles.length) {
+              if (g2Status) {
+                g2Status.textContent = '🎉 All bubbles popped! Great job!';
+                g2Status.classList.add('text-ac', 'font-semibold');
+              }
+              if (g2ResetBtn) g2ResetBtn.classList.remove('hidden');
+              toast('🫧 Bubble Pop Master!', 'sparkles', 'text-ac');
+            }
+          });
+        });
+        if (g2ResetBtn) {
+          g2ResetBtn.addEventListener('click', () => {
+            poppedCount = 0;
+            bubbles.forEach(b => b.classList.remove('popped'));
+            g2ResetBtn.classList.add('hidden');
+            if (g2Status) {
+              g2Status.textContent = 'Click bubbles to pop them before they float away!';
+              g2Status.classList.remove('text-ac', 'font-semibold');
+            }
+          });
+        }
+      }
+
+      // Game 3: 5-Second Speed Clicker
+      const g3Btn = $('#g3-btn'), g3Score = $('#g3-score'), g3Time = $('#g3-time');
+      if (g3Btn) {
+        let score = 0, timeLeft = 5.0, timer = null, active = false;
+        g3Btn.addEventListener('click', () => {
+          if (!active) {
+            active = true; score = 1; timeLeft = 5.0;
+            g3Score.textContent = score;
+            timer = setInterval(() => {
+              timeLeft -= 0.1;
+              if (timeLeft <= 0) {
+                clearInterval(timer);
+                g3Time.textContent = '0.0s';
+                active = false;
+                toast(`⚡ Reflex Test! ${score} clicks in 5s!`, 'zap', 'text-ac');
+              } else {
+                g3Time.textContent = timeLeft.toFixed(1) + 's';
+              }
+            }, 100);
+          } else if (timeLeft > 0) {
+            score++;
+            g3Score.textContent = score;
+          }
+        });
+      }
+
+      // Game 4: Memory Card Match
+      const g4Grid = $('#g4-grid'), g4Status = $('#g4-status');
+      if (g4Grid) {
+        let first = null, matched = 0;
+        g4Grid.querySelectorAll('.g4-card').forEach(card => {
+          card.addEventListener('click', () => {
+            if (card.textContent || card === first) return;
+            card.textContent = card.dataset.val;
+            card.classList.add('border-ac', 'bg-panel');
+            if (!first) {
+              first = card;
+            } else {
+              if (first.dataset.val === card.dataset.val) {
+                matched++;
+                first = null;
+                if (matched === 2) {
+                  if (g4Status) {
+                    g4Status.textContent = '🧠 Memory Master! All matched!';
+                    g4Status.classList.add('text-ac', 'font-semibold');
+                  }
+                  toast('🧠 All pairs matched!', 'sparkles', 'text-ac');
+                }
+              } else {
+                const prev = first;
+                first = null;
+                setTimeout(() => {
+                  prev.textContent = ''; card.textContent = '';
+                  prev.classList.remove('border-ac', 'bg-panel');
+                  card.classList.remove('border-ac', 'bg-panel');
+                }, 600);
+              }
+            }
+          });
+        });
+      }
+    }
+
+    /* ---------------- Creative Tech Preloader & Network Monitor ---------------- */
+    function initTechPreloader() {
+      const preloader    = $('#tech-preloader');
+      const progressFill = $('#preload-progress-fill');
+      const percentEl    = $('#preload-percent');
+      const statusEl     = $('#preload-status');
+      const slowNetBar   = $('#slow-net-bar');
+      const retryBtn     = $('#slow-net-retry');
+
+      if (!preloader) return;
+
+      let progress = 0;
+      const statusSteps = [
+        "Booting portfolio kernel...",
+        "Compiling DOM modules...",
+        "Loading color design tokens...",
+        "Initializing 60fps graphics...",
+        "System online — Ready!"
+      ];
+
+      const interval = setInterval(() => {
+        progress += Math.floor(Math.random() * 18) + 12;
+        if (progress > 100) progress = 100;
+        
+        if (progressFill) progressFill.style.width = progress + '%';
+        if (percentEl) percentEl.textContent = progress + '%';
+        
+        const stepIdx = Math.min(statusSteps.length - 1, Math.floor((progress / 100) * statusSteps.length));
+        if (statusEl) statusEl.textContent = statusSteps[stepIdx];
+
+        if (progress >= 100) {
+          clearInterval(interval);
+          setTimeout(() => {
+            preloader.classList.add('done');
+          }, 250);
+        }
+      }, 100);
+
+      // Slow Network / Offline Monitor
+      function checkConnection() {
+        const navConn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+        const isSlow = !navigator.onLine || (navConn && (navConn.saveData || /2g|slow-2g/i.test(navConn.effectiveType)));
+        if (isSlow) {
+          if (slowNetBar) slowNetBar.classList.add('visible');
+        } else {
+          if (slowNetBar) slowNetBar.classList.remove('visible');
+        }
+      }
+
+      window.addEventListener('online',  checkConnection);
+      window.addEventListener('offline', checkConnection);
+      if (navigator.connection) navigator.connection.addEventListener('change', checkConnection);
+      
+      // Initial check after preloader finishes
+      setTimeout(checkConnection, 2000);
+
+      if (retryBtn) {
+        retryBtn.addEventListener('click', () => {
+          toast('⚡ Connection refreshed!', 'zap', 'text-ac');
+          checkConnection();
+        });
+      }
+    }
+
+    /* simple lerp util used above */
+    function lerp(a, b, t) { return a + (b-a)*t; }
+
     /* ---------------- Boot ---------------- */
+    initTechPreloader();
+    initThemeStudio();
     renderSocials(); renderMarquee();
     renderSkills(); renderProjects(); renderTimeline();
     refreshIcons();
@@ -3722,6 +4951,7 @@ LANGUAGES
     initCounters(); initBioTabs(); initForm();
     initResumeInteractions();
     initScrollAvatarTransition();
+    initMiniGames();
     buildSearchIndex(); initFooter();
     setActiveSection('home');
   </script>
